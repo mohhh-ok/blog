@@ -1,6 +1,7 @@
 {
   "name": "gullible-galaxy",
   "type": "module",
+  "packageManager": "bun@1.3.11",
   "version": "0.0.1",
   "scripts": {
     "preinstall": "npx only-allow bun",
@@ -16,11 +17,13 @@
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
+    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.18.0",
     "astro-pagefind": "^1.8.5",
     "dayjs": "^1.11.19",
     "remeda": "^2.32.0",
+    "satori": "^0.25.0",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"

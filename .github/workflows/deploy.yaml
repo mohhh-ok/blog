@@ -24,16 +24,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Restore OG image cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/og
+          key: og-cache-${{ hashFiles('src/content/posts/**/*.md', 'src/content/posts/**/*.mdx') }}
+          restore-keys: |
+            og-cache-
+
       - name: Build and export with Dagger
         uses: dagger/dagger-for-github@v8.4.0
         with:
           verb: call
-          args: build --source=. export --path=./dist
+          args: build --source=. export --path=./output
+
+      - name: Save OG cache
+        run: cp -r ./output/.cache/og .cache/og 2>/dev/null || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./dist
+          path: ./output/dist
 
       - name: Deploy to GitHub Pages
         id: deployment

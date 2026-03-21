@@ -3,7 +3,7 @@ import { argument, dag, Directory, func, object } from "@dagger.io/dagger";
 @object()
 export class Blog {
   /**
-   * Build Astro site and return dist directory
+   * Build Astro site and return dist directory with OG cache
    */
   @func()
   async build(
@@ -11,7 +11,7 @@ export class Blog {
   ): Promise<Directory> {
     const bunCache = dag.cacheVolume("bun");
 
-    return dag
+    const built = dag
       .container()
       .from("oven/bun:latest")
       .withDirectory("/app", source)
@@ -19,7 +19,12 @@ export class Blog {
       .withWorkdir("/app")
       .withEnvVariable("CI", "true")
       .withExec(["bun", "install"])
-      .withExec(["bun", "run", "build"])
-      .directory("/app/dist");
+      .withExec(["bun", "run", "build"]);
+
+    // Export both dist and OG cache into a single output directory
+    return dag
+      .directory()
+      .withDirectory("dist", built.directory("/app/dist"))
+      .withDirectory(".cache/og", built.directory("/app/.cache/og"));
   }
 }
