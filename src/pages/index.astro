@@ -6,8 +6,9 @@ import Header from "../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import { PATHS } from "../paths";
 
-const posts = await getCollection("blog", ({ data }) =>
-  import.meta.env.DEV || !data.draft
+const posts = await getCollection(
+  "blog",
+  ({ data }) => import.meta.env.DEV || !data.draft,
 );
 posts.sort((a, b) =>
   new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
@@ -29,7 +30,7 @@ posts.sort((a, b) =>
         <div>
           <p>
             ご訪問いただき、ありがとうございます。フリーランスエンジニアの太田雅昭です。
-            フルスタックで、バックエンドからフロントエンドまで作成しています。
+            TypeScriptを中心としたフルスタック開発や、開発環境の構築・AI開発ツールの活用支援などのメンター業務を請け負っています。
           </p>
           <ul>
             <li>
