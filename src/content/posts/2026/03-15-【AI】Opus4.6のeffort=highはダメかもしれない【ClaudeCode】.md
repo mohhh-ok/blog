@@ -1,10 +1,27 @@
 ---
 title: 【AI】Opus4.6のeffort=highはダメかもしれない【ClaudeCode】
 pubDate: 2026-03-15
+updatedDate: 2026-04-09
 categories: ["AI"]
 ---
 
 こんにちは、フリーランスエンジニアの太田雅昭です。
+
+## 2026年4月9日追記
+
+Claude Code開発者の一人であるBoris氏が、品質低下の話題について下記掲示板で言及しました。
+
+https://news.ycombinator.com/item?id=47664442
+
+主なポイントは以下の通りです。
+
+- 2026年3月3日にeffortのデフォルトがmedium（内部値85）に変更されたことが公式に確認された
+- 適応的思考（Adaptive Thinking）に問題があり、品質低下につながっている
+
+特にAdaptive Thinkingによって推論量が0になった場合、ハルシネーションが発生するとのことです。暫定的な対策として、`CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1`, `/effort high` を設定することが挙げられています。
+
+下記はこの投稿が出る前に考察した文章ですが、参考のため残しておきます。
+
 
 ## Claude Codeでのeffort
 
