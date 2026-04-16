@@ -1,9 +1,9 @@
 ---
-title: メンターとしてプログラミング支援
-startDate: 2025-01-01
-endDate: 2025-01-01
+title: メンターとして未経験からのAI駆動開発プログラミング支援
+startDate: 2025-01
+endDate: 2026-04
 techs: ["Cursor", "TypeScript"]
-summary: Google Meetを活用し、API概念の説明からCursor環境構築まで対応。数週間でFacebook APIを用いた広告自動作成を実現するレベルまでサポート。
+summary: オンラインでAI駆動開発環境の構築の手助け、活用方法指南。数週間でFacebook APIを用いた広告自動作成を実現。SaaS立ち上げに向けて継続中
 ---
 
 Google Meetを用いて、プログラミング学習をサポート。
@@ -24,3 +24,7 @@ Google Meetを用いて、プログラミング学習をサポート。
 
 - TypeScript + Node.jsでのプログラミング
 - Facebook APIを用いて、広告キャンペーンを含む、広告アイテムを自動作成
+
+## その後
+
+週一回のメンタリングで、SaaS開発をサポート。

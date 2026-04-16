@@ -124,6 +124,7 @@ posts.sort((a, b) =>
               posts.slice(0, 20).map((post) => (
                 <li>
                   <a href={PATHS.posts.post(post.id)}>
+                    {post.data.draft && <span class="text-xs bg-yellow-400 text-black px-1 py-0.5 rounded mr-1">DRAFT</span>}
                     {post.data.title}
                   </a>
                 </li>

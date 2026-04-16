@@ -2,6 +2,7 @@
 title: ショート動画の投稿・販売・編集サイト
 startDate: 2025-08
 techs: ["Next.js", "Remotion", "Google Cloud"]
+draft: true
 ---
 
 ショート動画の投稿・販売・編集サイトを作成。

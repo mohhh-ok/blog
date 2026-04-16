@@ -165,7 +165,7 @@ export const GET: APIRoute = async ({ props, params }) => {
 
   writeFileSync(cachePath, png);
 
-  return new Response(png, {
+  return new Response(png as Buffer<ArrayBufferLike> & BlobPart, {
     headers: { "Content-Type": "image/png" },
   });
 };

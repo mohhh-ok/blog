@@ -52,7 +52,7 @@ const sortedPosts = posts.sort((a, b) =>
         {
           sortedPosts.map(post => (
             <li class="mb-2">
-              <a href={PATHS.posts.post(post.id)}>{post.data.title}</a>
+              <a href={PATHS.posts.post(post.id)}>{post.data.draft && <span class="text-xs bg-yellow-400 text-black px-1 py-0.5 rounded mr-1">DRAFT</span>}{post.data.title}</a>
               {post.data.categories?.map(c => <CategoryChip category={c} />)}
               <span class="ml-4 text-[#666]">
                 {

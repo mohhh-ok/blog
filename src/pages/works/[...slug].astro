@@ -8,7 +8,7 @@ import Header from "../../components/Header.astro";
 import { combineDates } from "../../utils";
 
 export async function getStaticPaths() {
-  const works = await getCollection("works");
+  const works = await getCollection("works", ({ data }) => import.meta.env.DEV || !data.draft);
   return works.map((work) => ({
     params: { slug: work.id },
     props: work,
@@ -26,7 +26,7 @@ const { Content } = await render(work);
   <head>
     <BaseHead
       title={work.data.title}
-      description={work.data.description ?? ""}
+      description={work.data.summary ?? ""}
       noIndex={true}
     />
     <style>
@@ -94,6 +94,7 @@ const { Content } = await render(work);
                 })
               }
             </div>
+            {work.data.draft && <span class="inline-block text-sm bg-yellow-400 text-black px-2 py-1 rounded mb-2">DRAFT</span>}
             <h1>{work.data.title}</h1>
 
             {

@@ -9,7 +9,7 @@ import { PATHS } from "../../paths";
 import {combineDates } from "../../utils";
 
 // worksコレクションから全データを取得し、開始日の降順でソート
-const works = (await getCollection("works")).sort(
+const works = (await getCollection("works", ({ data }) => import.meta.env.DEV || !data.draft)).sort(
   (a, b) => {
     // 比較用の年を取得（aboutYear > startDateの年 > 0）
     const aYear = a.data.aboutYear
@@ -52,6 +52,7 @@ const works = (await getCollection("works")).sort(
               <div class="flex justify-between items-start mb-3">
                 <h2 class="text-xl font-semibold mt-0 mb-4">
                   <a href={PATHS.works.work(work.id)}>
+                    {work.data.draft && <span class="text-xs bg-yellow-400 text-black px-1 py-0.5 rounded mr-1">DRAFT</span>}
                     {work.data.title}
                   </a>
                 </h2>

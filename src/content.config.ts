@@ -24,6 +24,7 @@ const works = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      draft: z.boolean().optional().default(false),
       summary: z.string().optional(),
       startDate: z.coerce.date().optional(),
       endDate: z.coerce.date().optional(),
