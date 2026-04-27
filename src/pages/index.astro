@@ -43,30 +43,14 @@ posts.sort((a, b) =>
               >https://www.lancers.jp/profile/masaakiota</a>
             </li>
           </ul>
-          <h2>
-            お知らせ
-          </h2>
 
-          <ul>
-            <li>
-              2026年2月17日
-              TypeSafeなフィールドアクセスコントロールライブラリ、field-guardを公開しました。
-            </li>
-            <li>
-              2025年10月14日 TypeSafeなDialog
-              headlessライブラリ、react-dialog-hubを公開しました。
-            </li>
-            <li>
-              2025年9月14日
-              TypeSafeなi18nライブラリ、canopy-i18nを公開しました。
-            </li>
-            <li>
-              2025年4月1日　認定ランサー認可いただきました。ありがとうございます。
-            </li>
-            <li>
-              2024年1月度、プロクラウドワーカー認定いただきました。ありがとうございます。
-            </li>
-          </ul>
+          <h2>AI活用</h2>
+
+          <p>
+            AIエージェントツールを実装の主力として活用し、開発スピードを高めています。
+            任せきりにはせず、ライブラリドキュメントの参照、コードレビュー、設計の取捨選択は自分の手で行います。
+            疎結合性や保守性を意識した設計を判断軸としています。
+          </p>
 
           <h2>
             公開ライブラリ
@@ -116,6 +100,17 @@ posts.sort((a, b) =>
               >gibun</a>: 日本語用テスト文章生成ツール
             </li>
           </ul>
+
+          <h2>経歴</h2>
+
+          <p>
+            学生時代にフリーソフト開発と個人サービスの運営を経験。
+            卒業後に目の障害によりITから離脱。
+            水晶体脱臼で濁っていた水晶体が外れ見えるようになり、飲食業に従事。
+            2023年頃にクライアントワークでIT開発を再開する。
+            2024年1月プロクラウドワーカー認定。 2025年4月1日に認定ランサー認可。
+            プラットフォーム経由・直接依頼とも、成果物ベースを軸に請け負っています。
+          </p>
         </div>
         <div>
           <h3>最近の投稿</h3>
@@ -124,7 +119,13 @@ posts.sort((a, b) =>
               posts.slice(0, 20).map((post) => (
                 <li>
                   <a href={PATHS.posts.post(post.id)}>
-                    {post.data.draft && <span class="text-xs bg-yellow-400 text-black px-1 py-0.5 rounded mr-1">DRAFT</span>}
+                    {
+                      post.data.draft && (
+                        <span
+                          class="text-xs bg-yellow-400 text-black px-1 py-0.5 rounded mr-1"
+                        >DRAFT</span>
+                      )
+                    }
                     {post.data.title}
                   </a>
                 </li>
