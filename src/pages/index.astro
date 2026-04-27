@@ -25,9 +25,9 @@ posts.sort((a, b) =>
   </head>
   <body>
     <Header />
-    <main style={{ width: "1000px" }}>
+    <main style={{ width: "1050px" }}>
       <div style={{ display: "flex", gap: "2rem" }}>
-        <div>
+        <div style={{ minWidth: "650px", maxWidth: "650px" }}>
           <p>
             ご訪問いただき、ありがとうございます。フリーランスエンジニアの太田雅昭です。
             TypeScriptを中心としたフルスタック開発に加え、AIを活用した業務改善や自動化の提案・実装の伴走などを請け負っています。
@@ -112,13 +112,13 @@ posts.sort((a, b) =>
             プラットフォーム経由・直接依頼とも、成果物ベースを軸に請け負っています。
           </p>
         </div>
-        <div>
+        <div style={{}}>
           <h3>最近の投稿</h3>
           <ul>
             {
               posts.slice(0, 20).map((post) => (
                 <li>
-                  <a href={PATHS.posts.post(post.id)}>
+                  <a href={PATHS.posts.post(post.id)} class="text-sm">
                     {
                       post.data.draft && (
                         <span
