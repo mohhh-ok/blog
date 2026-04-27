@@ -13,27 +13,27 @@
     "sync": "astro sync"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/rss": "^4.0.15",
-    "@astrojs/sitemap": "^3.7.0",
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/mdx": "^4.3.14",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.2",
     "@resvg/resvg-js": "^2.6.2",
-    "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.18.0",
-    "astro-pagefind": "^1.8.5",
-    "dayjs": "^1.11.19",
-    "remeda": "^2.32.0",
+    "@tailwindcss/vite": "^4.2.4",
+    "astro": "^5.18.1",
+    "astro-pagefind": "^1.8.6",
+    "dayjs": "^1.11.20",
+    "remeda": "^2.33.7",
     "satori": "^0.25.0",
     "sharp": "^0.34.5",
-    "tailwindcss": "^4.1.18",
+    "tailwindcss": "^4.2.4",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@types/node": "^24.10.4",
+    "@types/node": "^24.12.2",
     "@types/turndown": "^5.0.6",
-    "fast-xml-parser": "^5.3.3",
+    "fast-xml-parser": "^5.7.2",
     "only-allow": "^1.2.2",
     "tsx": "^4.21.0",
-    "turndown": "^7.2.2"
+    "turndown": "^7.2.4"
   }
 }
