@@ -1,0 +1,97 @@
+---
+type Props = {
+  markdown: string;
+};
+const { markdown } = Astro.props;
+---
+
+<div class="copy-buttons">
+  <button class="copy-btn" data-copy-text={markdown} type="button">
+    このブログをAI用にコピー
+  </button>
+</div>
+
+<div id="copy-toast" class="copy-toast" role="status" aria-live="polite"></div>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".copy-btn");
+  const toast = document.getElementById("copy-toast");
+  let toastTimer: number | undefined;
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const text = btn.dataset.copyText ?? "";
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("コピーしました。AIに貼り付けてください。");
+      } catch (err) {
+        console.error(err);
+        showToast("コピーに失敗しました。");
+      }
+    });
+  });
+
+  function showToast(message: string) {
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add("visible");
+    if (toastTimer) window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(() => {
+      toast.classList.remove("visible");
+    }, 2400);
+  }
+</script>
+
+<style>
+  .copy-buttons {
+    display: flex;
+    gap: 0.5em;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin: 0.5em 0 1em;
+  }
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    padding: 0.4em 0.9em;
+    border: 1px solid rgba(var(--gray), 0.4);
+    background: white;
+    color: rgb(var(--gray-dark));
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.85em;
+    font-family: inherit;
+    line-height: 1;
+    transition: background 0.15s, border-color 0.15s, transform 0.05s;
+  }
+  .copy-btn:hover {
+    background: rgb(var(--gray-light));
+    border-color: rgba(var(--gray), 0.7);
+  }
+  .copy-btn:active {
+    transform: translateY(1px);
+  }
+
+  .copy-toast {
+    position: fixed;
+    bottom: 2em;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.8em 1.4em;
+    background: rgb(var(--black));
+    color: white;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    font-size: 0.9em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+    z-index: 1000;
+    white-space: nowrap;
+  }
+  .copy-toast.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>

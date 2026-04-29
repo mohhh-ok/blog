@@ -1,5 +1,6 @@
 ---
 import CategoryChip from "@/components/CategoryChip.astro";
+import CopyMarkdownButtons from "@/components/CopyMarkdownButtons.astro";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
@@ -7,9 +8,9 @@ import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import Header from "../components/Header.astro";
 
-type Props = CollectionEntry<"blog">["data"] & { slug?: string };
+type Props = CollectionEntry<"blog">["data"] & { slug?: string; body?: string };
 
-const { title, description, pubDate, updatedDate, heroImage, categories, slug, draft } =
+const { title, description, pubDate, updatedDate, heroImage, categories, slug, draft, body } =
   Astro.props;
 ---
 
@@ -95,6 +96,7 @@ const { title, description, pubDate, updatedDate, heroImage, categories, slug, d
             <div class="flex justify-end">
               {categories?.map(c => <CategoryChip category={c} />)}
             </div>
+            {body && <CopyMarkdownButtons markdown={body} />}
             <hr />
           </div>
           <slot />
