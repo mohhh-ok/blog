@@ -1,6 +1,6 @@
 ---
-title: ショート動画の販売・動画編集サイト
-summary: ショート動画や画像の販売サイト。動画編集UI・インスタGrid編集機能も。AIでの曖昧多言語検索対応。
+title: ショート動画の販売・動画編集サイト（フルスタック）
+summary: ショート動画や画像の販売サイト。動画編集UI・インスタGrid編集機能。AIでの曖昧多言語検索対応。
 startDate: 2025-08
 techs: ["Next.js", "Remotion","FFmpeg","Stripe", "Google Cloud"]
 ---
