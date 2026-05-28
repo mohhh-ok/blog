@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 600" font-family="'Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif" role="img" aria-label="システム構成図">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+
+  <rect x="6" y="6" width="868" height="588" rx="18" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="32" y="40" font-size="21" font-weight="700" fill="#0f172a">システム構成（GCP）</text>
+
+  <!-- Client -->
+  <rect x="340" y="58" width="200" height="52" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="440" y="82" font-size="15" font-weight="700" fill="#312e81" text-anchor="middle">ブラウザ</text>
+  <text x="440" y="100" font-size="12" fill="#4f46e5" text-anchor="middle">Next.js + Remotion</text>
+
+  <!-- Edge tier -->
+  <rect x="180" y="142" width="180" height="54" rx="12" fill="#ffedd5" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="270" y="167" font-size="13.5" font-weight="700" fill="#9a3412" text-anchor="middle">Cloudflare</text>
+  <text x="270" y="185" font-size="10.5" fill="#c2410c" text-anchor="middle">WAF / DDoS / Geo Block</text>
+
+  <rect x="480" y="142" width="200" height="54" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="580" y="167" font-size="13.5" font-weight="700" fill="#1e40af" text-anchor="middle">Cloud CDN</text>
+  <text x="580" y="185" font-size="10.5" fill="#1d4ed8" text-anchor="middle">メディア配信（キャッシュ）</text>
+
+  <!-- GCP container -->
+  <rect x="40" y="216" width="800" height="280" rx="14" fill="none" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="6 5"/>
+  <text x="52" y="236" font-size="11.5" fill="#64748b">Google Cloud</text>
+
+  <!-- Compute tier -->
+  <rect x="80" y="250" width="230" height="78" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="195" y="282" font-size="14" font-weight="700" fill="#075985" text-anchor="middle">Web（Cloud Run）</text>
+  <text x="195" y="302" font-size="12" fill="#0369a1" text-anchor="middle">SSR・API・検索</text>
+
+  <rect x="340" y="267" width="148" height="44" rx="22" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="414" y="294" font-size="13" font-weight="700" fill="#92400e" text-anchor="middle">Cloud Tasks</text>
+
+  <rect x="540" y="236" width="286" height="58" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="683" y="260" font-size="13" font-weight="700" fill="#075985" text-anchor="middle">Media Processor（Cloud Run）</text>
+  <text x="683" y="279" font-size="11.5" fill="#0369a1" text-anchor="middle">FFmpeg変換・Boxインポート</text>
+
+  <rect x="540" y="308" width="286" height="58" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="683" y="332" font-size="13" font-weight="700" fill="#075985" text-anchor="middle">Job Worker（Cloud Run）</text>
+  <text x="683" y="351" font-size="11" fill="#0369a1" text-anchor="middle">C2PA署名・AI分類・埋め込み・翻訳</text>
+
+  <!-- Data tier -->
+  <rect x="60" y="410" width="220" height="72" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="170" y="440" font-size="14" font-weight="700" fill="#166534" text-anchor="middle">Cloud SQL</text>
+  <text x="170" y="460" font-size="11.5" fill="#15803d" text-anchor="middle">PostgreSQL + pgvector</text>
+
+  <rect x="305" y="410" width="150" height="72" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="380" y="440" font-size="13" font-weight="700" fill="#166534" text-anchor="middle">Memorystore</text>
+  <text x="380" y="460" font-size="12" fill="#15803d" text-anchor="middle">Redis</text>
+
+  <rect x="480" y="410" width="346" height="72" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="653" y="440" font-size="14" font-weight="700" fill="#166534" text-anchor="middle">Cloud Storage</text>
+  <text x="653" y="460" font-size="11.5" fill="#15803d" text-anchor="middle">Public / Private バケット</text>
+
+  <!-- External tier -->
+  <rect x="60" y="522" width="220" height="56" rx="12" fill="#ffe4e6" stroke="#e11d48" stroke-width="1.5"/>
+  <text x="170" y="556" font-size="14" font-weight="700" fill="#9f1239" text-anchor="middle">Stripe（決済）</text>
+
+  <rect x="305" y="522" width="280" height="56" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="445" y="546" font-size="13.5" font-weight="700" fill="#5b21b6" text-anchor="middle">AI Embedding</text>
+  <text x="445" y="565" font-size="11.5" fill="#6d28d9" text-anchor="middle">多言語ベクトル検索</text>
+
+  <!-- arrows -->
+  <g fill="none" stroke="#64748b" stroke-width="1.6" marker-end="url(#arr)">
+    <path d="M420 110 L302 140"/>
+    <path d="M260 196 L202 250"/>
+    <path d="M310 289 L340 289"/>
+    <path d="M488 280 L540 266"/>
+    <path d="M488 298 L540 335"/>
+    <path d="M185 328 L177 408"/>
+    <path d="M245 328 L372 408"/>
+    <path d="M683 294 L660 408"/>
+    <path d="M555 366 L272 410"/>
+    <path d="M400 520 L215 484"/>
+    <path d="M60 550 L28 550 L28 289 L78 289"/>
+  </g>
+
+  <!-- media delivery: Storage -> Cloud CDN -> Browser -->
+  <g fill="none" stroke="#16a34a" stroke-width="1.8" marker-end="url(#arrG)">
+    <path d="M826 440 L856 440 L856 169 L682 169"/>
+    <path d="M512 142 L470 110"/>
+  </g>
+  <text x="852" y="300" font-size="11" font-weight="700" fill="#15803d" text-anchor="middle" transform="rotate(-90 852 300)">メディア配信</text>
+</svg>

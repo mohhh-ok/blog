@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" font-family="'Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif" role="img" aria-label="3つのサービス">
+  <rect x="6" y="6" width="748" height="348" rx="18" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="32" y="42" font-size="21" font-weight="700" fill="#0f172a">3つのサービス</text>
+
+  <!-- cards -->
+  <g>
+    <rect x="40" y="70" width="210" height="150" rx="14" fill="#eef2ff" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="145" y="100" font-size="15" font-weight="700" fill="#312e81" text-anchor="middle">素材販売</text>
+    <text x="145" y="128" font-size="12" fill="#475569" text-anchor="middle">多言語AI検索</text>
+    <text x="145" y="150" font-size="12" fill="#475569" text-anchor="middle">カート / ポイント（Stripe）</text>
+    <text x="145" y="172" font-size="12" fill="#475569" text-anchor="middle">権限・ウォーターマーク</text>
+    <text x="145" y="194" font-size="12" fill="#475569" text-anchor="middle">C2PA対応</text>
+  </g>
+
+  <g>
+    <rect x="275" y="70" width="210" height="150" rx="14" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+    <text x="380" y="100" font-size="15" font-weight="700" fill="#075985" text-anchor="middle">動画編集</text>
+    <text x="380" y="128" font-size="12" fill="#475569" text-anchor="middle">D&amp;D編集UI</text>
+    <text x="380" y="150" font-size="12" fill="#475569" text-anchor="middle">マルチレイヤー / 音声</text>
+    <text x="380" y="172" font-size="12" fill="#475569" text-anchor="middle">字幕起こし（AI）</text>
+    <text x="380" y="194" font-size="12" fill="#475569" text-anchor="middle">Remotion変換</text>
+  </g>
+
+  <g>
+    <rect x="510" y="70" width="210" height="150" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="615" y="100" font-size="15" font-weight="700" fill="#166534" text-anchor="middle">Insta Grid編集</text>
+    <text x="615" y="128" font-size="12" fill="#475569" text-anchor="middle">Grid配置・リサイズ</text>
+    <text x="615" y="150" font-size="12" fill="#475569" text-anchor="middle">分割ダウンロード</text>
+    <text x="615" y="172" font-size="12" fill="#475569" text-anchor="middle">Canvas API出力</text>
+  </g>
+
+  <!-- shared base -->
+  <rect x="40" y="262" width="680" height="62" rx="14" fill="#fff7ed" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="380" y="288" font-size="13" font-weight="700" fill="#92400e" text-anchor="middle">共通基盤</text>
+  <text x="380" y="309" font-size="12" fill="#9a6700" text-anchor="middle">素材ライブラリ・多言語AI検索（Embedding）・Stripe決済・多言語対応</text>
+
+  <!-- connectors -->
+  <g fill="none" stroke="#cbd5e1" stroke-width="2">
+    <path d="M145 220 L145 262"/>
+    <path d="M380 220 L380 262"/>
+    <path d="M615 220 L615 262"/>
+  </g>
+</svg>
