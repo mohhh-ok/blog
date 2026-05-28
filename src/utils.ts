@@ -15,5 +15,5 @@ export const combineDates = (params: {
   const { aboutYear, startDate, endDate } = params;
   if (aboutYear) return `${aboutYear}年頃`;
   if (!startDate) return "";
-  return [formatDate(startDate), formatDate(endDate)].filter(Boolean).join(" - ");
+  return `${formatDate(startDate)} - ${endDate ? formatDate(endDate) : "現在"}`;
 };
