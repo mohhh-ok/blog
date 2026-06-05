@@ -82,11 +82,10 @@ published: false           # trueで公開
 - Zennの `/images` ディレクトリは png / jpg / jpeg / gif / webp のみ（1ファイル3MB）。**SVG非対応**
 - data URLのSVG・インライン`<svg>`・生`<img>`タグはZennのサニタイザーに弾かれる（検証済み）
 - **外部URLのSVGは表示できる**（検証済み）→ SVGは `public/images/zenn/` に置き、
-  - Zenn記事: `https://mohhh-ok.github.io/blog/images/zenn/xxx.svg`（絶対URL）
+  - Zenn記事: `https://raw.githubusercontent.com/mohhh-ok/blog/main/public/images/zenn/xxx.svg`（**raw URL**。push直後から配信されるためPagesデプロイ待ち不要）
   - ブログ記事: `/blog/images/zenn/xxx.svg`（base付きパス）
   で同じファイルを参照する（実体1つ、修正1回で両方に反映）
-- **公開順序（重要・再発防止）**: 新規画像を含むpushの後、**GitHub Pagesのデプロイ完了（約2分）までZennで該当記事・下書きを開かない**。Cloudinaryは初表示時にfetchするため、デプロイ前に開くと404がエッジにキャッシュされ表示されなくなる。確実な手順は「SVGだけ先にpush → デプロイ完了を確認（`gh run watch` または画像URLにcurlで200確認）→ 記事をpush」
-- **Zennの外部画像はCloudinary経由でプロキシされる**（`res.cloudinary.com/zenn/image/fetch/...`）。オリジンが404の瞬間にfetchされると失敗がエッジにキャッシュされる
-- CloudinaryはマルチCDN（Akamai / Fastly）で、**エッジによって失敗キャッシュの残り方が違う**。curlで200でもブラウザ経路では404が残り続けることがある（実測済み）。確実な復旧は**記事側の画像URLに `?v=N` を付けてキャッシュバスト**（新しい署名URLが生成され全エッジで再fetchされる）
-- raw.githubusercontent.com 配信も検討したが見送り（2026-06決定）。push直後から使える利点はあるものの、URLがブランチ・ディレクトリ構造に縛られる／private化で切れるデメリットの方が大きい。404ウィンドウは数分で自己回復するのでPages配信のままでよい
+- **Zenn記事の画像にPagesのURL（mohhh-ok.github.io）を使わないこと（2026-06決定）**。Zennの外部画像はCloudinary（マルチCDN: Akamai/Fastly）でプロキシされ、Pagesデプロイ完了前（push後約2分）に記事を開くと404がエッジにキャッシュされて表示されなくなる事故が実際に起きた。raw URLならpush直後から200なのでこの問題自体が発生しない
+- もしCloudinaryに失敗キャッシュが残ったら（curlで200なのにブラウザで404等）、**記事側の画像URLに `?v=N` を付けてキャッシュバスト**（新しい署名URLが生成され全エッジで再fetchされる。実証済み）
+- 既存SVGの**内容を更新**したときも `?v=N` を上げる（raw側 max-age=300 と Cloudinaryキャッシュがあるため）
 - SVGの目視確認は `@resvg/resvg-js` でPNG化できる。絵文字はtofu化するのでSVG内では使わない
