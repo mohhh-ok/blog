@@ -11,7 +11,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "sync": "astro sync"
+    "sync": "astro sync",
+    "zenn:new": "zenn new:article",
+    "zenn:preview": "zenn preview"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
@@ -35,6 +37,7 @@
     "fast-xml-parser": "^5.7.2",
     "only-allow": "^1.2.2",
     "tsx": "^4.21.0",
-    "turndown": "^7.2.4"
+    "turndown": "^7.2.4",
+    "zenn-cli": "^0.4.8"
   }
 }
