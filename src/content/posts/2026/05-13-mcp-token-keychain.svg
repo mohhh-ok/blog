@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 500" font-family="sans-serif">
+  <rect width="880" height="500" fill="#f2f0ee"/>
+  <text x="440" y="42" text-anchor="middle" font-size="22" font-weight="bold" fill="#19120f">MCPのAPIトークンをmacOS Keychainで保管する</text>
+
+  <!-- 従来: 平文保存 -->
+  <rect x="60" y="75" width="760" height="100" rx="10" fill="#ffffff" stroke="#3b2922" stroke-width="2"/>
+  <text x="90" y="108" font-size="15" font-weight="bold" fill="#3b2922">従来: 設定ファイルに平文で保存</text>
+  <text x="90" y="145" font-size="14" font-family="monospace" fill="#19120f">"env": { "CHATWORK_API_TOKEN": "xxxxxxxxxxxxxxxx" }</text>
+  <rect x="640" y="95" width="150" height="34" rx="17" fill="#8a000d"/>
+  <text x="715" y="118" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">平文で丸見え</text>
+  <line x1="70" y1="170" x2="810" y2="80" stroke="#8a000d" stroke-width="3"/>
+
+  <!-- 矢印 -->
+  <path d="M440 185 L440 215" stroke="#19120f" stroke-width="2.5" fill="none"/>
+  <path d="M434 207 L440 217 L446 207" fill="none" stroke="#19120f" stroke-width="2.5"/>
+  <text x="456" y="207" font-size="13" fill="#19120f">対策: トークンの実体はKeychainへ</text>
+
+  <!-- Keychain -->
+  <rect x="60" y="230" width="240" height="120" rx="10" fill="#bb5537"/>
+  <text x="180" y="280" text-anchor="middle" font-size="17" font-weight="bold" fill="#ffffff">macOS Keychain</text>
+  <text x="180" y="310" text-anchor="middle" font-size="13" fill="#ffffff">chatwork-api-token</text>
+
+  <!-- 取り出し -->
+  <path d="M300 290 L360 290" stroke="#19120f" stroke-width="2.5" fill="none"/>
+  <path d="M352 284 L362 290 L352 296" fill="none" stroke="#19120f" stroke-width="2.5"/>
+
+  <!-- MCP起動 -->
+  <rect x="370" y="230" width="270" height="120" rx="10" fill="#3b2922"/>
+  <text x="505" y="270" text-anchor="middle" font-size="15" font-weight="bold" fill="#f2f0ee">起動時に環境変数へ注入</text>
+  <text x="505" y="300" text-anchor="middle" font-size="12" font-family="monospace" fill="#f0b9a4">security find-generic-password</text>
+  <text x="505" y="322" text-anchor="middle" font-size="12" font-family="monospace" fill="#f0b9a4">-s chatwork-api-token -w</text>
+
+  <path d="M640 290 L700 290" stroke="#19120f" stroke-width="2.5" fill="none"/>
+  <path d="M692 284 L702 290 L692 296" fill="none" stroke="#19120f" stroke-width="2.5"/>
+
+  <!-- MCPサーバー -->
+  <rect x="710" y="230" width="110" height="120" rx="10" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <text x="765" y="285" text-anchor="middle" font-size="15" font-weight="bold" fill="#bb5537">MCP</text>
+  <text x="765" y="308" text-anchor="middle" font-size="13" fill="#3b2922">サーバー</text>
+
+  <!-- 登録コマンド -->
+  <rect x="60" y="380" width="760" height="85" rx="10" fill="#19120f"/>
+  <text x="90" y="412" font-size="14" font-family="monospace" fill="#f0b9a4">claude mcp add chatwork --scope user -- sh -c \</text>
+  <text x="90" y="440" font-size="14" font-family="monospace" fill="#f0b9a4">'CHATWORK_API_TOKEN=$(security ...) exec npx -y @chatwork/mcp-server'</text>
+</svg>

@@ -1,16 +1,16 @@
 ---
-title: "【Security】LLMを狙うUnicode文字スマグリング攻撃と防御"
-pubDate: 2026-04-06
-categories: ["AI"]
+title: "LLMを狙うUnicode文字スマグリング攻撃と防御"
+emoji: "🫥"
+type: "tech"
+topics: ["llm", "security", "unicode", "promptinjection"]
+published: true
 ---
-
-こんにちは、フリーランスエンジニアの太田雅昭です。
 
 ## Unicode文字スマグリング
 
 Webページなどに埋め込める、人には見えないがLLMには読み取れる文字が密かに話題となっています。人がチェックできない形で、LLMに密かに命令などを流される懸念があります。
 
-![人間に見えるテキストとLLMが読み取るテキストの違い](./04-06-llm-unicode-smuggling.svg)
+![人間に見えるテキストとLLMが読み取るテキストの違い](https://raw.githubusercontent.com/mohhh-ok/blog/main/src/content/posts/2026/04-06-llm-unicode-smuggling.svg)
 
 ## Tags Unicode Block（U+E0000〜U+E007F）
 

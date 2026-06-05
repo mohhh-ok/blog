@@ -1,10 +1,10 @@
 ---
-title: "【MCP】APIトークンを安全にKeychain保管する【Claude Code】"
-pubDate: 2026-05-13
-categories: ["AI"]
+title: "MCPのAPIトークンを安全にmacOS Keychainで保管する（Claude Code）"
+emoji: "🔐"
+type: "tech"
+topics: ["claudecode", "mcp", "macos", "security"]
+published: true
 ---
-
-こんにちは、フリーランスエンジニアの太田雅昭です。
 
 ## MCPサーバーのトークン
 
@@ -30,7 +30,7 @@ Slack、GitHub、Notionなども同じ手法だそうです（AI談）
 
 これはさすがに厳しいと思い、対策をしてみます。
 
-![平文保存をやめてKeychainからMCPサーバーへトークンを渡す流れ](./05-13-mcp-token-keychain.svg)
+![平文保存をやめてKeychainからMCPサーバーへトークンを渡す流れ](https://raw.githubusercontent.com/mohhh-ok/blog/main/src/content/posts/2026/05-13-mcp-token-keychain.svg)
 
 ## macOS Keychainで対策する
 
@@ -64,7 +64,7 @@ claude mcp add chatwork \
   -- sh -c 'CHATWORK_API_TOKEN=$(/usr/bin/security find-generic-password -a "$USER" -s chatwork-api-token -w) exec npx -y @chatwork/mcp-server'
 ```
 
-実行後、`~/.claude/settings.json`をで追加されていることが確認できます。
+実行後、`~/.claude/settings.json`に追加されていることが確認できます。
 
 
 ## 試してみる
