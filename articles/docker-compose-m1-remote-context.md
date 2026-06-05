@@ -3,7 +3,7 @@ title: "M2のcompose.ymlをM1で動かした話"
 emoji: "🐳"
 type: "tech"
 topics: ["docker", "macos", "colima", "ssh"]
-published: false
+published: true
 ---
 
 ## 背景
