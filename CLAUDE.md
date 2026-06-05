@@ -86,4 +86,7 @@ published: false           # trueで公開
   - ブログ記事: `/blog/images/zenn/xxx.svg`（base付きパス）
   で同じファイルを参照する（実体1つ、修正1回で両方に反映）
 - 公開順序: 画像を含むpushが先 → GitHub Pagesのデプロイ完了後に `published: true`（先に公開すると画像が一瞬404）
+- **Zennの外部画像はCloudinary経由でプロキシされる**（`res.cloudinary.com/zenn/image/fetch/...`）。オリジンが404の瞬間にfetchされると失敗がエッジにキャッシュされる
+- CloudinaryはマルチCDN（Akamai / Fastly）で、**エッジによって失敗キャッシュの残り方が違う**。curlで200でもブラウザ経路では404が残り続けることがある（実測済み）。確実な復旧は**記事側の画像URLに `?v=N` を付けてキャッシュバスト**（新しい署名URLが生成され全エッジで再fetchされる）
+- raw.githubusercontent.com 配信も検討したが見送り（2026-06決定）。push直後から使える利点はあるものの、URLがブランチ・ディレクトリ構造に縛られる／private化で切れるデメリットの方が大きい。404ウィンドウは数分で自己回復するのでPages配信のままでよい
 - SVGの目視確認は `@resvg/resvg-js` でPNG化できる。絵文字はtofu化するのでSVG内では使わない

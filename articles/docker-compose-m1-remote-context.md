@@ -19,7 +19,7 @@ published: false
 
 DockerをM1で動かし、M2から呼び出す形にします。接続が`localhost`から`xxx.local`に変わる想定です。基本的にはClaude Code頼みとなります。
 
-![M2のcompose.ymlをM1のDockerで動かす構成図](https://mohhh-ok.github.io/blog/images/zenn/docker-m1-remote-context.svg)
+![M2のcompose.ymlをM1のDockerで動かす構成図](https://mohhh-ok.github.io/blog/images/zenn/docker-m1-remote-context.svg?v=1)
 
 ## 手順
 
