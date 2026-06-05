@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 470" font-family="-apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b2922"/>
+    </marker>
+    <marker id="arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#bb5537"/>
+    </marker>
+  </defs>
+
+  <!-- 背景 -->
+  <rect x="1" y="1" width="858" height="468" rx="12" fill="#ffffff" stroke="#e8e2de"/>
+
+  <!-- タイトル -->
+  <text x="430" y="40" text-anchor="middle" font-size="18" font-weight="bold" fill="#3b2922">M2 の compose.yml を M1 の Docker で動かす</text>
+
+  <!-- ===== Mac Mini M2 ===== -->
+  <rect x="40" y="75" width="300" height="285" rx="10" fill="#faf3ef" stroke="#bb5537" stroke-width="1.5"/>
+  <text x="190" y="105" text-anchor="middle" font-size="16" font-weight="bold" fill="#a04428">Mac Mini M2 (24GB)</text>
+  <text x="190" y="126" text-anchor="middle" font-size="12" fill="#a3796a">普段使い</text>
+
+  <!-- compose.yml -->
+  <rect x="70" y="145" width="240" height="58" rx="6" fill="#ffffff" stroke="#d8b3a4"/>
+  <text x="190" y="170" text-anchor="middle" font-size="14" font-weight="bold" fill="#3b2922">compose.yml</text>
+  <text x="190" y="190" text-anchor="middle" font-size="11" fill="#8a7468">手元に置いたまま</text>
+
+  <!-- docker CLI -->
+  <rect x="70" y="225" width="240" height="62" rx="6" fill="#19120f"/>
+  <text x="86" y="251" font-size="12" font-family="ui-monospace, 'SF Mono', Menlo, monospace" fill="#f0b9a4">$ docker --context m1 \</text>
+  <text x="106" y="271" font-size="12" font-family="ui-monospace, 'SF Mono', Menlo, monospace" fill="#f0b9a4">compose up -d</text>
+
+  <!-- ブラウザ -->
+  <rect x="70" y="305" width="240" height="38" rx="6" fill="#ffffff" stroke="#d8b3a4"/>
+  <text x="190" y="329" text-anchor="middle" font-size="13" fill="#3b2922">ブラウザ / アプリ</text>
+
+  <!-- ===== Mac Mini M1 ===== -->
+  <rect x="520" y="75" width="300" height="285" rx="10" fill="#f2f0ee" stroke="#3b2922" stroke-width="1.5"/>
+  <text x="670" y="105" text-anchor="middle" font-size="16" font-weight="bold" fill="#3b2922">Mac Mini M1 (8GB)</text>
+  <text x="670" y="126" text-anchor="middle" font-size="12" fill="#8a7468">アシスト</text>
+
+  <!-- Colima -->
+  <rect x="545" y="145" width="250" height="198" rx="8" fill="#ffffff" stroke="#a08a7f" stroke-dasharray="5 4"/>
+  <text x="670" y="170" text-anchor="middle" font-size="14" font-weight="bold" fill="#3b2922">Colima（Docker）</text>
+
+  <!-- web コンテナ -->
+  <rect x="565" y="188" width="210" height="58" rx="6" fill="#e9e2dd" stroke="#bfa99e"/>
+  <text x="670" y="212" text-anchor="middle" font-size="13" font-weight="bold" fill="#3b2922">web: nginx</text>
+  <text x="670" y="232" text-anchor="middle" font-size="11" font-family="ui-monospace, 'SF Mono', Menlo, monospace" fill="#6f5a4e">8081 → 80</text>
+
+  <!-- redis コンテナ -->
+  <rect x="565" y="262" width="210" height="58" rx="6" fill="#e9e2dd" stroke="#bfa99e"/>
+  <text x="670" y="286" text-anchor="middle" font-size="13" font-weight="bold" fill="#3b2922">redis: alpine</text>
+  <text x="670" y="306" text-anchor="middle" font-size="11" font-family="ui-monospace, 'SF Mono', Menlo, monospace" fill="#6f5a4e">6379</text>
+
+  <!-- ===== SSH 矢印 ===== -->
+  <line x1="345" y1="190" x2="515" y2="190" stroke="#3b2922" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="430" y="175" text-anchor="middle" font-size="13" font-weight="bold" fill="#3b2922">SSH（docker context）</text>
+  <text x="430" y="212" text-anchor="middle" font-size="12" font-family="ui-monospace, 'SF Mono', Menlo, monospace" fill="#8a7468">ssh://m1</text>
+
+  <!-- ===== アクセス経路 ===== -->
+  <path d="M 190 348 V 420 H 670 V 348" fill="none" stroke="#bb5537" stroke-width="2" marker-end="url(#arrow-accent)"/>
+  <text x="430" y="410" text-anchor="middle" font-size="13" font-family="ui-monospace, 'SF Mono', Menlo, monospace" fill="#8a000d">http://mac-mini-m1.local:8081</text>
+  <text x="430" y="442" text-anchor="middle" font-size="11" fill="#8a7468">mDNS（.local）でホスト名アクセス — 同一 LAN 内のみ</text>
+</svg>
