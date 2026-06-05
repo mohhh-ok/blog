@@ -81,10 +81,13 @@ published: false           # trueで公開
 
 - Zennの `/images` ディレクトリは png / jpg / jpeg / gif / webp のみ（1ファイル3MB）。**SVG非対応**
 - data URLのSVG・インライン`<svg>`・生`<img>`タグはZennのサニタイザーに弾かれる（検証済み）
-- **外部URLのSVGは表示できる**（検証済み）→ SVGは `public/images/zenn/` に置き、
-  - Zenn記事: `https://raw.githubusercontent.com/mohhh-ok/blog/main/public/images/zenn/xxx.svg`（**raw URL**。push直後から配信されるためPagesデプロイ待ち不要）
-  - ブログ記事: `/blog/images/zenn/xxx.svg`（base付きパス）
-  で同じファイルを参照する（実体1つ、修正1回で両方に反映）
+- **外部URLのSVGは表示できる**（検証済み）
+- **画像は既存規約どおり記事の隣に置く**（`src/content/posts/YYYY/MM-DD-名前.svg` 等。`public/images/` のような独自の置き場を作らない）
+  - ブログ記事: 相対パスで参照 `![説明](./MM-DD-名前.svg)`
+  - Zenn記事: 同じファイルを**raw URL**で参照
+    `https://raw.githubusercontent.com/mohhh-ok/blog/main/src/content/posts/YYYY/MM-DD-名前.svg`
+    （push直後から配信されるため、デプロイ待ちなしで普通にpushするだけでよい）
+  - 実体1つ、修正1回で両方に反映。Zenn用画像のファイル名はASCIIにする（raw URLに使うため）
 - **Zenn記事の画像にPagesのURL（mohhh-ok.github.io）を使わないこと（2026-06決定）**。Zennの外部画像はCloudinary（マルチCDN: Akamai/Fastly）でプロキシされ、Pagesデプロイ完了前（push後約2分）に記事を開くと404がエッジにキャッシュされて表示されなくなる事故が実際に起きた。raw URLならpush直後から200なのでこの問題自体が発生しない
 - もしCloudinaryに失敗キャッシュが残ったら（curlで200なのにブラウザで404等）、**記事側の画像URLに `?v=N` を付けてキャッシュバスト**（新しい署名URLが生成され全エッジで再fetchされる。実証済み）
 - 既存SVGの**内容を更新**したときも `?v=N` を上げる（raw側 max-age=300 と Cloudinaryキャッシュがあるため）
