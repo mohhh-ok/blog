@@ -1,10 +1,10 @@
 ---
-title: 【Anthropic】Managed Agentsを試してみた
-pubDate: 2026-04-09
-categories: ["AI"]
+title: "Anthropic Managed Agentsを試してみた"
+emoji: "🛰️"
+type: "tech"
+topics: ["anthropic", "ai", "typescript", "claude", "aiエージェント"]
+published: true
 ---
-
-こんにちは、フリーランスエンジニアの太田雅昭です。
 
 ## Managed Agents
 
@@ -12,7 +12,7 @@ Anthropicが新しいサービス、Managed Agentsを始めました。まだ本
 
 Claude Managed Agentsは、自律型AIシステムを構築するためのインフラを提供するサービスです。これまで業務自動化の障壁となっていた複雑なプロセスを大幅に簡素化します。
 
-![Managed Agentsの構成](./04-09-managed-agents-structure.svg)
+![Managed Agentsの構成](https://raw.githubusercontent.com/mohhh-ok/blog/main/src/content/posts/2026/04-09-managed-agents-structure.svg)
 
 ## インストール
 

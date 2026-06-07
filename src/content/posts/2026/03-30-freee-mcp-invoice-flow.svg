@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 500" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#f2f0ee"/>
+
+  <!-- タイトル -->
+  <text x="32" y="46" font-size="22" font-weight="bold" fill="#19120f">freee-mcpによる請求書作成の流れ</text>
+
+  <!-- フロー -->
+  <rect x="20" y="84" width="200" height="90" rx="8" fill="#19120f"/>
+  <text x="120" y="116" font-size="14" font-weight="bold" fill="#f0b9a4" text-anchor="middle">Claude Code</text>
+  <text x="120" y="140" font-size="12" fill="#f0b9a4" text-anchor="middle">「請求書を作成したい。</text>
+  <text x="120" y="158" font-size="12" fill="#f0b9a4" text-anchor="middle">対話形式で聞いて」</text>
+
+  <line x1="220" y1="129" x2="262" y2="129" stroke="#3b2922" stroke-width="2.5"/>
+  <polygon points="270,129 258,123 258,135" fill="#3b2922"/>
+
+  <rect x="270" y="84" width="200" height="90" rx="8" fill="#bb5537"/>
+  <text x="370" y="116" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">freee MCP</text>
+  <text x="370" y="140" font-size="12" fill="#ffffff" text-anchor="middle">mcp.freee.co.jp/mcp</text>
+  <text x="370" y="158" font-size="12" fill="#ffffff" text-anchor="middle">ブラウザ認証（OAuth）</text>
+
+  <line x1="470" y1="129" x2="512" y2="129" stroke="#3b2922" stroke-width="2.5"/>
+  <polygon points="520,129 508,123 508,135" fill="#3b2922"/>
+
+  <rect x="520" y="84" width="160" height="90" rx="8" fill="#3b2922"/>
+  <text x="600" y="116" font-size="14" font-weight="bold" fill="#f2f0ee" text-anchor="middle">freee API</text>
+  <text x="600" y="140" font-size="12" fill="#f2f0ee" text-anchor="middle">GET / POST / PUT</text>
+  <text x="600" y="158" font-size="12" fill="#f2f0ee" text-anchor="middle">PATCH / DELETE</text>
+
+  <line x1="680" y1="129" x2="722" y2="129" stroke="#3b2922" stroke-width="2.5"/>
+  <polygon points="730,129 718,123 718,135" fill="#3b2922"/>
+
+  <rect x="730" y="84" width="130" height="90" rx="8" fill="#8a000d"/>
+  <text x="795" y="122" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">請求書</text>
+  <text x="795" y="146" font-size="12" fill="#ffffff" text-anchor="middle">作成成功</text>
+
+  <!-- 対話ステップ -->
+  <text x="32" y="232" font-size="16" font-weight="bold" fill="#19120f">対話で聞かれる項目</text>
+
+  <rect x="20" y="250" width="270" height="100" rx="8" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <text x="155" y="282" font-size="14" font-weight="bold" fill="#bb5537" text-anchor="middle">1. 請求先</text>
+  <text x="155" y="310" font-size="12" fill="#19120f" text-anchor="middle">登録済みの取引先リストから</text>
+  <text x="155" y="330" font-size="12" fill="#19120f" text-anchor="middle">選択する形式</text>
+
+  <rect x="305" y="250" width="270" height="100" rx="8" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <text x="440" y="282" font-size="14" font-weight="bold" fill="#bb5537" text-anchor="middle">2. 明細</text>
+  <text x="440" y="310" font-size="12" fill="#19120f" text-anchor="middle">品目や金額などの</text>
+  <text x="440" y="330" font-size="12" fill="#19120f" text-anchor="middle">請求内容</text>
+
+  <rect x="590" y="250" width="270" height="100" rx="8" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <text x="725" y="282" font-size="14" font-weight="bold" fill="#bb5537" text-anchor="middle">3. 請求日と支払い期限</text>
+  <text x="725" y="310" font-size="12" fill="#19120f" text-anchor="middle">回答するとAPIで</text>
+  <text x="725" y="330" font-size="12" fill="#19120f" text-anchor="middle">請求書が作成される</text>
+
+  <!-- 注意点 -->
+  <rect x="20" y="380" width="840" height="80" rx="8" fill="#ffffff" stroke="#8a000d" stroke-width="2"/>
+  <text x="40" y="412" font-size="14" font-weight="bold" fill="#8a000d">つまずきポイント</text>
+  <text x="40" y="440" font-size="13" fill="#19120f">・最初のデータ読み込み（事業所・取引先の取得）が思ったより時間がかかる　・PDFダウンロードはエンドポイント非対応</text>
+</svg>

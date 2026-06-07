@@ -1,16 +1,16 @@
---- 
-title: 【ClaudeCode】PC閉じてても自動実行がすごすぎる【リモートタスク】
-pubDate: 2026-03-21
-categories: ["AI"]
 ---
-
-こんにちは、フリーランスエンジニアの太田雅昭です。
+title: "Claude Code、PC閉じてても自動実行がすごすぎる（リモートタスク）"
+emoji: "🌙"
+type: "tech"
+topics: ["claudecode", "ai", "anthropic", "自動化"]
+published: true
+---
 
 ## Claude Codeにリモートタスクが導入された
 
 これまでのClaude Codeのスケジュール機能は、ローカル実行、つまり自分のPCで動いていました。しかしリモートで実行する機能が追加されたことにより、利便性がはるかに向上しました。
 
-![リモートタスクの仕組み](./03-21-claude-code-remote-tasks.svg)
+![リモートタスクの仕組み](https://raw.githubusercontent.com/mohhh-ok/blog/main/src/content/posts/2026/03-21-claude-code-remote-tasks.svg)
 
 ## 早速使ってみる
 

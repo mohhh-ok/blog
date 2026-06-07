@@ -9,6 +9,17 @@ Astro製の技術ブログ。GitHub Pagesにデプロイ。
 - `bun run build` — ビルド
 - `bun run check` — 型チェック
 
+## URL
+
+`astro.config.mjs` で `base: "/blog"` を設定しているため、**URLには必ず `/blog` が付く**。さらに**末尾スラッシュ `/` が必須**（ないと404になる）。
+
+- 開発: `http://localhost:4321/blog/posts/YYYY/MM-DD-スラッグ/`
+- 本番: `https://mohhh-ok.github.io/blog/posts/YYYY/MM-DD-スラッグ/`
+
+正しい例: `http://localhost:4321/blog/posts/2025/04-24-aipostgres--drizzle--embedding%E3%81%A7%E6%84%8F%E5%91%B3%E6%A4%9C%E7%B4%A2%E3%81%99%E3%82%8B/`
+
+ユーザーに記事URLを提示するときは `/blog` と末尾 `/` を忘れないこと。
+
 ## ブログ記事の作成
 
 ### 配置先
@@ -47,6 +58,10 @@ tags: []
 - ウォームグレー系: `#19120f`（black）/ `#3b2922`（gray-dark）/ `#f2f0ee`（gray-light）
 - 図版での使い分け例: 主役ボックス＝テラコッタ、対比ボックス＝ウォームブラウン、ターミナル背景＝`#19120f` + 文字 `#f0b9a4`
 
+## 進行中の計画
+
+- **Zennfes Spring 2026 応募計画**: `docs/zennfes-spring-2026-plan.md` を参照。既存ブログ記事を優先度順に1日2本ペースでZenn化して応募する（締切 2026-06-26）。Zenn化作業を頼まれたらこのキューの上から進め、完了したらチェックボックスを更新する
+
 ## Zenn連携
 
 GitHub連携済み（このリポジトリの `main` ブランチ）。`articles/*.md` がZenn記事として同期される。
@@ -75,6 +90,7 @@ published: false           # trueで公開
 - ファイルを削除してもZenn側の記事は消えない（ダッシュボードから手動削除）
 - 冒頭の挨拶文（「こんにちは、フリーランス…」）はZenn版では入れない
 - ブログ記事からの変換時、本文はそのまま・frontmatterと挨拶のみ調整
+- **Zenn化する記事には構成図SVGを1枚以上作成する**（既公開記事と同様）。図解が活きるセクションが複数あれば複数枚作る。作成・挿入の手順は下記「画像」セクションの固定手順（ブログ先行確認→Zennにraw URL）に従う
 - SEO: 同一記事をブログとZenn両方に置くと重複判定され、検索結果にはZenn側が出る（ブログ側が落ちる）。Zennはcanonical指定不可。これは許容する方針
 
 ### 画像

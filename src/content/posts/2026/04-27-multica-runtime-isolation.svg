@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 560" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">
+  <rect x="0" y="0" width="880" height="560" rx="12" fill="#f2f0ee"/>
+
+  <!-- タイトル -->
+  <text x="32" y="46" font-size="22" font-weight="bold" fill="#19120f">Multicaのアーキテクチャとランタイム隔離</text>
+
+  <!-- サーバー側 -->
+  <rect x="20" y="80" width="320" height="120" rx="8" fill="#3b2922"/>
+  <text x="180" y="112" font-size="15" font-weight="bold" fill="#f2f0ee" text-anchor="middle">Multicaサーバー（issueボード）</text>
+  <text x="180" y="138" font-size="12" fill="#f2f0ee" text-anchor="middle">人間とAIエージェントが共同で</text>
+  <text x="180" y="158" font-size="12" fill="#f2f0ee" text-anchor="middle">issueを管理・消費</text>
+  <text x="180" y="184" font-size="11" fill="#f0b9a4" text-anchor="middle">こちらは危険ではない</text>
+
+  <!-- 接続 -->
+  <line x1="340" y1="140" x2="438" y2="140" stroke="#3b2922" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <polygon points="446,140 434,134 434,146" fill="#3b2922"/>
+  <text x="393" y="128" font-size="11" fill="#3b2922" text-anchor="middle">ポーリング</text>
+
+  <!-- daemon側 -->
+  <rect x="446" y="80" width="414" height="120" rx="8" fill="#bb5537"/>
+  <text x="653" y="112" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">daemon（エージェント実行環境）</text>
+  <text x="653" y="138" font-size="12" fill="#ffffff" text-anchor="middle">Claude Code / Codex / Gemini 等のCLIを実行</text>
+  <text x="653" y="158" font-size="12" fill="#ffffff" text-anchor="middle">ファイルシステムに到達できる</text>
+  <text x="653" y="184" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">危険なのはこちら — どこで動かすかが重要</text>
+
+  <!-- 隔離度ラダー -->
+  <text x="32" y="258" font-size="16" font-weight="bold" fill="#19120f">daemonをどこで動かすか（隔離度）</text>
+
+  <!-- 軸 -->
+  <line x1="40" y1="470" x2="840 " y2="470" stroke="#3b2922" stroke-width="1.5"/>
+  <text x="40" y="494" font-size="12" fill="#8a000d">隔離度 最低（危険）</text>
+  <text x="840" y="494" font-size="12" fill="#19120f" text-anchor="end">隔離度 最高（安全）</text>
+
+  <!-- 階段状ボックス -->
+  <rect x="40" y="400" width="120" height="70" rx="6" fill="#8a000d"/>
+  <text x="100" y="428" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">メインMac</text>
+  <text x="100" y="448" font-size="10" fill="#ffffff" text-anchor="middle">秘密情報に全到達</text>
+
+  <rect x="175" y="375" width="120" height="95" rx="6" fill="#bb5537"/>
+  <text x="235" y="403" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">専用ユーザー</text>
+  <text x="235" y="423" font-size="10" fill="#ffffff" text-anchor="middle">同マシン・ホーム分離</text>
+
+  <rect x="310" y="345" width="120" height="125" rx="6" fill="#bb5537"/>
+  <text x="370" y="373" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Docker</text>
+  <text x="370" y="393" font-size="10" fill="#ffffff" text-anchor="middle">マウント分のみ到達</text>
+
+  <rect x="445" y="315" width="120" height="155" rx="6" fill="#3b2922"/>
+  <text x="505" y="343" font-size="12" font-weight="bold" fill="#f2f0ee" text-anchor="middle">専用マシン</text>
+  <text x="505" y="363" font-size="10" fill="#f2f0ee" text-anchor="middle">ハードウェア隔離</text>
+
+  <rect x="580" y="315" width="120" height="155" rx="6" fill="#3b2922"/>
+  <text x="640" y="343" font-size="12" font-weight="bold" fill="#f2f0ee" text-anchor="middle">クラウドVM</text>
+  <text x="640" y="363" font-size="10" fill="#f2f0ee" text-anchor="middle">GCE / EC2 / Hetzner</text>
+  <text x="640" y="381" font-size="10" fill="#f0b9a4" text-anchor="middle">今回はGCEを採用</text>
+
+  <rect x="715" y="290" width="120" height="180" rx="6" fill="#19120f"/>
+  <text x="775" y="318" font-size="12" font-weight="bold" fill="#f2f0ee" text-anchor="middle">Kubernetes</text>
+  <text x="775" y="338" font-size="10" fill="#f2f0ee" text-anchor="middle">Pod単位で完全隔離</text>
+  <text x="775" y="356" font-size="10" fill="#f2f0ee" text-anchor="middle">チーム運用向け</text>
+
+  <!-- 注意書き -->
+  <text x="32" y="534" font-size="12" fill="#8a000d" font-weight="bold">チーム運用でローカル実行するのは最も危険。鍵類はランタイムに置かず、PR作成までにとどめてマージは人間が行う</text>
+</svg>

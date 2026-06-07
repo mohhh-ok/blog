@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 460" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">
+  <rect x="0" y="0" width="880" height="460" rx="12" fill="#f2f0ee"/>
+
+  <!-- タイトル -->
+  <text x="32" y="46" font-size="22" font-weight="bold" fill="#19120f">256次元に切り詰めた時の性能劣化（MRL）</text>
+  <text x="32" y="74" font-size="13" fill="#3b2922">フル次元との比較・テキストのみ（劣化率が小さいほど次元削減に強い）</text>
+
+  <!-- ゼロ軸 -->
+  <line x1="360" y1="92" x2="360" y2="358" stroke="#3b2922" stroke-width="1.5"/>
+  <text x="360" y="380" font-size="12" fill="#3b2922" text-anchor="middle">劣化 0%</text>
+
+  <!-- Jina Embeddings v4: 0.6% -->
+  <text x="32" y="116" font-size="14" fill="#19120f">Jina Embeddings v4</text>
+  <rect x="360" y="100" width="84" height="24" rx="4" fill="#bb5537"/>
+  <text x="454" y="118" font-size="13" font-weight="bold" fill="#19120f">0.6%</text>
+
+  <!-- OpenAI 3-large: 0.6% -->
+  <text x="32" y="158" font-size="14" fill="#19120f">OpenAI 3-large</text>
+  <rect x="360" y="142" width="84" height="24" rx="4" fill="#bb5537"/>
+  <text x="454" y="160" font-size="13" font-weight="bold" fill="#19120f">0.6%</text>
+
+  <!-- Voyage Multimodal 3.5: 0.7% -->
+  <text x="32" y="200" font-size="14" fill="#19120f">Voyage Multimodal 3.5</text>
+  <rect x="360" y="184" width="98" height="24" rx="4" fill="#bb5537"/>
+  <text x="468" y="202" font-size="13" font-weight="bold" fill="#19120f">0.7%</text>
+
+  <!-- nomic-embed-text: 0.8% -->
+  <text x="32" y="242" font-size="14" fill="#19120f">nomic-embed-text</text>
+  <rect x="360" y="226" width="112" height="24" rx="4" fill="#bb5537"/>
+  <text x="482" y="244" font-size="13" font-weight="bold" fill="#19120f">0.8%</text>
+
+  <!-- mxbai-embed-large: 2.5% -->
+  <text x="32" y="284" font-size="14" fill="#19120f">mxbai-embed-large</text>
+  <rect x="360" y="268" width="350" height="24" rx="4" fill="#8a000d"/>
+  <text x="720" y="286" font-size="13" font-weight="bold" fill="#8a000d">2.5%　唯一はっきり劣化</text>
+
+  <!-- Gemini Embedding 2: -0.8% -->
+  <text x="32" y="326" font-size="14" fill="#19120f">Gemini Embedding 2</text>
+  <rect x="248" y="310" width="112" height="24" rx="4" fill="#3b2922"/>
+  <text x="370" y="328" font-size="13" font-weight="bold" fill="#3b2922">-0.8%　劣化なし（誤差の範囲）</text>
+
+  <!-- フッター -->
+  <text x="32" y="424" font-size="12" fill="#3b2922">MRL（Matryoshka Representation Learning）で訓練されたモデルは、次元を切り詰めても性能がほぼ落ちない</text>
+</svg>

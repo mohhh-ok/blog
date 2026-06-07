@@ -1,10 +1,12 @@
 ---
-title: 【AI】MulticaでAIタスク管理をしてみた
-pubDate: 2026-04-27
-categories: ["AI"]
+title: "MulticaでAIタスク管理をしてみた（GCEランタイム構築まで）"
+emoji: "🤝"
+type: "tech"
+topics: ["ai", "claudecode", "googlecloud", "gce", "aiエージェント"]
+published: true
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+AIエージェントをタスクボードで管理できる「Multica」を試し、さらに安全のためGCE上にランタイムを構築するところまでやってみました。
 
 ## Multica
 
@@ -143,7 +145,7 @@ Note: Shell state (including cwd) does not persist between commands in this envi
 
 Multicaのアーキテクチャは「サーバー（issueボード）」と「daemon（agent実行環境）」が分離しており、危険なのは後者です。daemonをメインマシン以外で動かす選択肢を整理しました。
 
-![Multicaのアーキテクチャとランタイム隔離](./04-27-multica-runtime-isolation.svg)
+![Multicaのアーキテクチャとランタイム隔離](https://raw.githubusercontent.com/mohhh-ok/blog/main/src/content/posts/2026/04-27-multica-runtime-isolation.svg)
 
 | 選択肢                              | 隔離度 | 手間 | コメント                                                |
 | ----------------------------------- | ------ | ---- | ------------------------------------------------------- |
@@ -204,6 +206,117 @@ cron的なトリガーでissueを自動生成・自動アサインするAutopilo
 
 タスクをこなすほどSkillが増えていくため、属人化しがちな「デプロイ手順」「マイグレーションのお作法」「障害対応Runbook」などをエージェントに教え込むと、チーム全体の共有資産になります。新メンバーが入ったときも、エージェントが同じSkillで動くため立ち上がりが早くなります。
 
+## ここまでの所感
+
+とても便利と思ってMulticaを試してみましたが、ローカルで使用するにはまだ勇気がいりそうです。個人プロジェクトで、かつ別PCで動かすなら問題ないかもしれません。
+
+ということで、ここからは実際にローカル以外のランタイムを構築してみます。Google CloudのGCEを使用します。
+
+## GCEにランタイムを構築する
+
+### GCEの構成
+
+ひとまず無料枠で試してみました。
+
+- name: claude-code-runtime
+- machine-type: e2-micro
+- region/zone: us-central1-a（無料枠中で最安定・低レイテンシ）
+- image: ubuntu-2404-lts
+- disk: pd-standard 30GB
+- network tag: なし（multica daemonが外向き通信するだけならingress不要。ホスティングするなら別途解放）
+
+### GCEの構築
+
+AIに任せれば大丈夫です。この記事を読み込ませるだけでいけると思います。なお`gcloud`コマンドはインストールしておいてください。
+
+手順（AIができる）
+- Google Cloudにプロジェクトを作成
+- Compute Engineインスタンスを作成
+- Swapを4GBに設定（Memoryが少ない場合。多ければ不要）
+- Node.js 22 LTS インストール
+- Claude Code インストール
+- Multica インストール
+
+手順（手動）
+- https://multica.ai の設定からAPIトークン発行
+- sshでCompute Engineに入る（AIがコマンドを教えてくれる）
+- `claude`実行。ローカルでURLを開き、ターミナルにコードを貼り付ける
+- `multica login --token`でAPIトークンを貼り付ける
+- `multica daemon start`を実行
+- Multicaのページに追加されるので、それを用いてAgent作成
+
+なお常に起動させておきたいので、AIに
+
+```
+GCEでMulticaをsystemdのサービスとして登録。envは自由に設定できるように
+```
+
+と投げておくとベターです。
+
+## Reactページをホストさせてみる
+
+色々考えたのですが、ひとまず失敗しなさそうなのを選びました。クライアントオンリーページをホストさせてみます。
+
+### ポートを開ける
+
+まずは80/443ポートを開ける必要があります。ローカルのAIで
+
+```
+先ほど作ったGCEの80,443ポートを開いて
+```
+
+と投げます。これで公開準備が整いました。
+
+### 権限を渡す
+
+VM内なので、Claude Codeに全権限を渡します。ローカルのAIに指示します。
+
+```
+Claude Codeのsettings.json に defaultMode: "bypassPermissions"を追加して。
+```
+
+これでClaude CodeがVM内で無双状態となります。APIキーなどを渡す時は十分気をつけてください。
+
+### 世界時計を作らせる
+
+Multicaでissueを投げます。assigneeはGCEのを指定します。
+
+```
+Vite + React + TypeScriptで世界時計を配信して。
+
+- ディレクトリ: ~/world-watch にプロジェクト作成
+- ポート: 80（外部公開）
+- 配信元: ビルドした ~/world-watch/dist の中身を /var/www/html/ に rsync で配置
+  （Caddyに home ディレクトリを直接読ませない）
+- Caddy: apt で公式リポジトリからインストール、/etc/caddy/Caddyfile を以下に書き換え:
+    :80 {
+      root * /var/www/html
+      encode gzip
+      try_files {path} /index.html
+      file_server
+    }
+- /var/www/html を caddy:caddy 所有・755
+- sudo systemctl enable --now caddy で起動
+
+確認:
+- curl -sI http://localhost/ が 200
+- 外部IPに curl して 200:
+    EXT=$(curl -sH "Metadata-Flavor: Google" \
+      http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip)
+    curl -sI http://$EXT/
+
+失敗したら journalctl -u caddy で原因確認・修正。
+完了時に外部URLを返答に書く。
+```
+
+### 結果
+
+無事に世界時計が配信されました。感動です。
+
 ## まとめ
 
-とても便利と思ってMulticaを試してみましたが、使用するにはまだ勇気がいりそうです。個人プロジェクトで、かつ別PCで動かすなら問題ないかもしれません。最近はAIによる実験的なプロジェクト（実店舗をAIに運営させるなど）が出てますので、そういうのだとマッチしそうです。
+ローカルではなくGCEをランタイムとすることで、安全にMulticaを使用することができました。これならチーム運用にも耐えれそうです。
+
+ただしGitHubや色々連携することになると思うので、APIキーの危険性はまだあります。特にPermissionを迂回しているためAIの暴走に気づけないです。そこはトレードオフになりそうです。
+
+こうした用途のためにGitHubの別アカウントを作るのも手かもしれません。別サービスも同様ですね。（Slack Botとか程度なら問題ないと思われるが）

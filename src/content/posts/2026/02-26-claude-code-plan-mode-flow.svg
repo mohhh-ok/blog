@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 480" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">
+  <rect x="0" y="0" width="880" height="480" rx="12" fill="#f2f0ee"/>
+
+  <!-- タイトル -->
+  <text x="32" y="46" font-size="22" font-weight="bold" fill="#19120f">Plan Modeの流れ</text>
+
+  <!-- 1. プロンプト -->
+  <rect x="20" y="80" width="180" height="70" rx="8" fill="#ffffff" stroke="#3b2922" stroke-width="2"/>
+  <text x="110" y="110" font-size="14" font-weight="bold" fill="#19120f" text-anchor="middle">ユーザー</text>
+  <text x="110" y="132" font-size="12" fill="#3b2922" text-anchor="middle">プロンプトを投げる</text>
+
+  <!-- 矢印 -->
+  <line x1="200" y1="115" x2="242" y2="115" stroke="#3b2922" stroke-width="2.5"/>
+  <polygon points="250,115 238,109 238,121" fill="#3b2922"/>
+
+  <!-- 2. 並列調査 -->
+  <rect x="250" y="80" width="200" height="70" rx="8" fill="#bb5537"/>
+  <text x="350" y="105" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">エージェント並列調査</text>
+  <text x="350" y="127" font-size="12" fill="#ffffff" text-anchor="middle">コンテキスト分離と圧縮</text>
+  <text x="350" y="143" font-size="11" fill="#ffffff" text-anchor="middle">既存コードの書き方も調査</text>
+
+  <!-- 矢印 -->
+  <line x1="450" y1="115" x2="492" y2="115" stroke="#3b2922" stroke-width="2.5"/>
+  <polygon points="500,115 488,109 488,121" fill="#3b2922"/>
+
+  <!-- 3. プラン提示 -->
+  <rect x="500" y="80" width="180" height="70" rx="8" fill="#bb5537"/>
+  <text x="590" y="110" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">プラン提示</text>
+  <text x="590" y="132" font-size="12" fill="#ffffff" text-anchor="middle">背景・調査結果・修正箇所</text>
+
+  <!-- 矢印 OK -->
+  <line x1="680" y1="115" x2="722" y2="115" stroke="#3b2922" stroke-width="2.5"/>
+  <polygon points="730,115 718,109 718,121" fill="#3b2922"/>
+  <text x="705" y="103" font-size="12" font-weight="bold" fill="#19120f" text-anchor="middle">OK</text>
+
+  <!-- 4. 実行 -->
+  <rect x="730" y="80" width="130" height="70" rx="8" fill="#8a000d"/>
+  <text x="795" y="110" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">実行</text>
+  <text x="795" y="132" font-size="11" fill="#ffffff" text-anchor="middle">プランのみを分離</text>
+
+  <!-- NGループ -->
+  <path d="M 590 150 L 590 200 L 110 200 L 110 150" fill="none" stroke="#8a000d" stroke-width="2" stroke-dasharray="6 4"/>
+  <polygon points="110,150 104,162 116,162" fill="#8a000d"/>
+  <text x="350" y="192" font-size="12" font-weight="bold" fill="#8a000d" text-anchor="middle">NGなら追加プロンプトで修正</text>
+
+  <!-- 効果セクション -->
+  <text x="32" y="258" font-size="16" font-weight="bold" fill="#19120f">コンテキスト分離の効果</text>
+
+  <rect x="20" y="276" width="270" height="150" rx="8" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <text x="155" y="306" font-size="14" font-weight="bold" fill="#bb5537" text-anchor="middle">精度向上</text>
+  <text x="36" y="336" font-size="12" fill="#19120f">余計なコンテキストが入らない</text>
+  <text x="36" y="360" font-size="12" fill="#19120f">プランだけを分離して実行する</text>
+  <text x="36" y="384" font-size="12" fill="#19120f">ため、実装がブレにくい</text>
+
+  <rect x="305" y="276" width="270" height="150" rx="8" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <text x="440" y="306" font-size="14" font-weight="bold" fill="#bb5537" text-anchor="middle">コスト削減</text>
+  <text x="321" y="336" font-size="12" fill="#19120f">調査は並列エージェント側で行い</text>
+  <text x="321" y="360" font-size="12" fill="#19120f">圧縮された結果だけがメインの</text>
+  <text x="321" y="384" font-size="12" fill="#19120f">コンテキストに入る</text>
+
+  <rect x="590" y="276" width="270" height="150" rx="8" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <text x="725" y="306" font-size="14" font-weight="bold" fill="#bb5537" text-anchor="middle">既存コードの踏襲</text>
+  <text x="606" y="336" font-size="12" fill="#19120f">実装前に既存コードをかなり</text>
+  <text x="606" y="360" font-size="12" fill="#19120f">調査するため、プロジェクトの</text>
+  <text x="606" y="384" font-size="12" fill="#19120f">書き方を踏襲する確率が上がる</text>
+</svg>

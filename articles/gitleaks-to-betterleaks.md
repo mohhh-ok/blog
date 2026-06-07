@@ -1,10 +1,10 @@
 ---
-title: 【Security】GitLeaksからBetterLeaksに乗り換えた話
-pubDate: 2026-03-21
-categories: ["開発"]
+title: "GitLeaksからBetterLeaksに乗り換えた話"
+emoji: "💧"
+type: "tech"
+topics: ["security", "git", "github", "betterleaks"]
+published: true
 ---
-
-こんにちは、フリーランスエンジニアの太田雅昭です。
 
 ## エコシステムに蔓延るセキュリティリスク
 
@@ -24,7 +24,7 @@ BetterLeaks: https://github.com/betterleaks/betterleaks
 
 BetterLeaksはGitLeaks作者による後継ツールです。以下はAIに調査してもらった両者の比較表ですが、判断材料としては、AIによるまとめのみで問題ないかと思います。検出率が高くなっているのが特に注目すべきです。
 
-![GitLeaksとBetterLeaksの比較](./03-21-gitleaks-vs-betterleaks.svg)
+![GitLeaksとBetterLeaksの比較](https://raw.githubusercontent.com/mohhh-ok/blog/main/src/content/posts/2026/03-21-gitleaks-vs-betterleaks.svg)
 
 | 項目 | GitLeaks | BetterLeaks |
 |------|----------|-------------|

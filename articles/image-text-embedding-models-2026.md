@@ -1,10 +1,12 @@
 ---
-title: 【AI】画像とテキストのEmbeddingで最適なモデルを探る【2026年4月】
-pubDate: 2026-04-05
-categories: ["AI"]
+title: "画像とテキストのEmbeddingで最適なモデルを探る（2026年4月）"
+emoji: "🧭"
+type: "tech"
+topics: ["ai", "embedding", "rag", "llm", "マルチモーダル"]
+published: true
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+RAG（検索拡張生成）やマルチモーダル検索の精度を左右するのがEmbeddingモデルの選定です。本記事では、画像とテキストを扱うEmbeddingモデルについて、2026年4月時点のベンチマークを調べた結果をまとめます。
 
 （追記: 本文中でパブリックプレビューと記載しているGemini Embedding 2は、2026年4月下旬にGA・一般提供となりました）
 
@@ -13,7 +15,7 @@ categories: ["AI"]
 
 今回はマルチモーダルモデルEmbeddingのベンチマークを見ていきます。
 
-![マルチモーダルEmbeddingモデル選定マップ（2026年4月）](./04-05-multimodal-embedding-models.svg)
+![マルチモーダルEmbeddingモデル選定マップ（2026年4月）](https://raw.githubusercontent.com/mohhh-ok/blog/main/src/content/posts/2026/04-05-multimodal-embedding-models.svg)
 
 ## ベンチマークの種類
 一般的なEmbeddingベンチマークは以下かと思います。
@@ -56,7 +58,7 @@ Qwen, Gemini, Voyageの３強となっています。VoyageはModality Gapは低
 
 Gemini Embedding 2のフル次元値が低いのは、テストの種別による可能性があります。また劣化率がマイナスになっていますが、これは誤差の範囲かと思います。表自体の並び替えがフル次元の値で行われており、本来劣化率でソートすべきところではないかと思いますが、意図はわかりません。劣化率で言えばGemini Embedding 2が最も優秀です。ただおおむね、mxbai-embed-large以外はそれほど劣化しないようです。
 
-![256次元に切り詰めた時の性能劣化（MRL）](./04-05-mrl-dimension-reduction.svg)
+![256次元に切り詰めた時の性能劣化（MRL）](https://raw.githubusercontent.com/mohhh-ok/blog/main/src/content/posts/2026/04-05-mrl-dimension-reduction.svg)
 
 ## 総合評価
 今回このページでご紹介しなかった指標も含めた総合評価です。

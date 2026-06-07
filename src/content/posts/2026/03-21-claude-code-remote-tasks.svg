@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 460" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">
+  <rect x="0" y="0" width="880" height="460" rx="12" fill="#f2f0ee"/>
+
+  <!-- タイトル -->
+  <text x="32" y="46" font-size="22" font-weight="bold" fill="#19120f">リモートタスクの仕組み — PCを閉じていても動く</text>
+
+  <!-- Before -->
+  <rect x="20" y="84" width="410" height="130" rx="8" fill="#ffffff" stroke="#3b2922" stroke-width="2"/>
+  <rect x="20" y="84" width="410" height="40" rx="8" fill="#3b2922"/>
+  <rect x="20" y="108" width="410" height="16" fill="#3b2922"/>
+  <text x="225" y="110" font-size="15" font-weight="bold" fill="#f2f0ee" text-anchor="middle">従来のスケジュール機能</text>
+  <text x="40" y="154" font-size="13" fill="#19120f">・ローカル実行（自分のPCで動く）</text>
+  <text x="40" y="182" font-size="13" fill="#8a000d">・PCを閉じると止まる</text>
+
+  <!-- After -->
+  <rect x="450" y="84" width="410" height="130" rx="8" fill="#ffffff" stroke="#bb5537" stroke-width="2.5"/>
+  <rect x="450" y="84" width="410" height="40" rx="8" fill="#bb5537"/>
+  <rect x="450" y="108" width="410" height="16" fill="#bb5537"/>
+  <text x="655" y="110" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">リモートタスク</text>
+  <text x="470" y="154" font-size="13" fill="#19120f">・クラウドで実行</text>
+  <text x="470" y="182" font-size="13" fill="#bb5537" font-weight="bold">・PCを閉じていても動き続ける</text>
+
+  <!-- 実行フロー -->
+  <text x="32" y="266" font-size="16" font-weight="bold" fill="#19120f">実行の流れ</text>
+
+  <rect x="20" y="286" width="190" height="90" rx="8" fill="#ffffff" stroke="#3b2922" stroke-width="2"/>
+  <text x="115" y="318" font-size="13" font-weight="bold" fill="#19120f" text-anchor="middle">スケジュール登録</text>
+  <text x="115" y="342" font-size="11" fill="#3b2922" text-anchor="middle">プロンプト・実行間隔</text>
+  <text x="115" y="360" font-size="11" fill="#3b2922" text-anchor="middle">Connection設定</text>
+
+  <line x1="210" y1="331" x2="248" y2="331" stroke="#3b2922" stroke-width="2.5"/>
+  <polygon points="256,331 244,325 244,337" fill="#3b2922"/>
+
+  <rect x="256" y="286" width="190" height="90" rx="8" fill="#bb5537"/>
+  <text x="351" y="318" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">クラウドで実行</text>
+  <text x="351" y="342" font-size="11" fill="#ffffff" text-anchor="middle">指定間隔で自動起動</text>
+  <text x="351" y="360" font-size="11" fill="#ffffff" text-anchor="middle">Web調査・コード修正</text>
+
+  <line x1="446" y1="331" x2="484" y2="331" stroke="#3b2922" stroke-width="2.5"/>
+  <polygon points="492,331 480,325 480,337" fill="#3b2922"/>
+
+  <rect x="492" y="286" width="190" height="90" rx="8" fill="#3b2922"/>
+  <text x="587" y="318" font-size="13" font-weight="bold" fill="#f2f0ee" text-anchor="middle">GitHubリポジトリ</text>
+  <text x="587" y="342" font-size="11" fill="#f2f0ee" text-anchor="middle">Publicはそのまま選択可</text>
+  <text x="587" y="360" font-size="11" fill="#f2f0ee" text-anchor="middle">PrivateはGitHubアプリ設定</text>
+
+  <line x1="682" y1="331" x2="720" y2="331" stroke="#3b2922" stroke-width="2.5"/>
+  <polygon points="728,331 716,325 716,337" fill="#3b2922"/>
+
+  <rect x="728" y="286" width="132" height="90" rx="8" fill="#8a000d"/>
+  <text x="794" y="324" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">PR生成</text>
+  <text x="794" y="348" font-size="11" fill="#ffffff" text-anchor="middle">レポートを残す</text>
+
+  <!-- フッター -->
+  <text x="32" y="428" font-size="12" fill="#3b2922">応用例: 毎日のリリース進捗レポート、依存パッケージのアップデートチェック、セキュリティチェック、リファクタリング</text>
+</svg>

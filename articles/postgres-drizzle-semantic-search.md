@@ -1,23 +1,24 @@
 ---
-title: "【AI】Postgres + Drizzle + Embeddingで意味検索する"
-pubDate: 2025-04-24
-categories: ["Drizzle"]
-tags: []
+title: "Postgres + Drizzle + Embeddingで意味検索する"
+emoji: "🔍"
+type: "tech"
+topics: ["postgresql", "drizzle", "openai", "rag", "embedding"]
+published: true
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+RAGの基盤となる意味検索（ベクトル検索）を、Postgres + pgvector + Drizzle + OpenAI Embeddingで実装した知見をまとめます。
 
 ## 構成
 
 今回、下記を使用します。
 
-*   Postgress
+*   Postgres
 *   Drizzle
 *   Open AI API
 
 初めはPrismaで頑張っていたのですが、自由度が低く厳しそうでしたので、Drizzleに乗り換えた次第です。Drizzleならインデックス含めサクッとできました。感激。
 
-![Postgres + Drizzle + Embedding 意味検索の構成](./04-24-postgres-drizzle-semantic-search.svg)
+![Postgres + Drizzle + Embedding 意味検索の構成](https://raw.githubusercontent.com/mohhh-ok/blog/main/src/content/posts/2025/04-24-postgres-drizzle-semantic-search.svg)
 
 ## Embedding
 
@@ -43,7 +44,7 @@ Embeddingは、最近流行りのAI技術です。文章をベクトル化し、
 
 コサインのような曖昧な検索ではなく、より明瞭な検索結果が欲しい場合は、マンハッタン距離による比較も選択肢に入ってくるかと思います。ユークリッド距離よりは、ユーザーも納得の結果が返ってきそうです。しかし値の範囲が限定されていないため、閾値の計算にコストがかかります。またpgvectorインデックスは2025年5月10日時点で、IVFLATでマンハッタン対応していますが、HNSWでは未対応です。レスポンスを重視するとHNSWとなることから、今回はパスします。
 
-![ベクトル距離の計算手法と採用判断](./04-24-distance-metrics-comparison.svg)
+![ベクトル距離の計算手法と採用判断](https://raw.githubusercontent.com/mohhh-ok/blog/main/src/content/posts/2025/04-24-distance-metrics-comparison.svg)
 
 ## 実装とテスト
 

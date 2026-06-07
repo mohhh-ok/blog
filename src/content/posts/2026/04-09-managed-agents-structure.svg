@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 480" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">
+  <rect x="0" y="0" width="880" height="480" rx="12" fill="#f2f0ee"/>
+
+  <!-- タイトル -->
+  <text x="32" y="46" font-size="22" font-weight="bold" fill="#19120f">Managed Agentsの構成</text>
+
+  <!-- 事前準備（ant CLI） -->
+  <text x="32" y="92" font-size="14" font-weight="bold" fill="#3b2922">1. ant CLIで事前に作成（1回だけ）</text>
+
+  <rect x="32" y="108" width="390" height="110" rx="8" fill="#bb5537"/>
+  <text x="227" y="136" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Agent（エージェント定義）</text>
+  <text x="227" y="160" font-size="12" fill="#ffffff" text-anchor="middle">model: claude-sonnet-4-6</text>
+  <text x="227" y="180" font-size="12" fill="#ffffff" text-anchor="middle">system: リサーチアシスタント</text>
+  <text x="227" y="200" font-size="12" fill="#ffffff" text-anchor="middle">tool: agent_toolset</text>
+
+  <rect x="455" y="108" width="390" height="110" rx="8" fill="#3b2922"/>
+  <text x="650" y="136" font-size="14" font-weight="bold" fill="#f2f0ee" text-anchor="middle">Environment（実行環境）</text>
+  <text x="650" y="160" font-size="12" fill="#f2f0ee" text-anchor="middle">type: cloud（Anthropicのクラウド）</text>
+  <text x="650" y="180" font-size="12" fill="#f2f0ee" text-anchor="middle">networking: unrestricted</text>
+  <text x="650" y="200" font-size="12" fill="#f2f0ee" text-anchor="middle">ローカルインフラ不要</text>
+
+  <!-- 矢印 下へ -->
+  <line x1="227" y1="218" x2="227" y2="260" stroke="#3b2922" stroke-width="2.5"/>
+  <line x1="650" y1="218" x2="650" y2="260" stroke="#3b2922" stroke-width="2.5"/>
+  <line x1="227" y1="260" x2="650" y2="260" stroke="#3b2922" stroke-width="2.5"/>
+  <line x1="440" y1="260" x2="440" y2="292" stroke="#3b2922" stroke-width="2.5"/>
+  <polygon points="440,300 434,288 446,288" fill="#3b2922"/>
+
+  <!-- セッション -->
+  <text x="32" y="290" font-size="14" font-weight="bold" fill="#3b2922">2. SDKから実行（TypeScript）</text>
+
+  <rect x="32" y="300" width="813" height="130" rx="8" fill="#19120f"/>
+  <text x="56" y="334" font-size="14" fill="#f0b9a4" font-family="Menlo,'SF Mono',monospace">Session = agent + environment_id</text>
+  <text x="56" y="364" font-size="13" fill="#f0b9a4" font-family="Menlo,'SF Mono',monospace">sessions.create() → events.send(user.message) → events.stream()</text>
+  <text x="56" y="394" font-size="13" fill="#f0b9a4" font-family="Menlo,'SF Mono',monospace">agent.message / agent.tool_use / session.status_idle を受信</text>
+  <text x="56" y="418" font-size="12" fill="#bb5537" font-family="Menlo,'SF Mono',monospace"># 実行履歴は platform.claude.com の sessions ページでも確認できる</text>
+
+  <!-- フッター -->
+  <text x="32" y="460" font-size="12" fill="#3b2922">エージェント定義と実行環境を分離して登録し、セッション単位でクラウド実行する構成</text>
+</svg>

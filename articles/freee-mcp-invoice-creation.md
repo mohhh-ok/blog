@@ -1,15 +1,15 @@
 ---
-title: "【Claude Code】freee-mcpで請求書作成してみた"
-pubDate: 2026-03-30
-categories: ["AI"]
+title: "Claude Code + freee-mcpで請求書作成してみた"
+emoji: "🧾"
+type: "tech"
+topics: ["claudecode", "mcp", "freee", "ai"]
+published: true
 ---
-
-こんにちは、フリーランスエンジニアの太田雅昭です。
 
 ## freee請求書の作成を自動化したい
 フリーランスだと、請求書発行はわりと頻繁に行います。事務作業を行なってくれる方がいれば良いのですが、それほど潤沢にお金があるわけではありません。確定申告も自分で行なっています。そのような状況で、freee-mcpがあることを知りました。これは使わざるを得ない、早速やってみました。普段Claude Codeを使っているので、それで進めていきます。
 
-![freee-mcpによる請求書作成の流れ](./03-30-freee-mcp-invoice-flow.svg)
+![freee-mcpによる請求書作成の流れ](https://raw.githubusercontent.com/mohhh-ok/blog/main/src/content/posts/2026/03-30-freee-mcp-invoice-flow.svg)
 
 ## MCPサーバーとスキルの追加
 freee-mcpのリポジトリはこちらです。

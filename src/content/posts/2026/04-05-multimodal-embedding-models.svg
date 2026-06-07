@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 620" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">
+  <rect x="0" y="0" width="880" height="620" rx="12" fill="#f2f0ee"/>
+
+  <!-- タイトル -->
+  <text x="32" y="46" font-size="22" font-weight="bold" fill="#19120f">マルチモーダルEmbeddingモデル選定マップ（2026年4月）</text>
+  <text x="32" y="74" font-size="13" fill="#3b2922">CCKMベンチマーク Cross-Modal スコア（R@1）— テキストと画像を同一ベクトル空間で検索</text>
+
+  <!-- バーチャート -->
+  <!-- Qwen3-VL-2B -->
+  <text x="240" y="116" font-size="14" font-weight="bold" fill="#19120f" text-anchor="end">Qwen3-VL-2B</text>
+  <rect x="256" y="100" width="529" height="26" rx="4" fill="#bb5537"/>
+  <text x="775" y="118" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="end">0.945</text>
+
+  <!-- Gemini Embedding 2 -->
+  <text x="240" y="156" font-size="14" font-weight="bold" fill="#19120f" text-anchor="end">Gemini Embedding 2</text>
+  <rect x="256" y="140" width="520" height="26" rx="4" fill="#bb5537"/>
+  <text x="766" y="158" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="end">0.928</text>
+
+  <!-- Voyage Multimodal 3.5 -->
+  <text x="240" y="196" font-size="14" font-weight="bold" fill="#19120f" text-anchor="end">Voyage Multimodal 3.5</text>
+  <rect x="256" y="180" width="504" height="26" rx="4" fill="#bb5537"/>
+  <text x="750" y="198" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="end">0.900</text>
+
+  <!-- Jina CLIP v2 -->
+  <text x="240" y="236" font-size="14" fill="#19120f" text-anchor="end">Jina CLIP v2</text>
+  <rect x="256" y="220" width="489" height="26" rx="4" fill="#3b2922"/>
+  <text x="735" y="238" font-size="13" font-weight="bold" fill="#f2f0ee" text-anchor="end">0.873</text>
+
+  <!-- CLIP ViT-L-14 -->
+  <text x="240" y="276" font-size="14" fill="#19120f" text-anchor="end">CLIP ViT-L-14（2021基準）</text>
+  <rect x="256" y="260" width="430" height="26" rx="4" fill="#3b2922"/>
+  <text x="676" y="278" font-size="13" font-weight="bold" fill="#f2f0ee" text-anchor="end">0.768</text>
+
+  <!-- ３強カード -->
+  <text x="32" y="336" font-size="16" font-weight="bold" fill="#19120f">３強の使い分け</text>
+
+  <!-- Qwen3-VL-2B カード -->
+  <rect x="20" y="352" width="270" height="190" rx="8" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <rect x="20" y="352" width="270" height="40" rx="8" fill="#bb5537"/>
+  <rect x="20" y="376" width="270" height="16" fill="#bb5537"/>
+  <text x="155" y="378" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">Qwen3-VL-2B</text>
+  <text x="36" y="420" font-size="13" fill="#19120f">オープンソース（2B）</text>
+  <text x="36" y="446" font-size="13" fill="#19120f">自前インフラ / GPUで運用</text>
+  <text x="36" y="472" font-size="13" fill="#19120f">データが外部に出ない</text>
+  <text x="36" y="498" font-size="13" fill="#8a000d">中国企業開発（地政学リスク）</text>
+
+  <!-- Gemini カード -->
+  <rect x="305" y="352" width="270" height="190" rx="8" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <rect x="305" y="352" width="270" height="40" rx="8" fill="#bb5537"/>
+  <rect x="305" y="376" width="270" height="16" fill="#bb5537"/>
+  <text x="440" y="378" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">Gemini Embedding 2</text>
+  <text x="321" y="420" font-size="13" fill="#19120f">Google Cloud API</text>
+  <text x="321" y="446" font-size="13" fill="#19120f">Vertex AI / Gemini APIから利用</text>
+  <text x="321" y="472" font-size="13" fill="#19120f">インフラ管理が不要</text>
+  <text x="321" y="498" font-size="13" fill="#19120f">2026年4月下旬にGA（一般提供）</text>
+
+  <!-- Voyage カード -->
+  <rect x="590" y="352" width="270" height="190" rx="8" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <rect x="590" y="352" width="270" height="40" rx="8" fill="#bb5537"/>
+  <rect x="590" y="376" width="270" height="16" fill="#bb5537"/>
+  <text x="725" y="378" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">Voyage Multimodal 3.5</text>
+  <text x="606" y="420" font-size="13" fill="#19120f">Voyage AIのAPIとして利用</text>
+  <text x="606" y="446" font-size="13" fill="#19120f">無難な選択肢</text>
+  <text x="606" y="472" font-size="13" fill="#19120f">MRL劣化 0.7%と小さい</text>
+  <text x="606" y="498" font-size="13" fill="#19120f">Modality Gap 低め</text>
+
+  <!-- フッター -->
+  <text x="32" y="586" font-size="12" fill="#3b2922">次点: Jina CLIP v2 / Jina Embeddings v4（オープンソース・API両対応）　出典: Milvus CCKMベンチマーク</text>
+</svg>
