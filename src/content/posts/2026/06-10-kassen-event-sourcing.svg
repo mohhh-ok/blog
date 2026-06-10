@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 470" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">
+  <defs>
+    <marker id="arrowES" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#3b2922"/>
+    </marker>
+    <marker id="arrowRB" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#8a000d"/>
+    </marker>
+  </defs>
+  <rect width="800" height="470" fill="#ffffff"/>
+  <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#19120f">イベントソーシングによる永続化</text>
+
+  <!-- events ログ -->
+  <text x="68" y="78" font-size="13" font-weight="bold" fill="#19120f">events テーブル（追記専用・これが正）</text>
+  <rect x="60" y="88" width="680" height="118" rx="8" fill="#19120f"/>
+  <g font-size="10" fill="#f0b9a4">
+    <rect x="76" y="104" width="124" height="86" rx="5" fill="#3b2922" stroke="#f0b9a4"/>
+    <text x="138" y="124" text-anchor="middle" font-size="13" font-weight="bold">genesis</text>
+    <text x="138" y="146" text-anchor="middle">tick 0・seed</text>
+    <text x="138" y="162" text-anchor="middle">初期 job</text>
+    <text x="138" y="178" text-anchor="middle">開始状態まるごと</text>
+
+    <rect x="212" y="104" width="124" height="86" rx="5" fill="none" stroke="#f0b9a4"/>
+    <text x="274" y="124" text-anchor="middle" font-size="13" font-weight="bold">tick 1</text>
+    <text x="274" y="146" text-anchor="middle">いいね集計・開眼</text>
+    <text x="274" y="162" text-anchor="middle">取組公開・ゲージ</text>
+    <text x="274" y="178" text-anchor="middle">日次（LLM 生成物）</text>
+
+    <rect x="348" y="104" width="124" height="86" rx="5" fill="none" stroke="#f0b9a4"/>
+    <text x="410" y="124" text-anchor="middle" font-size="13" font-weight="bold">tick 2</text>
+    <text x="410" y="146" text-anchor="middle">いいね集計・開眼</text>
+    <text x="410" y="162" text-anchor="middle">取組公開・ゲージ</text>
+    <text x="410" y="178" text-anchor="middle">日次（LLM 生成物）</text>
+
+    <text x="490" y="150" text-anchor="middle" font-size="16" font-weight="bold">…</text>
+
+    <rect x="508" y="104" width="124" height="86" rx="5" fill="none" stroke="#f0b9a4" stroke-dasharray="5 4"/>
+    <text x="570" y="124" text-anchor="middle" font-size="13" font-weight="bold">tick N</text>
+    <text x="570" y="152" text-anchor="middle">1 tick =</text>
+    <text x="570" y="168" text-anchor="middle">1 トランザクション</text>
+
+    <text x="688" y="142" text-anchor="middle" font-size="11" font-weight="bold">追記</text>
+    <text x="688" y="158" text-anchor="middle" font-size="11" font-weight="bold">のみ</text>
+  </g>
+
+  <!-- 投影 -->
+  <line x1="125" y1="206" x2="125" y2="266" stroke="#3b2922" stroke-width="2" marker-end="url(#arrowES)"/>
+  <line x1="267" y1="206" x2="267" y2="266" stroke="#3b2922" stroke-width="2" marker-end="url(#arrowES)"/>
+  <line x1="409" y1="206" x2="409" y2="266" stroke="#3b2922" stroke-width="2" marker-end="url(#arrowES)"/>
+  <line x1="551" y1="206" x2="551" y2="266" stroke="#3b2922" stroke-width="2" marker-end="url(#arrowES)"/>
+  <rect x="283" y="228" width="110" height="18" fill="#ffffff"/>
+  <text x="338" y="242" text-anchor="middle" font-size="12" font-weight="bold" fill="#3b2922">投影（projection）</text>
+
+  <!-- 状態テーブル（投影） -->
+  <rect x="60" y="272" width="130" height="70" rx="6" fill="#ffffff" stroke="#3b2922" stroke-width="1.5"/>
+  <text x="125" y="300" text-anchor="middle" font-size="13" font-weight="bold" fill="#19120f">妖怪</text>
+  <text x="125" y="322" text-anchor="middle" font-size="9.5" fill="#3b2922">ステータス・開眼・寿命</text>
+
+  <rect x="202" y="272" width="130" height="70" rx="6" fill="#ffffff" stroke="#3b2922" stroke-width="1.5"/>
+  <text x="267" y="300" text-anchor="middle" font-size="13" font-weight="bold" fill="#19120f">job・重み</text>
+  <text x="267" y="322" text-anchor="middle" font-size="9.5" fill="#3b2922">候補テーブル</text>
+
+  <rect x="344" y="272" width="130" height="70" rx="6" fill="#ffffff" stroke="#3b2922" stroke-width="1.5"/>
+  <text x="409" y="300" text-anchor="middle" font-size="13" font-weight="bold" fill="#19120f">投稿・リプライ</text>
+  <text x="409" y="322" text-anchor="middle" font-size="9.5" fill="#3b2922">posts・replies</text>
+
+  <rect x="486" y="272" width="130" height="70" rx="6" fill="#ffffff" stroke="#3b2922" stroke-width="1.5"/>
+  <text x="551" y="300" text-anchor="middle" font-size="13" font-weight="bold" fill="#19120f">取組・シーズン</text>
+  <text x="551" y="322" text-anchor="middle" font-size="9.5" fill="#3b2922">ターンログ・ゲージ・星取表</text>
+
+  <!-- ロールバック -->
+  <rect x="626" y="272" width="148" height="70" rx="6" fill="#ffffff" stroke="#8a000d" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="700" y="294" text-anchor="middle" font-size="10" font-weight="bold" fill="#8a000d" font-family="Menlo,Consolas,monospace">rollback --to-tick N</text>
+  <text x="700" y="314" text-anchor="middle" font-size="9.5" fill="#3b2922">tick N より後を削除</text>
+  <text x="700" y="330" text-anchor="middle" font-size="9.5" fill="#3b2922">→ 投影をゼロから再構築</text>
+  <line x1="700" y1="272" x2="700" y2="212" stroke="#8a000d" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowRB)"/>
+
+  <!-- 注記 -->
+  <text x="400" y="372" text-anchor="middle" font-size="11" fill="#3b2922">状態テーブルはすべて投影 — events からいつでも再構築できる</text>
+  <text x="400" y="400" text-anchor="middle" font-size="12" fill="#3b2922">1 tick = 1 トランザクションでイベント＋投影を同時コミット。途中で失敗したら何も書かれない</text>
+  <text x="400" y="424" text-anchor="middle" font-size="12" fill="#3b2922">シードは genesis に記録、各 tick の乱数はそこから決定的に導出 — 再構築は LLM 不要・課金ゼロ</text>
+</svg>

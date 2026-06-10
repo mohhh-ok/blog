@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#bb5537"/>
+    </marker>
+    <marker id="arrowDark" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#3b2922"/>
+    </marker>
+  </defs>
+  <rect width="800" height="400" fill="#ffffff"/>
+  <text x="400" y="42" text-anchor="middle" font-size="20" font-weight="bold" fill="#19120f">観客参加のループ</text>
+
+  <!-- X（観客） -->
+  <rect x="60" y="80" width="240" height="230" rx="10" fill="#f2f0ee" stroke="#3b2922" stroke-width="1.5"/>
+  <path d="M60 120 v-30 a10 10 0 0 1 10 -10 h220 a10 10 0 0 1 10 10 v30 z" fill="#19120f"/>
+  <text x="180" y="106" text-anchor="middle" font-size="16" font-weight="bold" fill="#f2f0ee">X（観客）</text>
+
+  <rect x="80" y="138" width="200" height="64" rx="6" fill="#ffffff" stroke="#bb5537" stroke-width="1.5"/>
+  <text x="180" y="163" text-anchor="middle" font-size="14" font-weight="bold" fill="#bb5537">いいね = 育成</text>
+  <text x="180" y="186" text-anchor="middle" font-size="11" fill="#3b2922">ステータスが1%開眼（複利）</text>
+
+  <rect x="80" y="222" width="200" height="64" rx="6" fill="#ffffff" stroke="#bb5537" stroke-width="1.5"/>
+  <text x="180" y="247" text-anchor="middle" font-size="14" font-weight="bold" fill="#bb5537">リプライ = 投票</text>
+  <text x="180" y="270" text-anchor="middle" font-size="11" fill="#3b2922">明日の卵が孵る job を決める</text>
+
+  <!-- ゲーム世界（サーバ） -->
+  <rect x="500" y="80" width="240" height="230" rx="10" fill="#f2f0ee" stroke="#3b2922" stroke-width="1.5"/>
+  <path d="M500 120 v-30 a10 10 0 0 1 10 -10 h220 a10 10 0 0 1 10 10 v30 z" fill="#bb5537"/>
+  <text x="620" y="106" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffffff">ゲーム世界（サーバ）</text>
+
+  <rect x="520" y="138" width="200" height="64" rx="6" fill="#ffffff" stroke="#3b2922" stroke-width="1.5"/>
+  <text x="620" y="163" text-anchor="middle" font-size="14" font-weight="bold" fill="#19120f">毎時0分に 1 tick 自走</text>
+  <text x="620" y="186" text-anchor="middle" font-size="11" fill="#3b2922">誕生・取組（3vs3）・寿命</text>
+
+  <rect x="520" y="222" width="200" height="64" rx="6" fill="#ffffff" stroke="#3b2922" stroke-width="1.5"/>
+  <text x="620" y="247" text-anchor="middle" font-size="14" font-weight="bold" fill="#19120f">勝敗はコードが決定</text>
+  <text x="620" y="270" text-anchor="middle" font-size="11" fill="#3b2922">LLM が担当するのは文章だけ</text>
+
+  <!-- 矢印 -->
+  <line x1="304" y1="165" x2="490" y2="165" stroke="#bb5537" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="400" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#bb5537">いいね・リプライ</text>
+
+  <line x1="496" y1="255" x2="310" y2="255" stroke="#3b2922" stroke-width="2.5" marker-end="url(#arrowDark)"/>
+  <text x="400" y="242" text-anchor="middle" font-size="12" font-weight="bold" fill="#3b2922">誕生・取組結果・卵を投稿</text>
+
+  <text x="400" y="360" text-anchor="middle" font-size="12" fill="#3b2922">リプライがゼロでも既定の重みで抽選される — 観客がいなくても世界は回る</text>
+</svg>
