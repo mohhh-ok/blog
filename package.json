@@ -16,27 +16,27 @@
     "zenn:preview": "zenn preview"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.8",
+    "@astrojs/check": "^0.9.9",
     "@astrojs/mdx": "^5.0.4",
     "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/sitemap": "^3.7.3",
     "@resvg/resvg-js": "^2.6.2",
-    "@tailwindcss/vite": "^4.2.4",
-    "astro": "^6.1.9",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.4.6",
     "astro-pagefind": "^1.8.6",
-    "dayjs": "^1.11.20",
-    "remeda": "^2.33.7",
-    "satori": "^0.25.0",
-    "sharp": "^0.34.5",
-    "tailwindcss": "^4.2.4",
+    "dayjs": "^1.11.21",
+    "remeda": "^2.39.0",
+    "satori": "^0.26.0",
+    "sharp": "^0.35.0",
+    "tailwindcss": "^4.3.0",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@types/node": "^24.12.2",
     "@types/turndown": "^5.0.6",
-    "fast-xml-parser": "^5.7.2",
+    "fast-xml-parser": "^5.8.0",
     "only-allow": "^1.2.2",
-    "tsx": "^4.21.0",
+    "tsx": "^4.22.4",
     "turndown": "^7.2.4",
     "zenn-cli": "^0.4.8"
   }
