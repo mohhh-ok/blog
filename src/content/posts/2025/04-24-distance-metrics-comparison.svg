@@ -31,7 +31,7 @@
   <text x="321" y="226" font-size="13" fill="#19120f">・各次元の差の絶対値の合計</text>
   <text x="321" y="252" font-size="13" fill="#19120f">・明瞭な結果が得やすい</text>
   <text x="321" y="278" font-size="13" fill="#19120f">・値域が広く閾値計算にコスト</text>
-  <text x="321" y="304" font-size="13" fill="#8a000d">・HNSW未対応（2025年5月時点）</text>
+  <text x="321" y="304" font-size="13" fill="#8a000d">・IVFFlat未対応（2025年5月時点）</text>
 
   <!-- ユークリッド カード -->
   <rect x="590" y="76" width="270" height="300" rx="8" fill="#ffffff" stroke="#8a000d" stroke-width="2"/>
