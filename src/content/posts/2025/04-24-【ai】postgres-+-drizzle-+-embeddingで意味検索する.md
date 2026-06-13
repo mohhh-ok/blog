@@ -12,7 +12,7 @@ tags: []
 
 今回、下記を使用します。
 
-*   Postgress
+*   Postgres
 *   Drizzle
 *   Open AI API
 
