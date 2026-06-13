@@ -1,6 +1,7 @@
 ---
 title: "【AI】Postgres + Drizzle + Embeddingで意味検索する"
 pubDate: 2025-04-24
+updatedDate: 2026-06-13
 categories: ["Drizzle"]
 tags: []
 ---
@@ -110,7 +111,7 @@ export async function embed(content: string) {
 
 ### データを入れる
 
-今回下記のようなデータを使用しました。
+今回は「京都」関連を題材に、**短文（ベイト）と長文（本命）を意図的に混ぜたデータ**を用意しました。長文は「京都の○○」という想定のタイトルに対し、本文は和菓子製法・職人論・土木のような専門語彙で占めています。狙いは、`京都`で検索したときに本命の長文より「京都」を含まない短文が勝ってしまう希釈効果を観察することです。
 
 ```typescript
 import 'dotenv/config';
@@ -118,17 +119,27 @@ import { db } from './db';
 import { postsTable } from "./db/schema";
 import { embed } from './openai';
 
-const TEST_DATA = [
-  'みかんを食べている男の人',
-  'レストランで食事する家族連れ',
-  'ギターを担いだ男二人がバーで飲んでいる',
-  '猫をなでる子供',
-  '散歩をするおじいさん',
-]
+const SHORT_TEXTS = [
+  '京都が好きだ',
+  '京都に旅行に行きたい',
+  '大阪の下町を散歩した',
+  '抹茶アイスを食べた',
+  '職人の手仕事に憧れる',
+];
+
+const LONG_TEXTS = [
+  // 本来: 京都の和菓子文化
+  `練り切りは白餡に求肥を加え木べらで季節の花を象る。寒梅粉や道明寺粉は吸水と粘りで使い分け、羊羹は寒天と砂糖の配合で口溶けが決まる。京都の店ではこの伝統が受け継がれている。`,
+  // 本来: 京都の伝統工芸職人の哲学
+  `若い職人は数年を道具の手入れと素材の見極めに費やす。徒弟制度では親方の技を盗むことが求められ、暗黙知の蓄積が厚みを生む。後継者不足は伝統工芸共通の課題だ。京都の工房もこの中で模索を続けている。`,
+  // 本来: 京都の地下鉄延伸計画
+  `地下鉄延伸の採算性評価は需要予測と建設費の精度に左右される。シールド工法は地盤でセグメント設計が変わり、駅部の開削は交通規制が必要だ。京都市の構想もこの枠組みで検討されている。`,
+];
+
+const TEST_DATA = [...SHORT_TEXTS, ...LONG_TEXTS];
 
 async function insert() {
   for (const testData of TEST_DATA) {
-    console.log(`Inserting ${testData}`);
     const embedding = await embed(testData);
     await db.insert(postsTable).values({
       content: testData,
@@ -142,74 +153,103 @@ insert();
 
 ### 検索する
 
-下記のような検索コードを作りました。
+cosine / L1 / L2 の3つの距離を同時に並べて、挙動を比較できるようにします。drizzle-ormは `cosineDistance` / `l1Distance` / `l2Distance` をそのまま提供してくれます。
 
 ```typescript
 import 'dotenv/config';
 import { db } from './db';
 import { postsTable } from "./db/schema";
 import { embed } from './openai';
-import { sql, cosineDistance } from 'drizzle-orm';
-
+import { cosineDistance, l1Distance, l2Distance } from 'drizzle-orm';
 
 async function main() {
   const query = process.argv[2];
   if (!query) throw new Error('no query');
   const embedding = await embed(query);
-  const result = await db
+
+  const rows = await db
     .select({
       content: postsTable.content,
-      distance: cosineDistance(postsTable.embedding, embedding)
+      cosine: cosineDistance(postsTable.embedding, embedding),
+      l1: l1Distance(postsTable.embedding, embedding),
+      l2: l2Distance(postsTable.embedding, embedding),
     })
-    .from(postsTable)
-    .orderBy(cosineDistance(postsTable.embedding, embedding));
-  console.log(result);
+    .from(postsTable);
+
+  const byCosine = [...rows].sort((a, b) => a.cosine - b.cosine);
+  const byL1 = [...rows].sort((a, b) => a.l1 - b.l1);
+  const byL2 = [...rows].sort((a, b) => a.l2 - b.l2);
+
+  console.log(`query: ${query}\n`);
+  console.log('=== Cosine ranking ===');
+  byCosine.forEach((r, i) => console.log(`[${i + 1}] cosine=${r.cosine.toFixed(4)} chars=${r.content.length}\n${r.content}\n`));
+  console.log('=== L1 ranking ===');
+  byL1.forEach((r, i) => console.log(`[${i + 1}] L1=${r.l1.toFixed(2)} chars=${r.content.length}\n${r.content}\n`));
+  console.log('=== L2 ranking ===');
+  byL2.forEach((r, i) => console.log(`[${i + 1}] L2=${r.l2.toFixed(4)} chars=${r.content.length}\n${r.content}\n`));
 }
 
 main();
 ```
 
-実際に検索してみます。
+> 再現コード一式は [`blog-examples/2025/04-24-pgvector-drizzle`](https://github.com/mohhh-ok/blog-examples/tree/main/2025/04-24-pgvector-drizzle) に置いています。検証時はOpenAI APIではなくOllama (`bge-m3`, 1024次元) を使用しているので、絶対値は本記事のコード例（OpenAI `text-embedding-3-small`, 1536次元）と一致しません。傾向の観察用としてお読みください。
 
-```typescript
-tsx src/main.ts 音楽    
+### 結果: `京都`で検索
 
-[
-  { content: 'ギターを担いだ男二人がバーで飲んでいる', distance: 0.6905424367734843 },
-  { content: 'みかんを食べている男の人', distance: 0.7711687249641749 },
-  { content: 'レストランで食事する家族連れ', distance: 0.8035564848319032 },
-  { content: '散歩をするおじいさん', distance: 0.8601853937186783 },
-  { content: '猫をなでる子供', distance: 0.863712573629618 }
-]
+```text
+$ bun run search 京都
+
+=== Cosine ranking ===
+[1] cosine=0.2490 chars=6
+京都が好きだ
+
+[2] cosine=0.2615 chars=10
+京都に旅行に行きたい
+
+[3] cosine=0.4706 chars=10
+大阪の下町を散歩した
+
+[4] cosine=0.5496 chars=88
+地下鉄延伸の採算性評価は…京都市の構想もこの枠組みで検討されている。
+
+[5] cosine=0.5760 chars=85
+練り切りは白餡に求肥を加え…京都の店ではこの伝統が受け継がれている。
+
+[6] cosine=0.5794 chars=96
+若い職人は数年を道具の手入れと素材の見極めに費やす。…京都の工房もこの中で模索を続けている。
+
+[7] cosine=0.6259 chars=9
+抹茶アイスを食べた
+
+[8] cosine=0.6410 chars=10
+職人の手仕事に憧れる
 ```
 
-```typescript
-tsx src/main.ts お年寄り
+L1・L2でも順位はほぼ同じで、上位2件の「京都」短文の後に「大阪の下町を散歩した」が割り込み、本来本命であるはずの「京都の○○」を扱う3つの長文を**押しのけて3位**に入っています。
 
-[
-  { content: '散歩をするおじいさん', distance: 0.6252080873274957 },
-  { content: '猫をなでる子供', distance: 0.7478481741193026 },
-  { content: 'レストランで食事する家族連れ', distance: 0.7724779558841293 },
-  { content: 'みかんを食べている男の人', distance: 0.7884846037445112 },
-  { content: 'ギターを担いだ男二人がバーで飲んでいる', distance: 0.8039060772629403 }
-]
+### 結果: `Kyoto`で検索
+
+```text
+$ bun run search Kyoto
+
+=== Cosine ranking ===
+[1] cosine=0.4245  京都に旅行に行きたい
+[2] cosine=0.4327  京都が好きだ
+[3] cosine=0.5507  大阪の下町を散歩した
+[4] cosine=0.6001  抹茶アイスを食べた
+[5] cosine=0.6387  （京都市の構想…長文）
+[6] cosine=0.6596  （京都の工房…長文）
+[7] cosine=0.6668  （京都の店…長文）
+[8] cosine=0.6857  職人の手仕事に憧れる
 ```
 
-```typescript
-tsx src/main.ts cat 
+日本語クエリと同じ傾向で、英語で投げても「京都」を含む短文が上位に来ます。bge-m3が多言語対応なおかげで、言語を跨いだ意味マッチがそれなりに効いています。
 
-[
-  { content: '猫をなでる子供', distance: 0.5634503482552038 },
-  { content: 'みかんを食べている男の人', distance: 0.7431684418126188 },
-  { content: '散歩をするおじいさん', distance: 0.7994899092432515 },
-  { content: 'ギターを担いだ男二人がバーで飲んでいる', distance: 0.8381289147215432 },
-  { content: 'レストランで食事する家族連れ', distance: 0.8834894558445278 }
-]
-```
+### 考察
 
-うまい具合に、存在しない検索語句でもちゃんとdistanceが反映されています。言語が違っていても、大丈夫そうです。distanceの閾値は、今回のケースだと0.7あたりが良さそうですね。
-
-ただお年寄りを検索しているのに、子供が割と上位に来ています。猫は年寄りといったイメージがあるのでしょうか。あるいはモデルに、shortを使用しているからかもしれません。この辺りは、速度・費用・精度のトレードオフですね。
+- **短文 vs 長文の希釈効果**: 「京都の○○」という長文が、`京都`単体のクエリでは3〜6位に沈みました。長文では他の語彙（和菓子製法・職人論・土木）が埋め込みベクトルを引っ張り、「京都」の貢献が薄まる現象が見えます。検索用途で長文を投入するときは、本文をそのままembeddingするのではなく、要約・タイトル・タグなどに分けてベクトル化する設計が有効そうです。
+- **「京都」検索で「大阪」が「京都の○○」長文に勝つ**: `京都`で検索しているのに、`京都`を一切含まない「大阪の下町を散歩した」が、「京都の○○」長文3つ全てより上位に来ます。文の短さと地理ドメインの近さで距離が縮まる結果です。「クエリと同じ単語を含むこと」と「埋め込み空間で近いこと」は別物で、キーワード検索の感覚で結果を期待すると裏切られます。実運用では、ハイブリッド検索（BM25等のキーワードスコアとベクトルスコアを併用）を組むのが現実解になりそうです。（ただし他言語だと形態素解析なども必要になってきます）
+- **距離指標による順位差**: 今回のデータでは cosine / L1 / L2 で順位がほぼ一致しました。実用上はcosineで十分そうで、HNSWのオペレータクラス選択（`vector_cosine_ops`）もこの観察を裏付けます。
 
 ## 文字数が少なすぎる場合の問題
 
@@ -224,16 +264,22 @@ const fixedQuery = `${query}.`;
 
 ## ef\_search
 
-あまりわかってなく恐縮ですが、近似値の幅を広げるのがef\_searchのようです。現在の設定は以下のようにして確認できます。
+HNSWの探索時に「動的候補リスト」をどれくらい広く持つかを決めるパラメータです。大きくするほどrecallが上がる代わりに遅くなるトレードオフです。
+
+ただ実用上、ef\_searchを触る必要が出るケースは限られます。
+
+- **データが小さい場合（数千行以下）**: HNSWのグラフが浅いため、デフォルト（40）でも実質ほぼ全件近く見ています。上げても下げても結果は変わりません。今回のような8行のサンプルでは完全に無意味です。
+- **`LIMIT`より小さい値を指定しても効かない**: pgvectorは内部で `max(ef_search, limit)` に底上げするので、`LIMIT 100`に対して`ef_search=40`を設定しても効果がありません。
+- **そもそも速度がボトルネックでない場合**: 1クエリ数ms〜数十msで困っていないなら、下げる旨味もありません。
+
+### 確認・設定方法
 
 ```typescript
 const currentEfSearch = await db().execute(sql`SELECT current_setting('hnsw.ef_search');`)
 console.log(currentEfSearch.rows)
 ```
 
-デフォルトは40で、これを上げると近似で拾う範囲が広がるといったことのようです。ただし負荷が増えるため、そのトレードオフです。
-
-クエリごとに設定するには、transactionを使用します。
+クエリ単位で変えたい場合はtransaction内で `SET LOCAL` します。
 
 ```typescript
 await db().transaction(async (tx) => {
@@ -242,5 +288,3 @@ await db().transaction(async (tx) => {
   return tx.query...
 })
 ```
-
-これで、ef\_searchが120で動作します。

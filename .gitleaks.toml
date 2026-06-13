@@ -4,5 +4,5 @@ useDefault = true
 [allowlist]
 description = "Allowlist for sample/example files"
 paths = [
-  '''\.env\.example$''',
+  '''(^|/)\.env\.example$''',
 ]
