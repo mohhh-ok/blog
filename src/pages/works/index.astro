@@ -8,23 +8,17 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
 import { PATHS } from "../../paths";
 import {combineDates } from "../../utils";
 
-// worksコレクションから全データを取得し、開始日の降順でソート
 const works = (await getCollection("works", ({ data }) => import.meta.env.DEV || !data.draft)).sort(
   (a, b) => {
-    // 比較用の年を取得（aboutYear > startDateの年 > 0）
-    const aYear = a.data.aboutYear
-      ?? (a.data.startDate ? a.data.startDate.getFullYear() : 0);
-    const bYear = b.data.aboutYear
-      ?? (b.data.startDate ? b.data.startDate.getFullYear() : 0);
+    const now = new Date();
+    const aEnd = (a.data.endDate ?? (a.data.startDate ? now : new Date(a.data.aboutYear ?? 0, 0))).valueOf();
+    const bEnd = (b.data.endDate ?? (b.data.startDate ? now : new Date(b.data.aboutYear ?? 0, 0))).valueOf();
 
-    if (bYear !== aYear) {
-      return bYear - aYear;
-    }
-    // 年が同じ場合、startDateがあれば月まで考慮
-    if (a.data.startDate && b.data.startDate) {
-      return b.data.startDate.valueOf() - a.data.startDate.valueOf();
-    }
-    return 0;
+    if (bEnd !== aEnd) return bEnd - aEnd;
+
+    const aStart = a.data.startDate?.valueOf() ?? 0;
+    const bStart = b.data.startDate?.valueOf() ?? 0;
+    return bStart - aStart;
   },
 );
 ---

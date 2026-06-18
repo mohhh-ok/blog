@@ -2,7 +2,7 @@
 title: メンターとして未経験からのAI駆動開発プログラミング支援
 startDate: 2025-01
 techs: ["Cursor", "TypeScript"]
-summary: オンラインでAI駆動開発環境の構築の手助け、活用方法指南。数週間でFacebook APIを用いた広告自動作成を実現。SaaS立ち上げに向けて継続中
+summary: オンラインでAI駆動開発環境の指南。プログラミング未経験から数週間でFacebook APIを用いた広告自動作成を実現。開発に参加して継続中
 ---
 
 Google Meetを用いて、プログラミング学習をサポート。
