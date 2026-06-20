@@ -1,10 +1,10 @@
 ---
-title: 【AI】10秒音声で7言語ゼロショット生成比較【F5・XTTS・OpenVoice・ElevenLabs】
-pubDate: 2026-06-20
-categories: ["AI"]
+title: "10秒音声で7言語ゼロショット生成比較（F5・XTTS・OpenVoice・ElevenLabs）"
+emoji: "🎙️"
+type: "tech"
+topics: ["ai", "tts", "voiceclone", "elevenlabs", "python"]
+published: true
 ---
-
-こんにちは、フリーランスエンジニアの太田雅昭です。この記事はほとんどAIが書いたものを、私が加筆修正しています。検証不十分な部分もあるかと思いますが、ご容赦ください。ご指摘等ございましたら、Github issueか、Xでお願いいたします。
 
 ## 比較対象
 
@@ -18,7 +18,7 @@ categories: ["AI"]
 - OpenVoice v2 は ko で OSS 内ベスト、ただし MeloTTS の制約で de は構造的に出力不可
 - F5-TTS は en/zh 専用。fr/es/de は意味は通るが幻聴ワード混入、ja/ko は完全破綻
 
-![7言語×4モデルのbigram Jaccardヒートマップ](./06-20-heatmap.svg)
+![7言語×4モデルのbigram Jaccardヒートマップ](https://raw.githubusercontent.com/mohhh-ok/blog/main/src/content/posts/2026/06-20-heatmap.svg)
 
 検証コード・生成音声・スコア JSON はすべて GitHub に公開しています。
 

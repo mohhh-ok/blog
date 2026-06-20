@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" font-family="-apple-system, 'Helvetica Neue', sans-serif">
+  <style>
+    .title { font-size: 18px; font-weight: 700; fill: #19120f; }
+    .axis  { font-size: 14px; font-weight: 600; fill: #3b2922; }
+    .lang  { font-size: 14px; font-weight: 600; fill: #3b2922; text-anchor: middle; }
+    .model { font-size: 14px; font-weight: 600; fill: #19120f; text-anchor: end; }
+    .val   { font-size: 13px; font-weight: 700; text-anchor: middle; }
+    .val-dark  { fill: #fff5f0; }
+    .val-light { fill: #19120f; }
+    .legend-l  { font-size: 11px; fill: #3b2922; }
+    .note      { font-size: 11px; fill: #6b5a52; }
+  </style>
+
+  <rect width="760" height="440" fill="#f2f0ee"/>
+
+  <text x="30" y="34" class="title">7言語 × 4モデル bigram Jaccard（1.00 = 完全一致）</text>
+
+  <g transform="translate(150, 70)">
+    <text x="40"  y="0" class="lang">ja</text>
+    <text x="120" y="0" class="lang">en</text>
+    <text x="200" y="0" class="lang">zh</text>
+    <text x="280" y="0" class="lang">ko</text>
+    <text x="360" y="0" class="lang">fr</text>
+    <text x="440" y="0" class="lang">es</text>
+    <text x="520" y="0" class="lang">de</text>
+  </g>
+
+  <g transform="translate(0, 95)">
+    <text x="140" y="36" class="model">F5-TTS</text>
+    <text x="140" y="96" class="model">XTTS-v2</text>
+    <text x="140" y="156" class="model">OpenVoice v2</text>
+    <text x="140" y="216" class="model">ElevenLabs</text>
+  </g>
+
+  <g transform="translate(150, 95)">
+    <!-- F5-TTS -->
+    <rect x="0"   y="0" width="80" height="60" fill="#3b2922"/>
+    <text x="40"  y="36" class="val val-dark">0.02</text>
+    <rect x="80"  y="0" width="80" height="60" fill="#bb5537"/>
+    <text x="120" y="36" class="val val-dark">1.00</text>
+    <rect x="160" y="0" width="80" height="60" fill="#bb5537"/>
+    <text x="200" y="36" class="val val-dark">1.00</text>
+    <rect x="240" y="0" width="80" height="60" fill="#3b2922"/>
+    <text x="280" y="36" class="val val-dark">0.00</text>
+    <rect x="320" y="0" width="80" height="60" fill="#c9a08a"/>
+    <text x="360" y="36" class="val val-light">0.66</text>
+    <rect x="400" y="0" width="80" height="60" fill="#c9a08a"/>
+    <text x="440" y="36" class="val val-light">0.68</text>
+    <rect x="480" y="0" width="80" height="60" fill="#e0a48d"/>
+    <text x="520" y="36" class="val val-light">0.73</text>
+
+    <!-- XTTS-v2 -->
+    <rect x="0"   y="60" width="80" height="60" fill="#e0a48d"/>
+    <text x="40"  y="96" class="val val-light">0.80</text>
+    <rect x="80"  y="60" width="80" height="60" fill="#bb5537"/>
+    <text x="120" y="96" class="val val-dark">1.00</text>
+    <rect x="160" y="60" width="80" height="60" fill="#bb5537"/>
+    <text x="200" y="96" class="val val-dark">1.00</text>
+    <rect x="240" y="60" width="80" height="60" fill="#c9a08a"/>
+    <text x="280" y="96" class="val val-light">0.63</text>
+    <rect x="320" y="60" width="80" height="60" fill="#bb5537"/>
+    <text x="360" y="96" class="val val-dark">1.00</text>
+    <rect x="400" y="60" width="80" height="60" fill="#bb5537"/>
+    <text x="440" y="96" class="val val-dark">1.00</text>
+    <rect x="480" y="60" width="80" height="60" fill="#bb5537"/>
+    <text x="520" y="96" class="val val-dark">1.00</text>
+
+    <!-- OpenVoice v2 -->
+    <rect x="0"   y="120" width="80" height="60" fill="#e0a48d"/>
+    <text x="40"  y="156" class="val val-light">0.77</text>
+    <rect x="80"  y="120" width="80" height="60" fill="#bb5537"/>
+    <text x="120" y="156" class="val val-dark">1.00</text>
+    <rect x="160" y="120" width="80" height="60" fill="#e0a48d"/>
+    <text x="200" y="156" class="val val-light">0.73</text>
+    <rect x="240" y="120" width="80" height="60" fill="#d27b5f"/>
+    <text x="280" y="156" class="val val-dark">0.86</text>
+    <rect x="320" y="120" width="80" height="60" fill="#bb5537"/>
+    <text x="360" y="156" class="val val-dark">1.00</text>
+    <rect x="400" y="120" width="80" height="60" fill="#bb5537"/>
+    <text x="440" y="156" class="val val-dark">1.00</text>
+    <rect x="480" y="120" width="80" height="60" fill="#d9d4ce" stroke="#b8afa6" stroke-dasharray="3 3"/>
+    <text x="520" y="156" class="val val-light">—</text>
+
+    <!-- ElevenLabs -->
+    <rect x="0"   y="180" width="80" height="60" fill="#d27b5f"/>
+    <text x="40"  y="216" class="val val-dark">0.93</text>
+    <rect x="80"  y="180" width="80" height="60" fill="#bb5537"/>
+    <text x="120" y="216" class="val val-dark">1.00</text>
+    <rect x="160" y="180" width="80" height="60" fill="#e0a48d"/>
+    <text x="200" y="216" class="val val-light">0.70</text>
+    <rect x="240" y="180" width="80" height="60" fill="#d27b5f"/>
+    <text x="280" y="216" class="val val-dark">0.93</text>
+    <rect x="320" y="180" width="80" height="60" fill="#bb5537"/>
+    <text x="360" y="216" class="val val-dark">1.00</text>
+    <rect x="400" y="180" width="80" height="60" fill="#bb5537"/>
+    <text x="440" y="216" class="val val-dark">1.00</text>
+    <rect x="480" y="180" width="80" height="60" fill="#bb5537"/>
+    <text x="520" y="216" class="val val-dark">1.00</text>
+  </g>
+
+  <g transform="translate(150, 360)">
+    <text x="0" y="0" class="legend-l">スコア凡例</text>
+    <rect x="80"  y="-12" width="36" height="16" fill="#bb5537"/>
+    <text x="120" y="0" class="legend-l">1.00 完璧</text>
+    <rect x="180" y="-12" width="36" height="16" fill="#d27b5f"/>
+    <text x="220" y="0" class="legend-l">0.85+ 実質完璧</text>
+    <rect x="310" y="-12" width="36" height="16" fill="#e0a48d"/>
+    <text x="350" y="0" class="legend-l">0.70+ 単語化け</text>
+    <rect x="440" y="-12" width="36" height="16" fill="#c9a08a"/>
+    <text x="480" y="0" class="legend-l">0.50+ 崩れ</text>
+    <rect x="540" y="-12" width="36" height="16" fill="#3b2922"/>
+    <text x="580" y="0" class="legend-l">破綻</text>
+  </g>
+
+  <text x="150" y="408" class="note">— = OpenVoice v2 は MeloTTS の制約で de を構造的に出力不可</text>
+</svg>
