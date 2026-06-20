@@ -86,6 +86,7 @@ published: false           # trueで公開
 ### ルール・注意点
 
 - ファイル名＝スラッグ（半角英数字・ハイフン・アンダースコア、12〜50字）
+- **新規記事のファイル名は `YYYY-MM-` プレフィックス必須（2026-06決定）**。例: `2026-06-multilingual-voice-cloning-benchmark.md`。`articles/` が雑多になるのを防ぐため。**過去のプレフィックス無し記事はそのまま放置**（リネームは別記事化を招くため）
 - 記事の同一性はスラッグで判定。**公開後にファイル名を変えると別記事として新規作成される**
 - ファイルを削除してもZenn側の記事は消えない（ダッシュボードから手動削除）
 - 冒頭の挨拶文（「こんにちは、フリーランス…」）はZenn版では入れない
@@ -109,3 +110,14 @@ published: false           # trueで公開
 - 既存SVGの**内容を更新**したときも `?v=N` を上げる（raw側 max-age=300 と Cloudinaryキャッシュがあるため）
 - SVGの目視確認は `@resvg/resvg-js` でPNG化できる。絵文字はtofu化するのでSVG内では使わない
 - **図版は必ずブログ記事に先に適用する（2026-06決定）**。Zenn側のraw URL参照はpushするまで表示できず、ユーザーが事前確認できない。手順は固定: ① SVGを記事の隣に作成 → ② ブログ記事に相対パスで挿入 → ③ `bun run dev` のブログ側でユーザーが表示確認 → ④ 確認が取れてからZenn記事にraw URLで挿入 → ⑤ コミット・push。②③を飛ばしてZenn記事に先に入れない
+
+### 音声・動画
+
+- **Zennは `<audio>` `<video>` `<iframe>` などのHTMLタグを全部サニタイザーで除去する**（`<br>` 以外不可）。音声系プラットフォームの専用埋め込み記法（`@[soundcloud]`等）も無し。SoundCloud/Spotify/Apple Podcasts のURLを行頭に貼ってもカード化されない（2026-06調査）
+- 結論: **Zennで音声インライン再生は不可能**。代替は「リンクで別タブ再生」が最も現実的
+- 音声ファイルへのリンクは **`raw.githubusercontent.com` ではなく `cdn.jsdelivr.net/gh/` を使う（2026-06決定）**
+  - 理由: `raw.githubusercontent.com` は `Content-Disposition: attachment` が付くためクリックで強制ダウンロードになる（Content-Type自体は `audio/mpeg` 等で正しい）。jsDelivr は `Content-Disposition` を付けないのでブラウザ内蔵プレイヤーで即再生される
+  - URL変換: `https://raw.githubusercontent.com/<owner>/<repo>/<branch>/<path>` → `https://cdn.jsdelivr.net/gh/<owner>/<repo>@<branch>/<path>`
+  - 制約: jsDelivrはpublicリポジトリのみ・1ファイル50MBまで・初回MISSはやや遅い（以降7日キャッシュ）
+- ブログ記事側は `<audio>` で動くので raw URL のままでよい（`<audio src=>` 取得時は Content-Disposition は無視される）。**Zenn記事側だけ jsDelivr に置換する**
+- 同様の制約から、Zenn記事に多数の音源を載せる際は「ブログ版に飛ばすほうがUX上は良い」ことを併記検討
