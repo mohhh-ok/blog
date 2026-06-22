@@ -33,7 +33,7 @@ jobs:
             og-cache-
 
       - name: Build and export with Dagger
-        uses: dagger/dagger-for-github@v8.4.0
+        uses: dagger/dagger-for-github@v8.4.1
         with:
           version: "0.21.6"
           verb: call
