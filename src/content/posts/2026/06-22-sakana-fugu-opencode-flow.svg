@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 520" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">
+  <rect width="880" height="520" rx="12" fill="#f2f0ee"/>
+  <text x="440" y="42" text-anchor="middle" font-size="22" font-weight="bold" fill="#19120f">Sakana Fuguをopencodeから使う構成</text>
+  <text x="440" y="70" text-anchor="middle" font-size="13" fill="#3b2922">CLIのUXはそのまま、OpenAI互換プロバイダでSakana APIへ接続する</text>
+
+  <rect x="50" y="110" width="200" height="120" rx="12" fill="#19120f"/>
+  <text x="150" y="145" text-anchor="middle" font-size="16" font-weight="bold" fill="#f0b9a4">Terminal</text>
+  <text x="150" y="175" text-anchor="middle" font-size="13" fill="#f0b9a4">opencode</text>
+  <text x="150" y="198" text-anchor="middle" font-size="12" fill="#f0b9a4">/modelsで切り替え</text>
+
+  <path d="M250 170 L320 170" stroke="#19120f" stroke-width="3" fill="none"/>
+  <path d="M310 163 L323 170 L310 177" fill="none" stroke="#19120f" stroke-width="3"/>
+
+  <rect x="325" y="98" width="230" height="145" rx="12" fill="#bb5537"/>
+  <text x="440" y="132" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffffff">opencode.jsonc</text>
+  <text x="440" y="163" text-anchor="middle" font-size="13" fill="#ffffff">provider: fugu</text>
+  <text x="440" y="188" text-anchor="middle" font-size="13" fill="#ffffff">npm: @ai-sdk/openai-compatible</text>
+  <text x="440" y="214" text-anchor="middle" font-size="13" fill="#ffffff">model: fugu/fugu-ultra</text>
+
+  <path d="M555 170 L625 170" stroke="#19120f" stroke-width="3" fill="none"/>
+  <path d="M615 163 L628 170 L615 177" fill="none" stroke="#19120f" stroke-width="3"/>
+
+  <rect x="630" y="110" width="200" height="120" rx="12" fill="#3b2922"/>
+  <text x="730" y="145" text-anchor="middle" font-size="16" font-weight="bold" fill="#f2f0ee">Sakana API</text>
+  <text x="730" y="175" text-anchor="middle" font-size="13" fill="#f2f0ee">https://api.sakana.ai/v1</text>
+  <text x="730" y="198" text-anchor="middle" font-size="12" fill="#f2f0ee">chat/completions</text>
+
+  <rect x="85" y="300" width="250" height="105" rx="12" fill="#ffffff" stroke="#3b2922" stroke-width="2"/>
+  <text x="210" y="332" text-anchor="middle" font-size="15" font-weight="bold" fill="#3b2922">APIキー</text>
+  <text x="210" y="360" text-anchor="middle" font-size="13" fill="#19120f">SAKANA_API_KEY</text>
+  <text x="210" y="383" text-anchor="middle" font-size="12" fill="#8a000d">設定ファイルに直書きしない</text>
+
+  <path d="M335 352 L395 352" stroke="#19120f" stroke-width="3" fill="none"/>
+  <path d="M385 345 L398 352 L385 359" fill="none" stroke="#19120f" stroke-width="3"/>
+
+  <rect x="400" y="300" width="180" height="105" rx="12" fill="#19120f"/>
+  <text x="490" y="335" text-anchor="middle" font-size="15" font-weight="bold" fill="#f0b9a4">{env:...}</text>
+  <text x="490" y="365" text-anchor="middle" font-size="12" fill="#f0b9a4">起動時に環境変数を参照</text>
+
+  <path d="M580 352 L640 352" stroke="#19120f" stroke-width="3" fill="none"/>
+  <path d="M630 345 L643 352 L630 359" fill="none" stroke="#19120f" stroke-width="3"/>
+
+  <rect x="645" y="300" width="150" height="105" rx="12" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <text x="720" y="335" text-anchor="middle" font-size="15" font-weight="bold" fill="#bb5537">認証付き通信</text>
+  <text x="720" y="365" text-anchor="middle" font-size="12" fill="#3b2922">Bearer token</text>
+
+  <rect x="50" y="450" width="780" height="42" rx="10" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <text x="440" y="476" text-anchor="middle" font-size="13" fill="#3b2922">必要な作業は provider 追加、baseURL=/v1、APIキーの環境変数化、デフォルトモデル指定の4点</text>
+</svg>
