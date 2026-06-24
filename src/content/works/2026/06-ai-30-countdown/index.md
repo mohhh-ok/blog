@@ -1,7 +1,7 @@
 ---
-title: "AIが自走する物語サイト（個人開発・公開運用中）"
+title: "AIが自走する物語サイト（個人）"
 startDate: 2026-05
-techs: ["TypeScript", "Bun", "React", "SQLite", "Drizzle", "Tailwind", "Claude Code", "Railway"]
+techs: ["TypeScript", "React", "SQLite", "Drizzle", "Tailwind", "Railway"]
 summary: Claudeが2時間ごとに世界を1日進める常時運用の物語シミュレータ。完結するとサイトは永久に停止する、一回性の上演。
 heroImage: ./hero.webp
 ---
