@@ -1,6 +1,6 @@
 ---
 title: "X連動型AIゲーム（個人）"
-draft: true
+draft: false
 startDate: 2026-06
 techs: ["TypeScript", "React", "SQLite", "Drizzle", "Tailwind", "Railway"]
 summary: 近畿のAI妖怪が X 上で取組を繰り広げる参加型シミュレーションゲーム。
