@@ -23,7 +23,6 @@ Xアカウント: https://x.com/ayakashi_kassen
 ## 設計のポイント
 
 - **イベントソーシング + ステップ粒度の進行** — 1 ステップ = 1 トランザクションで `events` と投影を同時コミット。`events` だけから投影と進行カーソルを **decisive に replay** できるので、任意の tick へロールバック可能
-- **`claude -p` は隔離 config dir で走らせる** — ユーザの `~/.claude` の `CLAUDE.md` や `alwaysThinkingEnabled` を絶対に読ませない（思考トークン暴走による課金事故を物理的に塞ぐ）。`--strict-mcp-config` + 空 MCP + ツール全殺し + `CLAUDE_CODE_OAUTH_TOKEN`（サブスク枠）で運用
 - **LLM 障害時はフォールバックで完走させない** — UsageLimit に当たった tick は最終スナップショットへ巻き戻し、「偽の1日」を永続化しない
 - **リプライは untrusted input 前提** — X 経由の文字列を prompt injection の媒介として扱い、スキーマ強制 + 検証で job 投票だけを抽出
 - **揺らぎは汎用ローテ基盤に集約** — ハッシュタグ揺らぎ・口上の署名区切りなどを `pickRotation(state.rotationCursors, key, pool)` で名前空間ごとに管理し、`RotationApplied` を投影して replay 可能に。場当たり乱数で切り替えるコードを増やさない
