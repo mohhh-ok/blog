@@ -3,7 +3,7 @@ title: "Claude Tag っぽく GitHub Issue に Claude Code を常駐させたら�
 emoji: "🤖"
 type: "tech"
 topics: ["ai", "claudecode", "github", "githubactions", "automation"]
-published: false
+published: true
 ---
 
 ## Claude Tag ぽいもの

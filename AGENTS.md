@@ -79,7 +79,7 @@ title: "タイトル"           # 【】プレフィックスは付けない（t
 emoji: "🐳"
 type: "tech"               # tech / idea
 topics: ["docker", "macos"]
-published: false           # trueで公開
+published: true            # デフォルトは公開（下書きにしたい時だけ false）
 ---
 ```
 
