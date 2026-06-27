@@ -1,16 +1,22 @@
 ---
-title: 【AI】GitHub Issue に Claude Code を常駐させたら、相談の往復が爆速になった
-pubDate: 2026-06-27
-categories: ["AI"]
+title: "Claude Tag っぽく GitHub Issue に Claude Code を常駐させたら、心が平和になった話"
+emoji: "🤖"
+type: "tech"
+topics: ["ai", "claudecode", "github", "githubactions", "automation"]
+published: false
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+## Claude Tag ぽいもの
 
-個人開発のリポに、GitHub Actions 経由で Claude Code を常駐させる「issue-bot」を仕込みました。issue を立てたら数十秒で Bot がコードを読みに行って返答する、コメントに `/ai` と書けば追記で返事をくれる、みたいな構成です。仕込んでみたらこれが想像以上に便利で、もう手動 issue 運用に戻れる気がしないので書き残しておきます。
+Claude Tag がリリースされました。これは Slack で Claude Code を呼び出すものです。
+
+これにインスピレーションを受けまして、個人開発のリポに、GitHub Actions 経由で Claude Code を常駐させる「issue-bot」を仕込みました。issue を立てたら数十秒で Bot がコードを読みに行って返答する、コメントに `/ai` と書けば追記で返事をくれる。想像以上に便利で、もう手動 issue 運用に戻れる気がしないので書き残しておきます。
+
+![issue-bot のリクエスト処理フローと 4 つの安全策](https://raw.githubusercontent.com/mohhh-ok/blog/main/src/content/posts/2026/06-27-issue-bot-architecture.svg)
 
 ## 何が起きるか
 
-例えば「画像 X の挙動を Y に変えたい、サンプル見せて」みたいな仕様相談を issue で立てると、開いた瞬間に GitHub Actions が走って、Bot が該当ソースを `Read/Grep/Glob` で読みに行って「該当箇所は `src/foo.ts:42` で、こういう構造です。変更するならこの行のオフセット計算を入れ替えるだけのはず」みたいな返答をコメントとしてぶら下げてくれます。
+例えば「X の挙動を Y に変えたい」みたいな仕様相談を issue で立てると、開いた瞬間に GitHub Actions が走って、Bot が該当ソースを `Read/Grep/Glob` で読みに行って「該当箇所は `src/foo.ts:42` で、こういう構造です。変更するならこの行のオフセット計算を入れ替えるだけのはず」みたいな返答をコメントとしてぶら下げてくれます。
 
 開発者がやることは
 
