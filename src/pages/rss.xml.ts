@@ -17,7 +17,7 @@ export async function GET(context: { site?: URL }) {
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.pubDate,
-      link: `/posts/${post.id}/`,
+      link: `${import.meta.env.BASE_URL.replace(/\/$/, "")}/posts/${post.id}/`,
       categories: post.data.categories,
     })),
   });
