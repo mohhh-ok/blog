@@ -33,7 +33,7 @@ const ogImage = slug
   rel="alternate"
   type="application/rss+xml"
   title={SITE_TITLE}
-  href={new URL("rss.xml", Astro.site)}
+  href={new URL(`${base}/rss.xml`, Astro.site)}
 />
 <meta name="generator" content={Astro.generator} />
 
