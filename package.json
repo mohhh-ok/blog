@@ -33,7 +33,7 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@types/node": "^24.12.2",
+    "@types/node": "^25.9.3",
     "@types/turndown": "^5.0.6",
     "fast-xml-parser": "^5.7.2",
     "only-allow": "^1.2.2",
