@@ -128,11 +128,33 @@ const { title, description, pubDate, updatedDate, heroImage, categories, slug, d
         maxZoomLevel: 8,
       });
 
+      const isSvgUrl = (src: string) => {
+        try {
+          const decoded = decodeURIComponent(src);
+          return /\.svg([?#&]|$)/i.test(decoded) || /[?&]f=svg\b/i.test(src);
+        } catch {
+          return /[?&]f=svg\b/i.test(src);
+        }
+      };
+
       lightbox.addFilter("domItemData", (itemData, element) => {
         if (element instanceof HTMLImageElement) {
           const src = element.currentSrc || element.src;
-          const w = element.naturalWidth || element.width || element.clientWidth || 1600;
-          const h = element.naturalHeight || element.height || element.clientHeight || 1200;
+          const nw = element.naturalWidth;
+          const nh = element.naturalHeight;
+          const cw = element.clientWidth || 800;
+          const ch = element.clientHeight || 600;
+          const isSvg = isSvgUrl(src);
+          let w: number;
+          let h: number;
+          if (isSvg || !nw || !nh) {
+            const aspect = (nw && nh ? nw / nh : cw / ch) || 4 / 3;
+            w = 4000;
+            h = Math.round(w / aspect);
+          } else {
+            w = nw;
+            h = nh;
+          }
           itemData.src = src;
           itemData.width = w;
           itemData.height = h;
