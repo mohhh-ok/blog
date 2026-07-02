@@ -23,6 +23,47 @@ const { title, description, pubDate, updatedDate, heroImage, categories, slug, d
     	max-width: 100%;
     	margin: 0;
     }
+    .article-grid {
+    	display: grid;
+    	grid-template-columns: 1fr minmax(0, 720px) 1fr;
+    	gap: 2rem;
+    	align-items: start;
+    	max-width: 100%;
+    	padding: 0 1rem;
+    }
+    .toc-sidebar {
+    	grid-column: 1;
+    	justify-self: start;
+    	width: 220px;
+    	position: sticky;
+    	top: 1rem;
+    	max-height: calc(100vh - 2rem);
+    	overflow-y: auto;
+    	padding: 1em 0;
+    }
+    .article-main {
+    	grid-column: 2;
+    	min-width: 0;
+    }
+    @media (max-width: 1024px) {
+    	.article-grid {
+    		grid-template-columns: minmax(0, 720px);
+    		justify-content: center;
+    		padding: 0;
+    	}
+    	.toc-sidebar {
+    		grid-column: auto;
+    		justify-self: stretch;
+    		width: 100%;
+    		position: static;
+    		max-height: none;
+    		overflow: visible;
+    		padding: 1em;
+    	}
+    	.article-main {
+    		grid-column: auto;
+    	}
+    }
     .hero-image {
     	width: 720px;
     	max-width: calc(100% - 2em);
@@ -80,37 +121,42 @@ const { title, description, pubDate, updatedDate, heroImage, categories, slug, d
   <body>
     <Header />
     <main>
-      <article>
-        <div class="hero-image">
-          {
-            heroImage && (
-              <Image width={1020} height={510} src={heroImage} alt="" />
-            )
-          }
-        </div>
-        <div class="prose">
-          <div class="title">
-            <div class="date">
-              <FormattedDate date={pubDate} />
-              {
-                updatedDate && (
-                  <div class="last-updated-on">
-                    最終更新: <FormattedDate date={updatedDate} />
-                  </div>
-                )
-              }
-            </div>
-            {draft && <span class="inline-block text-sm bg-yellow-400 text-black px-2 py-1 rounded mb-2">DRAFT</span>}
-            <h1>{title}</h1>
-            <div class="flex justify-end">
-              {categories?.map(c => <CategoryChip category={c} />)}
-            </div>
-            {body && <CopyMarkdownButtons markdown={body} />}
-            <hr />
+      <div class="article-grid">
+        <aside class="toc-sidebar">
+          <slot name="toc" />
+        </aside>
+        <article class="article-main">
+          <div class="hero-image">
+            {
+              heroImage && (
+                <Image width={1020} height={510} src={heroImage} alt="" />
+              )
+            }
           </div>
-          <slot />
-        </div>
-      </article>
+          <div class="prose">
+            <div class="title">
+              <div class="date">
+                <FormattedDate date={pubDate} />
+                {
+                  updatedDate && (
+                    <div class="last-updated-on">
+                      最終更新: <FormattedDate date={updatedDate} />
+                    </div>
+                  )
+                }
+              </div>
+              {draft && <span class="inline-block text-sm bg-yellow-400 text-black px-2 py-1 rounded mb-2">DRAFT</span>}
+              <h1>{title}</h1>
+              <div class="flex justify-end">
+                {categories?.map(c => <CategoryChip category={c} />)}
+              </div>
+              {body && <CopyMarkdownButtons markdown={body} />}
+              <hr />
+            </div>
+            <slot />
+          </div>
+        </article>
+      </div>
     </main>
     <Footer />
     <script>

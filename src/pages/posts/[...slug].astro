@@ -19,6 +19,6 @@ const { Content, headings } = await render(post);
 ---
 
 <BlogPost {...post.data} slug={post.id} body={post.body}>
-  <TableOfContents headings={headings} />
+  <TableOfContents slot="toc" headings={headings} />
   <Content />
 </BlogPost>
