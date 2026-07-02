@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Yu Gothic', sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 20px; font-weight: 700; fill: #19120f; }
+      .subtitle { font-size: 13px; fill: #3b2922; }
+      .cell-title { font-size: 15px; font-weight: 600; fill: #19120f; }
+      .cell-note { font-size: 12px; fill: #3b2922; }
+      .cell-note-em { font-size: 12px; font-weight: 600; fill: #19120f; }
+      .delta-good { font-size: 30px; font-weight: 700; fill: #2f7a3a; }
+      .delta-warn { font-size: 30px; font-weight: 700; fill: #bb5537; }
+      .delta-bad { font-size: 30px; font-weight: 700; fill: #8a000d; }
+      .col-head { font-size: 14px; font-weight: 700; fill: #19120f; letter-spacing: 0.02em; }
+      .row-head { font-size: 15px; font-weight: 700; fill: #19120f; }
+      .row-head-sub { font-size: 11px; fill: #3b2922; }
+      .footer { font-size: 12px; fill: #3b2922; }
+      .divider { stroke: #d9d3ce; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <text x="450" y="34" class="title" text-anchor="middle">halo ΔG を入力条件で分離する（原因の切り分け）</text>
+  <text x="450" y="56" class="subtitle" text-anchor="middle">ΔG = G − (R + B) / 2  ／  edge zone = 不透明領域の周囲 3px リング</text>
+
+  <text x="330" y="102" class="col-head" text-anchor="middle">入力: 緑バック撮影</text>
+  <text x="680" y="102" class="col-head" text-anchor="middle">入力: 自然背景撮影</text>
+  <line x1="180" y1="112" x2="820" y2="112" class="divider"/>
+
+  <text x="130" y="204" class="row-head" text-anchor="middle">RVM</text>
+  <text x="130" y="222" class="row-head-sub" text-anchor="middle">(mobilenetv3)</text>
+  <text x="130" y="360" class="row-head" text-anchor="middle">MatAnyone 2</text>
+  <text x="130" y="378" class="row-head-sub" text-anchor="middle">(CVPR 2026)</text>
+
+  <rect x="200" y="132" width="260" height="150" rx="12" fill="#f7ecd8" stroke="#bb5537" stroke-width="1.2"/>
+  <text x="330" y="172" class="delta-warn" text-anchor="middle">ΔG +12</text>
+  <text x="330" y="204" class="cell-title" text-anchor="middle">緑カブり あり</text>
+  <text x="330" y="230" class="cell-note" text-anchor="middle">原因: 撮影時の green spill</text>
+  <text x="330" y="250" class="cell-note" text-anchor="middle">(緑光が輪郭に物理反射)</text>
+  <text x="330" y="270" class="cell-note-em" text-anchor="middle">→ この時点では原因不明</text>
+
+  <rect x="550" y="132" width="260" height="150" rx="12" fill="#eaf5ec" stroke="#2f7a3a" stroke-width="1.2"/>
+  <text x="680" y="172" class="delta-good" text-anchor="middle">ΔG −5.5</text>
+  <text x="680" y="204" class="cell-title" text-anchor="middle">halo 消える</text>
+  <text x="680" y="230" class="cell-note" text-anchor="middle">わずかに赤紫寄り</text>
+  <text x="680" y="250" class="cell-note-em" text-anchor="middle">→ RVM の halo は</text>
+  <text x="680" y="270" class="cell-note-em" text-anchor="middle">物理 spill 由来で確定</text>
+
+  <rect x="200" y="292" width="260" height="150" rx="12" fill="#f7ecd8" stroke="#bb5537" stroke-width="1.2"/>
+  <text x="330" y="332" class="delta-warn" text-anchor="middle">ΔG +12</text>
+  <text x="330" y="364" class="cell-title" text-anchor="middle">緑カブり あり</text>
+  <text x="330" y="390" class="cell-note" text-anchor="middle">原因: spill と script paint の</text>
+  <text x="330" y="410" class="cell-note" text-anchor="middle">合成（数字だけでは切り分け不能）</text>
+
+  <rect x="550" y="292" width="260" height="150" rx="12" fill="#f4dcd6" stroke="#8a000d" stroke-width="1.2"/>
+  <text x="680" y="332" class="delta-bad" text-anchor="middle">ΔG +13</text>
+  <text x="680" y="364" class="cell-title" text-anchor="middle">緑カブり 残留</text>
+  <text x="680" y="390" class="cell-note" text-anchor="middle">推論スクリプトの塗り色</text>
+  <text x="680" y="410" class="cell-note-em" text-anchor="middle">bgr = [120, 255, 155]</text>
+
+  <line x1="60" y1="470" x2="840" y2="470" class="divider"/>
+  <text x="450" y="494" class="footer" text-anchor="middle">同じ pipeline で入力だけ変えると RVM は緑消滅・MatAnyone 2 は残留 → halo の原因が別モノだと判る。</text>
+  <text x="450" y="512" class="footer" text-anchor="middle">対策も別: RVM = despill、MatAnyone 2 = 塗り色を [0, 0, 0] へ。モデル差し替えでは消えない。</text>
+</svg>
