@@ -44,6 +44,10 @@ const { title, description, pubDate, updatedDate, heroImage, categories, slug, d
     	padding: 1em;
     	color: rgb(var(--gray-dark));
     }
+    .prose :global(img),
+    .hero-image :global(img) {
+    	cursor: zoom-in;
+    }
     .prose :global(table) {
     	width: auto;
     	margin: 0 auto 1.5em;
@@ -109,5 +113,36 @@ const { title, description, pubDate, updatedDate, heroImage, categories, slug, d
       </article>
     </main>
     <Footer />
+    <script>
+      import PhotoSwipeLightbox from "photoswipe/lightbox";
+      import "photoswipe/style.css";
+
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: ".prose, .hero-image",
+        children: "img",
+        pswpModule: () => import("photoswipe"),
+        bgOpacity: 0.92,
+        wheelToZoom: true,
+        initialZoomLevel: "fit",
+        secondaryZoomLevel: 2,
+        maxZoomLevel: 8,
+      });
+
+      lightbox.addFilter("domItemData", (itemData, element) => {
+        if (element instanceof HTMLImageElement) {
+          const src = element.currentSrc || element.src;
+          const w = element.naturalWidth || element.width || element.clientWidth || 1600;
+          const h = element.naturalHeight || element.height || element.clientHeight || 1200;
+          itemData.src = src;
+          itemData.width = w;
+          itemData.height = h;
+          itemData.msrc = src;
+          itemData.alt = element.alt;
+        }
+        return itemData;
+      });
+
+      lightbox.init();
+    </script>
   </body>
 </html>
