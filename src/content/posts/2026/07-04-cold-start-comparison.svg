@@ -8,19 +8,19 @@
     .grid { stroke: #eee; stroke-width: 0.5; }
     .grid-major { stroke: #ccc; stroke-width: 0.5; }
     .rp { fill: #22c55e; }
-    .rp-slow { fill: #ef4444; }
+    .rp-outlier { fill: #ef4444; }
     .cr { fill: #3b82f6; }
   </style>
 
   <text x="450" y="30" text-anchor="middle" class="title">Cold start wall time (s) — n=4 rounds、点は個々の実測値</text>
-  <text x="450" y="52" text-anchor="middle" class="axis" font-size="12">RunPod SDXL は fast/slow の 2 峰、他 3 endpoint は狭い範囲に集中</text>
+  <text x="450" y="52" text-anchor="middle" class="axis" font-size="12">RunPod SDXL のみ 4 回中 1 回が跳ねた (61s)、他 3 endpoint は狭い範囲</text>
 
   <!-- Legend -->
   <g transform="translate(230,65)">
     <circle cx="0" cy="6" r="5" class="rp"/>
-    <text x="12" y="10" class="cat">RunPod (fast モード)</text>
-    <circle cx="180" cy="6" r="5" class="rp-slow"/>
-    <text x="192" y="10" class="cat">RunPod (slow モード)</text>
+    <text x="12" y="10" class="cat">RunPod</text>
+    <circle cx="120" cy="6" r="5" class="rp-outlier"/>
+    <text x="132" y="10" class="cat">RunPod (1 回だけ跳ねた値)</text>
     <circle cx="360" cy="6" r="5" class="cr"/>
     <text x="372" y="10" class="cat">Cloud Run</text>
   </g>
@@ -57,11 +57,11 @@
     <text x="630" y="380" text-anchor="middle" class="subtitle">Cloud Run</text>
     <text x="630" y="396" text-anchor="middle" class="cat">Whisper</text>
 
-    <!-- RunPod SDXL dots: R2 12.97, R3 61.47 (slow), R4 12.86, R5 12.22 -->
+    <!-- RunPod SDXL dots: R2 12.97, R3 61.47 (outlier), R4 12.86, R5 12.22 -->
     <!-- Y = 360 - (v * 51.43/10) = 360 - v * 5.143 -->
     <circle cx="70" cy="293.3" r="6" class="rp"/>
     <text x="60" y="291" text-anchor="end" class="value">R2 12.97</text>
-    <circle cx="90" cy="43.9" r="6" class="rp-slow"/>
+    <circle cx="90" cy="43.9" r="6" class="rp-outlier"/>
     <text x="100" y="47" class="value">R3 61.47</text>
     <circle cx="110" cy="293.9" r="6" class="rp"/>
     <text x="120" y="297" class="value">R4 12.86</text>
