@@ -1,5 +1,5 @@
 ---
-title: 【AI】cold start実測: RunPod Serverless vs Cloud Run GPU【serverless GPU L4】
+title: "【AI】cold start実測: RunPod Serverless vs Cloud Run GPU【serverless GPU L4】"
 pubDate: 2026-07-04
 categories: ["AI"]
 ---
