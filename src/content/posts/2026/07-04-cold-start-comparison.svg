@@ -1,83 +1,101 @@
-<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif">
+<svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif">
   <style>
     .title { font-size: 18px; font-weight: 700; }
-    .subtitle { font-size: 15px; font-weight: 700; }
-    .label { font-size: 13px; }
-    .value { font-size: 13px; font-weight: 600; }
+    .subtitle { font-size: 14px; font-weight: 700; }
+    .cat { font-size: 13px; }
+    .value { font-size: 11px; }
     .axis { font-size: 11px; fill: #666; }
-    .gray { fill: #ddd; stroke: #999; stroke-width: 0.5; }
-    .rp-warm { fill: #22c55e; }
-    .rp-idle { fill: #ef4444; }
+    .grid { stroke: #eee; stroke-width: 0.5; }
+    .grid-major { stroke: #ccc; stroke-width: 0.5; }
+    .rp { fill: #22c55e; }
+    .rp-slow { fill: #ef4444; }
     .cr { fill: #3b82f6; }
   </style>
 
-  <text x="450" y="30" text-anchor="middle" class="title">Cold start wall time (s) — RunPod Serverless vs Cloud Run GPU (24GB VRAM 級)</text>
+  <text x="450" y="30" text-anchor="middle" class="title">Cold start wall time (s) — n=4 rounds、点は個々の実測値</text>
+  <text x="450" y="52" text-anchor="middle" class="axis" font-size="12">RunPod SDXL は fast/slow の 2 峰、他 3 endpoint は狭い範囲に集中</text>
 
   <!-- Legend -->
-  <g transform="translate(140,50)">
-    <rect x="0" y="0" width="14" height="14" class="rp-warm"/>
-    <text x="20" y="12" class="label">RunPod FlashBoot 直後</text>
-    <rect x="200" y="0" width="14" height="14" class="rp-idle"/>
-    <text x="220" y="12" class="label">RunPod 20 min idle 後</text>
-    <rect x="400" y="0" width="14" height="14" class="cr"/>
-    <text x="420" y="12" class="label">Cloud Run 真 cold</text>
+  <g transform="translate(230,65)">
+    <circle cx="0" cy="6" r="5" class="rp"/>
+    <text x="12" y="10" class="cat">RunPod (fast モード)</text>
+    <circle cx="180" cy="6" r="5" class="rp-slow"/>
+    <text x="192" y="10" class="cat">RunPod (slow モード)</text>
+    <circle cx="360" cy="6" r="5" class="cr"/>
+    <text x="372" y="10" class="cat">Cloud Run</text>
   </g>
 
-  <!-- SDXL group -->
-  <text x="450" y="105" text-anchor="middle" class="subtitle">SDXL Base 1.0 (~10GB VRAM)</text>
+  <!-- Y axis: 0-70s over 380px -->
+  <!-- baseline at y=460, top at y=100 -->
+  <g transform="translate(150,100)">
+    <line x1="0" y1="0" x2="0" y2="360" stroke="#999" stroke-width="1"/>
+    <line x1="0" y1="360" x2="720" y2="360" stroke="#999" stroke-width="1"/>
 
-  <!-- x-axis for SDXL: scale 65s = 600px -->
-  <!-- bar x-start: 250, x-end: 850 -->
-  <g transform="translate(250,120)">
     <!-- gridlines -->
-    <line x1="0" y1="0" x2="0" y2="120" stroke="#999" stroke-width="0.5"/>
-    <line x1="184" y1="0" x2="184" y2="120" stroke="#eee"/>
-    <line x1="369" y1="0" x2="369" y2="120" stroke="#eee"/>
-    <line x1="554" y1="0" x2="554" y2="120" stroke="#eee"/>
-    <text x="0" y="140" text-anchor="middle" class="axis">0</text>
-    <text x="184" y="140" text-anchor="middle" class="axis">20s</text>
-    <text x="369" y="140" text-anchor="middle" class="axis">40s</text>
-    <text x="554" y="140" text-anchor="middle" class="axis">60s</text>
+    <line x1="0" y1="308.6" x2="720" y2="308.6" class="grid"/>
+    <text x="-6" y="312" text-anchor="end" class="axis">10s</text>
+    <line x1="0" y1="257.1" x2="720" y2="257.1" class="grid-major"/>
+    <text x="-6" y="261" text-anchor="end" class="axis">20s</text>
+    <line x1="0" y1="205.7" x2="720" y2="205.7" class="grid"/>
+    <text x="-6" y="209" text-anchor="end" class="axis">30s</text>
+    <line x1="0" y1="154.3" x2="720" y2="154.3" class="grid-major"/>
+    <text x="-6" y="158" text-anchor="end" class="axis">40s</text>
+    <line x1="0" y1="102.9" x2="720" y2="102.9" class="grid"/>
+    <text x="-6" y="106" text-anchor="end" class="axis">50s</text>
+    <line x1="0" y1="51.4" x2="720" y2="51.4" class="grid-major"/>
+    <text x="-6" y="55" text-anchor="end" class="axis">60s</text>
+    <line x1="0" y1="0" x2="720" y2="0" class="grid"/>
+    <text x="-6" y="4" text-anchor="end" class="axis">70s</text>
+
+    <!-- x-axis categories, 4 groups at x = 90, 270, 450, 630 -->
+    <text x="90" y="380" text-anchor="middle" class="subtitle">RunPod</text>
+    <text x="90" y="396" text-anchor="middle" class="cat">SDXL (~10GB)</text>
+    <text x="270" y="380" text-anchor="middle" class="subtitle">RunPod</text>
+    <text x="270" y="396" text-anchor="middle" class="cat">Whisper (~3GB)</text>
+    <text x="450" y="380" text-anchor="middle" class="subtitle">Cloud Run</text>
+    <text x="450" y="396" text-anchor="middle" class="cat">SDXL</text>
+    <text x="630" y="380" text-anchor="middle" class="subtitle">Cloud Run</text>
+    <text x="630" y="396" text-anchor="middle" class="cat">Whisper</text>
+
+    <!-- RunPod SDXL dots: R2 12.97, R3 61.47 (slow), R4 12.86, R5 12.22 -->
+    <!-- Y = 360 - (v * 51.43/10) = 360 - v * 5.143 -->
+    <circle cx="70" cy="293.3" r="6" class="rp"/>
+    <text x="60" y="291" text-anchor="end" class="value">R2 12.97</text>
+    <circle cx="90" cy="43.9" r="6" class="rp-slow"/>
+    <text x="100" y="47" class="value">R3 61.47</text>
+    <circle cx="110" cy="293.9" r="6" class="rp"/>
+    <text x="120" y="297" class="value">R4 12.86</text>
+    <circle cx="90" cy="297.2" r="6" class="rp"/>
+    <text x="100" y="315" class="value">R5 12.22</text>
+
+    <!-- RunPod Whisper: R2 2.49, R3 4.72, R4 3.58, R5 3.31 -->
+    <circle cx="250" cy="347.2" r="6" class="rp"/>
+    <text x="240" y="351" text-anchor="end" class="value">R2 2.49</text>
+    <circle cx="270" cy="335.7" r="6" class="rp"/>
+    <text x="280" y="339" class="value">R3 4.72</text>
+    <circle cx="290" cy="341.6" r="6" class="rp"/>
+    <text x="300" y="345" class="value">R4 3.58</text>
+    <circle cx="270" cy="343.0" r="6" class="rp"/>
+    <text x="280" y="325" class="value">R5 3.31</text>
+
+    <!-- Cloud Run SDXL: R2 39.12, R3 34.78, R4 38.13, R5 40.65 -->
+    <circle cx="430" cy="158.8" r="6" class="cr"/>
+    <text x="420" y="162" text-anchor="end" class="value">R2 39.12</text>
+    <circle cx="450" cy="181.1" r="6" class="cr"/>
+    <text x="460" y="185" class="value">R3 34.78</text>
+    <circle cx="470" cy="163.9" r="6" class="cr"/>
+    <text x="480" y="167" class="value">R4 38.13</text>
+    <circle cx="450" cy="150.9" r="6" class="cr"/>
+    <text x="460" y="145" class="value">R5 40.65</text>
+
+    <!-- Cloud Run Whisper: R2 19.45, R3 16.79, R4 15.97; R5 excluded -->
+    <circle cx="610" cy="259.9" r="6" class="cr"/>
+    <text x="600" y="263" text-anchor="end" class="value">R2 19.45</text>
+    <circle cx="630" cy="273.6" r="6" class="cr"/>
+    <text x="640" y="277" class="value">R3 16.79</text>
+    <circle cx="650" cy="277.8" r="6" class="cr"/>
+    <text x="660" y="281" class="value">R4 15.97</text>
   </g>
 
-  <text x="240" y="150" text-anchor="end" class="label">FlashBoot 直後</text>
-  <rect x="250" y="135" width="120" height="22" class="rp-warm"/>
-  <text x="378" y="152" class="value">12.97s</text>
-
-  <text x="240" y="185" text-anchor="end" class="label">20 min idle</text>
-  <rect x="250" y="170" width="568" height="22" class="rp-idle"/>
-  <text x="826" y="187" class="value">61.47s</text>
-
-  <text x="240" y="220" text-anchor="end" class="label">Cloud Run</text>
-  <rect x="250" y="205" width="321" height="22" class="cr"/>
-  <text x="579" y="222" class="value">34.78s</text>
-
-  <!-- Divider -->
-  <line x1="80" y1="290" x2="850" y2="290" stroke="#e5e7eb"/>
-
-  <!-- Whisper group -->
-  <text x="450" y="315" text-anchor="middle" class="subtitle">Whisper large-v3 (~3GB VRAM)</text>
-
-  <g transform="translate(250,330)">
-    <line x1="0" y1="0" x2="0" y2="120" stroke="#999" stroke-width="0.5"/>
-    <line x1="184" y1="0" x2="184" y2="120" stroke="#eee"/>
-    <line x1="369" y1="0" x2="369" y2="120" stroke="#eee"/>
-    <line x1="554" y1="0" x2="554" y2="120" stroke="#eee"/>
-    <text x="0" y="140" text-anchor="middle" class="axis">0</text>
-    <text x="184" y="140" text-anchor="middle" class="axis">20s</text>
-    <text x="369" y="140" text-anchor="middle" class="axis">40s</text>
-    <text x="554" y="140" text-anchor="middle" class="axis">60s</text>
-  </g>
-
-  <text x="240" y="360" text-anchor="end" class="label">FlashBoot 直後</text>
-  <rect x="250" y="345" width="23" height="22" class="rp-warm"/>
-  <text x="281" y="362" class="value">2.49s</text>
-
-  <text x="240" y="395" text-anchor="end" class="label">20 min idle</text>
-  <rect x="250" y="380" width="44" height="22" class="rp-idle"/>
-  <text x="302" y="397" class="value">4.72s</text>
-
-  <text x="240" y="430" text-anchor="end" class="label">Cloud Run</text>
-  <rect x="250" y="415" width="155" height="22" class="cr"/>
-  <text x="413" y="432" class="value">16.79s</text>
+  <text x="450" y="490" text-anchor="middle" class="axis">n=4 (Cloud Run Whisper R5 は HF Hub の 429 で除外、n=3)</text>
 </svg>
