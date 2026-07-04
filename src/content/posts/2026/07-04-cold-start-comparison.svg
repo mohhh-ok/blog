@@ -8,30 +8,24 @@
     .grid { stroke: #eee; stroke-width: 0.5; }
     .grid-major { stroke: #ccc; stroke-width: 0.5; }
     .rp { fill: #22c55e; }
-    .rp-outlier { fill: #ef4444; }
     .cr { fill: #3b82f6; }
   </style>
 
   <text x="450" y="30" text-anchor="middle" class="title">Cold start wall time (s) — n=4 rounds、点は個々の実測値</text>
-  <text x="450" y="52" text-anchor="middle" class="axis" font-size="12">RunPod SDXL のみ 4 回中 1 回が跳ねた (61s)、他 3 endpoint は狭い範囲</text>
 
   <!-- Legend -->
-  <g transform="translate(230,65)">
+  <g transform="translate(320,52)">
     <circle cx="0" cy="6" r="5" class="rp"/>
     <text x="12" y="10" class="cat">RunPod</text>
-    <circle cx="120" cy="6" r="5" class="rp-outlier"/>
-    <text x="132" y="10" class="cat">RunPod (1 回だけ跳ねた値)</text>
-    <circle cx="360" cy="6" r="5" class="cr"/>
-    <text x="372" y="10" class="cat">Cloud Run</text>
+    <circle cx="160" cy="6" r="5" class="cr"/>
+    <text x="172" y="10" class="cat">Cloud Run</text>
   </g>
 
-  <!-- Y axis: 0-70s over 380px -->
-  <!-- baseline at y=460, top at y=100 -->
-  <g transform="translate(150,100)">
+  <!-- Y axis: 0-70s over 360px -->
+  <g transform="translate(150,90)">
     <line x1="0" y1="0" x2="0" y2="360" stroke="#999" stroke-width="1"/>
     <line x1="0" y1="360" x2="720" y2="360" stroke="#999" stroke-width="1"/>
 
-    <!-- gridlines -->
     <line x1="0" y1="308.6" x2="720" y2="308.6" class="grid"/>
     <text x="-6" y="312" text-anchor="end" class="axis">10s</text>
     <line x1="0" y1="257.1" x2="720" y2="257.1" class="grid-major"/>
@@ -47,7 +41,6 @@
     <line x1="0" y1="0" x2="720" y2="0" class="grid"/>
     <text x="-6" y="4" text-anchor="end" class="axis">70s</text>
 
-    <!-- x-axis categories, 4 groups at x = 90, 270, 450, 630 -->
     <text x="90" y="380" text-anchor="middle" class="subtitle">RunPod</text>
     <text x="90" y="396" text-anchor="middle" class="cat">SDXL (~10GB)</text>
     <text x="270" y="380" text-anchor="middle" class="subtitle">RunPod</text>
@@ -57,18 +50,17 @@
     <text x="630" y="380" text-anchor="middle" class="subtitle">Cloud Run</text>
     <text x="630" y="396" text-anchor="middle" class="cat">Whisper</text>
 
-    <!-- RunPod SDXL dots: R2 12.97, R3 61.47 (outlier), R4 12.86, R5 12.22 -->
-    <!-- Y = 360 - (v * 51.43/10) = 360 - v * 5.143 -->
+    <!-- RunPod SDXL: 12.97, 61.47, 12.86, 12.22 -->
     <circle cx="70" cy="293.3" r="6" class="rp"/>
     <text x="60" y="291" text-anchor="end" class="value">R2 12.97</text>
-    <circle cx="90" cy="43.9" r="6" class="rp-outlier"/>
+    <circle cx="90" cy="43.9" r="6" class="rp"/>
     <text x="100" y="47" class="value">R3 61.47</text>
     <circle cx="110" cy="293.9" r="6" class="rp"/>
     <text x="120" y="297" class="value">R4 12.86</text>
     <circle cx="90" cy="297.2" r="6" class="rp"/>
     <text x="100" y="315" class="value">R5 12.22</text>
 
-    <!-- RunPod Whisper: R2 2.49, R3 4.72, R4 3.58, R5 3.31 -->
+    <!-- RunPod Whisper: 2.49, 4.72, 3.58, 3.31 -->
     <circle cx="250" cy="347.2" r="6" class="rp"/>
     <text x="240" y="351" text-anchor="end" class="value">R2 2.49</text>
     <circle cx="270" cy="335.7" r="6" class="rp"/>
@@ -78,7 +70,7 @@
     <circle cx="270" cy="343.0" r="6" class="rp"/>
     <text x="280" y="325" class="value">R5 3.31</text>
 
-    <!-- Cloud Run SDXL: R2 39.12, R3 34.78, R4 38.13, R5 40.65 -->
+    <!-- Cloud Run SDXL: 39.12, 34.78, 38.13, 40.65 -->
     <circle cx="430" cy="158.8" r="6" class="cr"/>
     <text x="420" y="162" text-anchor="end" class="value">R2 39.12</text>
     <circle cx="450" cy="181.1" r="6" class="cr"/>
@@ -88,7 +80,7 @@
     <circle cx="450" cy="150.9" r="6" class="cr"/>
     <text x="460" y="145" class="value">R5 40.65</text>
 
-    <!-- Cloud Run Whisper: R2 19.45, R3 16.79, R4 15.97; R5 excluded -->
+    <!-- Cloud Run Whisper: 19.45, 16.79, 15.97 (R5 excluded) -->
     <circle cx="610" cy="259.9" r="6" class="cr"/>
     <text x="600" y="263" text-anchor="end" class="value">R2 19.45</text>
     <circle cx="630" cy="273.6" r="6" class="cr"/>
@@ -97,5 +89,5 @@
     <text x="660" y="281" class="value">R4 15.97</text>
   </g>
 
-  <text x="450" y="490" text-anchor="middle" class="axis">n=4 (Cloud Run Whisper R5 は HF Hub の 429 で除外、n=3)</text>
+  <text x="450" y="484" text-anchor="middle" class="axis">n=4 (Cloud Run Whisper R5 は HF Hub の 429 で除外、n=3)</text>
 </svg>
