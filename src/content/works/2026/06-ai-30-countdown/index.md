@@ -1,6 +1,7 @@
 ---
 title: "AIが自走する物語サイト（個人）"
 startDate: 2026-05
+endDate: 2026-07
 techs: ["TypeScript", "React", "SQLite", "Drizzle", "Tailwind", "Railway"]
 summary: Claudeが2時間ごとに世界を1日進める常時運用の物語シミュレータ。完結するとサイトは永久に停止する、一回性の上演。
 heroImage: ./hero.webp
@@ -8,7 +9,7 @@ heroImage: ./hero.webp
 
 京都の霊脈世界に住む5体の妖（あやかし）を、Claude が2時間ごとに1日ずつ動かす自走型の物語シミュレータ。性格に基づく行動判断は LLM に委譲し、資源・死亡・ステージ遷移などすべての数値は決定論的な TypeScript エンジンが保証する。
 
-ライブサイト（観るだけの公開サイト・進行中）:
+ライブサイト（観るだけの公開サイト。完結済み）:
 
 https://ai-30-countdown.up.railway.app/
 
