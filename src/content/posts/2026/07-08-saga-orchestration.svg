@@ -1,0 +1,32 @@
+<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="arrOrch" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3b2922"/>
+    </marker>
+  </defs>
+  <g font-size="12" fill="#19120f">
+    <rect x="230" y="30" width="180" height="70" rx="6" fill="#f2f0ee" stroke="#bb5537" stroke-width="2"/>
+    <text x="320" y="60" text-anchor="middle" font-weight="700">OrderProcessManager</text>
+    <text x="320" y="80" text-anchor="middle" font-size="10" fill="#9f6073">state: RESERVING → PAYING → SHIPPING</text>
+
+    <rect x="20"  y="200" width="140" height="60" rx="6" fill="#fff" stroke="#3b2922"/>
+    <text x="90"  y="230" text-anchor="middle" font-weight="700">Inventory</text>
+
+    <rect x="250" y="200" width="140" height="60" rx="6" fill="#fff" stroke="#3b2922"/>
+    <text x="320" y="230" text-anchor="middle" font-weight="700">Payment</text>
+
+    <rect x="480" y="200" width="140" height="60" rx="6" fill="#fff" stroke="#3b2922"/>
+    <text x="550" y="230" text-anchor="middle" font-weight="700">Shipping</text>
+
+    <line x1="270" y1="100" x2="100" y2="200" stroke="#3b2922" stroke-width="1.2" marker-end="url(#arrOrch)"/>
+    <line x1="320" y1="100" x2="320" y2="200" stroke="#3b2922" stroke-width="1.2" marker-end="url(#arrOrch)"/>
+    <line x1="370" y1="100" x2="540" y2="200" stroke="#3b2922" stroke-width="1.2" marker-end="url(#arrOrch)"/>
+
+    <text x="150" y="150" text-anchor="middle" font-size="10" fill="#9f6073">ReserveStock</text>
+    <text x="345" y="150" text-anchor="middle" font-size="10" fill="#9f6073">Capture</text>
+    <text x="490" y="150" text-anchor="middle" font-size="10" fill="#9f6073">Dispatch</text>
+
+    <line x1="100" y1="200" x2="270" y2="100" stroke="#bb5537" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrOrch)"/>
+    <text x="145" y="185" font-size="10" fill="#bb5537">StockReserved</text>
+  </g>
+</svg>

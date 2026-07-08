@@ -1,0 +1,76 @@
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif">
+  <style>
+    .title { font-size: 16px; font-weight: 700; fill: #191210; }
+    .header { font-size: 14px; font-weight: 700; }
+    .bad { fill: #a3341f; }
+    .good { fill: #2f6b3a; }
+    .story { font-size: 12px; fill: #666; }
+    .evt { font-size: 13px; fill: #191210; }
+    .caption { font-size: 11px; fill: #999; font-style: italic; }
+    .arrow { stroke: #666; stroke-width: 1.2; fill: none; }
+  </style>
+
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#666"/>
+    </marker>
+  </defs>
+
+  <text x="450" y="26" text-anchor="middle" class="title">同じユーザーストーリーを 2 通りにモデリングした結果</text>
+  <text x="450" y="45" text-anchor="middle" class="story">「登録した ／ 結婚した ／ 引越した」</text>
+
+  <!-- LEFT: Property Sourcing (bad) -->
+  <g transform="translate(60, 80)">
+    <text x="180" y="0" text-anchor="middle" class="header bad">✗ Property Sourcing</text>
+    <text x="180" y="18" text-anchor="middle" class="caption">フィールド 1 個ずつ event に。何が起きたか読めない。</text>
+
+    <rect x="0"   y="40"  width="360" height="34" rx="4" fill="#fff" stroke="#a3341f" stroke-width="1"/>
+    <text x="12"  y="61"  class="evt">FirstNameChanged(userId, "太郎")</text>
+
+    <rect x="0"   y="80"  width="360" height="34" rx="4" fill="#fff" stroke="#a3341f" stroke-width="1"/>
+    <text x="12"  y="101" class="evt">LastNameChanged(userId, "山田")</text>
+
+    <rect x="0"   y="120" width="360" height="34" rx="4" fill="#fff" stroke="#a3341f" stroke-width="1"/>
+    <text x="12"  y="141" class="evt">LastNameChanged(userId, "鈴木")</text>
+
+    <rect x="0"   y="160" width="360" height="34" rx="4" fill="#fff" stroke="#a3341f" stroke-width="1"/>
+    <text x="12"  y="181" class="evt">StreetChanged(userId, "○○1-2-3")</text>
+
+    <rect x="0"   y="200" width="360" height="34" rx="4" fill="#fff" stroke="#a3341f" stroke-width="1"/>
+    <text x="12"  y="221" class="evt">CityChanged(userId, "京都市")</text>
+
+    <rect x="0"   y="240" width="360" height="34" rx="4" fill="#fff" stroke="#a3341f" stroke-width="1"/>
+    <text x="12"  y="261" class="evt">PostalCodeChanged(userId, "600-0000")</text>
+
+    <text x="180" y="310" text-anchor="middle" class="caption">→ 結婚? 改名? 引越し? タイポ修正?</text>
+    <text x="180" y="326" text-anchor="middle" class="caption">event を集めて「つまり何が起きたか」を推測する必要がある</text>
+  </g>
+
+  <!-- RIGHT: Event Sourcing (good) -->
+  <g transform="translate(480, 80)">
+    <text x="180" y="0" text-anchor="middle" class="header good">✓ Event Sourcing</text>
+    <text x="180" y="18" text-anchor="middle" class="caption">業務上の出来事そのものが event。読めば分かる。</text>
+
+    <rect x="0"   y="40"  width="360" height="54" rx="4" fill="#fff" stroke="#2f6b3a" stroke-width="1"/>
+    <text x="12"  y="61"  class="evt" font-weight="700">UserRegistered</text>
+    <text x="12"  y="80"  class="evt" font-size="12" fill="#666">(userId, name="山田 太郎", address=...)</text>
+
+    <rect x="0"   y="110" width="360" height="54" rx="4" fill="#fff" stroke="#2f6b3a" stroke-width="1"/>
+    <text x="12"  y="131" class="evt" font-weight="700">Married</text>
+    <text x="12"  y="150" class="evt" font-size="12" fill="#666">(userId, newLastName="鈴木")</text>
+
+    <rect x="0"   y="180" width="360" height="54" rx="4" fill="#fff" stroke="#2f6b3a" stroke-width="1"/>
+    <text x="12"  y="201" class="evt" font-weight="700">Relocated</text>
+    <text x="12"  y="220" class="evt" font-size="12" fill="#666">(userId, newAddress={...})</text>
+
+    <text x="180" y="290" text-anchor="middle" class="caption">→ 登録した、結婚した、引越した。それだけ。</text>
+    <text x="180" y="306" text-anchor="middle" class="caption">下流の projection / saga も「Married なら〜」で書ける。</text>
+  </g>
+
+  <!-- Bottom summary -->
+  <line x1="60" y1="420" x2="840" y2="420" stroke="#eee" stroke-width="1"/>
+  <text x="450" y="445" text-anchor="middle" class="story">
+    diff は event の <tspan font-weight="700">結果</tspan>、
+    intent が event の <tspan font-weight="700">中身</tspan>。
+  </text>
+</svg>
