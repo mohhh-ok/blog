@@ -28,7 +28,7 @@
     "photoswipe": "^5.4.4",
     "remeda": "^2.33.7",
     "satori": "^0.25.0",
-    "sharp": "^0.34.5",
+    "sharp": "^0.35.0",
     "tailwindcss": "^4.2.4",
     "typescript": "^5.9.3"
   },
