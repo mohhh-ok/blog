@@ -21,24 +21,24 @@
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "@resvg/resvg-js": "^2.6.2",
-    "@tailwindcss/vite": "^4.2.4",
+    "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.1.0",
     "astro-pagefind": "^1.8.6",
-    "dayjs": "^1.11.20",
+    "dayjs": "^1.11.21",
     "photoswipe": "^5.4.4",
-    "remeda": "^2.33.7",
-    "satori": "^0.25.0",
+    "remeda": "^2.39.0",
+    "satori": "^0.29.0",
     "sharp": "^0.35.0",
-    "tailwindcss": "^4.2.4",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@types/node": "^24.12.2",
     "@types/turndown": "^5.0.6",
-    "fast-xml-parser": "^5.7.2",
+    "fast-xml-parser": "^5.10.1",
     "only-allow": "^1.2.2",
-    "tsx": "^4.21.0",
+    "tsx": "^4.23.1",
     "turndown": "^7.2.4",
-    "zenn-cli": "^0.4.8"
+    "zenn-cli": "^0.5.2"
   }
 }
