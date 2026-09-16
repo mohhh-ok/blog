@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">
+  <rect width="1200" height="700" fill="#f2f0ee"/>
+
+  <!-- 段 5: Google アカウント全体 -->
+  <rect x="40" y="40" width="1120" height="620" rx="18" fill="#ffffff" stroke="#8a000d" stroke-width="3"/>
+  <text x="64" y="76" font-size="22" font-weight="700" fill="#8a000d">5. Google アカウント全体（Google-wide）</text>
+  <text x="64" y="102" font-size="15" fill="#3b2922">Gmail・Drive・Photos・Play・Cloud をまとめて無効化。ドライブの CSAE 判定で止まるのはこの段</text>
+
+  <!-- 段 4: Google Cloud アカウント -->
+  <rect x="80" y="126" width="1040" height="500" rx="16" fill="#ffffff" stroke="#8a000d" stroke-width="2.5" stroke-dasharray="10 6"/>
+  <text x="104" y="160" font-size="20" font-weight="700" fill="#8a000d">4. Google Cloud アカウント</text>
+  <text x="104" y="184" font-size="14" fill="#3b2922">Cloud だけ停止。Gmail 等は使える。AUP 違反を繰り返すと上がる段</text>
+
+  <!-- 段 3: Billing (左右で 2 つ) -->
+  <!-- 左: 本体 Billing -->
+  <rect x="120" y="212" width="470" height="390" rx="14" fill="#ffffff" stroke="#bb5537" stroke-width="2.5"/>
+  <text x="142" y="244" font-size="18" font-weight="700" fill="#bb5537">3. Billing アカウント A</text>
+  <!-- 右: 鍵専用 Billing -->
+  <rect x="610" y="212" width="470" height="390" rx="14" fill="#ffffff" stroke="#bb5537" stroke-width="2.5"/>
+  <text x="632" y="244" font-size="18" font-weight="700" fill="#bb5537">3. Billing アカウント B（分ければ切れる）</text>
+
+  <!-- 段 2: プロジェクト -->
+  <!-- 左: アプリ本体 -->
+  <rect x="150" y="272" width="410" height="300" rx="12" fill="#fbe9e3" stroke="#bb5537" stroke-width="2"/>
+  <text x="172" y="304" font-size="18" font-weight="700" fill="#19120f">2. プロジェクト：アプリ本体</text>
+  <g font-size="15" fill="#19120f">
+    <rect x="172" y="326" width="366" height="40" rx="8" fill="#ffffff" stroke="#3b2922" stroke-width="1.2"/>
+    <text x="190" y="352">Cloud Run（Web・ワーカー）</text>
+    <rect x="172" y="378" width="366" height="40" rx="8" fill="#ffffff" stroke="#3b2922" stroke-width="1.2"/>
+    <text x="190" y="404">Cloud SQL</text>
+    <rect x="172" y="430" width="366" height="40" rx="8" fill="#ffffff" stroke="#3b2922" stroke-width="1.2"/>
+    <text x="190" y="456">Cloud Storage（ユーザーのアップロード）</text>
+  </g>
+  <text x="172" y="500" font-size="13" fill="#3b2922">ユーザー投稿の AUP 違反は、通知から 24 時間以内に</text>
+  <text x="172" y="520" font-size="13" fill="#3b2922">是正しないと停止（Cloud ToS 4.1）</text>
+  <text x="172" y="540" font-size="13" fill="#3b2922">Google は中身を能動スキャンしない（5.2）</text>
+  <text x="172" y="560" font-size="13" fill="#3b2922">通報窓口は自前で持つ（3.6）</text>
+
+  <!-- 右: 鍵専用 -->
+  <rect x="640" y="272" width="410" height="300" rx="12" fill="#fbe9e3" stroke="#bb5537" stroke-width="2"/>
+  <text x="662" y="304" font-size="18" font-weight="700" fill="#19120f">2. プロジェクト：鍵専用</text>
+  <text x="662" y="326" font-size="13" fill="#3b2922">鍵と Billing だけ。他のリソースを置かない</text>
+
+  <!-- 段 1: API クライアント -->
+  <rect x="662" y="344" width="366" height="150" rx="10" fill="#ffffff" stroke="#3b2922" stroke-width="1.5"/>
+  <text x="682" y="374" font-size="16" font-weight="700" fill="#19120f">1. API クライアント（AI Studio 鍵）</text>
+  <text x="682" y="400" font-size="14" fill="#3b2922">Gemini API：生成・埋め込み</text>
+  <text x="682" y="424" font-size="13" fill="#3b2922">Billing 紐付きなら Paid ＝ 学習に使われない</text>
+  <text x="682" y="446" font-size="13" fill="#3b2922">処分階段の最終段は「他の Google サービス」まで</text>
+  <text x="682" y="468" font-size="13" fill="#3b2922">エンドユーザー単位で切る仕組みは無い</text>
+
+  <text x="662" y="526" font-size="13" fill="#3b2922">鍵漏洩・生成系の abuse 判定で止まるのは</text>
+  <text x="662" y="546" font-size="13" fill="#3b2922">この箱まで。本体（左）は巻き込まれない</text>
+
+  <!-- 隔離の切れ目 -->
+  <line x1="600" y1="212" x2="600" y2="602" stroke="#bb5537" stroke-width="3" stroke-dasharray="4 8"/>
+  <rect x="548" y="572" width="104" height="30" rx="15" fill="#bb5537"/>
+  <text x="600" y="593" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">隔離で切れる</text>
+
+  <!-- 凡例 -->
+  <g font-size="14">
+    <line x1="120" y1="642" x2="160" y2="642" stroke="#bb5537" stroke-width="3"/>
+    <text x="170" y="647" fill="#19120f">鍵専用プロジェクト（＋別 Billing）で切れる段：1〜3</text>
+    <line x1="560" y1="642" x2="600" y2="642" stroke="#8a000d" stroke-width="3"/>
+    <text x="610" y="647" fill="#19120f">所有者の Google アカウントを分けないと切れない段：4〜5</text>
+  </g>
+</svg>

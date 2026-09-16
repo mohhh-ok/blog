@@ -5,8 +5,8 @@ Astro製の技術ブログ。GitHub Pagesにデプロイ。
 ## コマンド
 
 - パッケージマネージャ: **bun**（`bun install`, `bun run dev` など）
-- `bun run dev` — 開発サーバー起動
-- `bun run build` — ビルド
+- `bun run dev` — 開発サーバー起動。`dev` スクリプトは `env -u CLAUDECODE -u AI_AGENT -u CODEX_THREAD_ID -u CURSOR_TRACE_ID astro dev` にしてある。astro 7.2 は `am-i-vibing` でこれらの env を見つけると `astro dev` を自動で背景プロセス (親 launchd) にするため、前景で動かすために判定用 env を外している。背景で動いてしまったら `bun run astro dev stop` で止める
+- `bun run build` — ビルド。**dev サーバーが動いている間は回さない。** build が Vite の最適化済み依存 (`node_modules/.vite`) を作り直し、走行中の dev サーバー側で `504 (Outdated Optimize Dep)` が出て photoswipe 等の動的 import が壊れる (画像クリックの拡大が効かなくなる)。dev 走行中に build の確認が要るときは、`vite.cacheDir` を `/tmp` 配下に向けた一時設定を作り `bun run astro build --config <リポ相対パス>` で回す (`--config` は root からの相対で解決され、絶対パスは通らない。例: `--config ../../../../tmp/<dir>/astro.tmp.config.mjs`、中身は `import base from "/Users/.../blog/astro.config.mjs"; export default { ...base, vite: { ...base.vite, cacheDir: "/tmp/<dir>/vite-cache" } }`)
 - `bun run check` — 型チェック
 
 ## URL

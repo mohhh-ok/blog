@@ -6,7 +6,7 @@
   "version": "0.0.1",
   "scripts": {
     "preinstall": "npx only-allow bun",
-    "dev": "astro dev",
+    "dev": "env -u CLAUDECODE -u AI_AGENT -u CODEX_THREAD_ID -u CURSOR_TRACE_ID astro dev",
     "dev:stop": "astro dev stop",
     "build": "astro build",
     "preview": "astro preview",
