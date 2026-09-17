@@ -3,6 +3,7 @@ title: "路地裏あやかし合戦"
 personal: true
 draft: false
 startDate: 2026-06
+endDate: 2026-08
 techs: ["TypeScript", "Bun", "React", "SQLite", "Drizzle", "Tailwind", "Stripe", "Railway"]
 summary: 47都道府県の AI 妖怪が X 上で取組を繰り広げ、サイトで1:1チャットもできる参加型シミュレーションゲーム。
 heroImage: ./hero.webp
