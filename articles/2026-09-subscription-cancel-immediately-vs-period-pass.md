@@ -20,6 +20,7 @@ published: true
 - 解約の手間で守る道は法律で閉じられています。自動更新を売るなら「入るのと同じ簡単さで抜けられる」が前提です
 - 期間パスは、ユーザーが実際にやっている使い方に商品を合わせるだけなので、初回の購入ハードルは下がります。代わりに、更新のたびに買い直す手間が入るので、長期の売上は月額より下がる可能性があります
 - 実装は期間パスの方がはるかに軽いです。「有効期限付きのポイントを付与する」という一回払いの経路だけで済み、サブスクに付きものの更新イベントの同期・解約導線・返金時の二段処理が要りません
+- ただしこれは自前サーバーで有効期限を持つ構成の話です。ストア課金を RevenueCat に任せてサーバーを持たない構成だと、非更新型は有効期限を誰も管理してくれないので、逆に面倒になります
 
 ## 「登録してすぐキャンセル」はどれくらい広まっているのか
 
@@ -93,6 +94,25 @@ RevenueCat の 2026 年版レポート（[本編](https://www.revenuecat.com/sta
 - 「残り何日か」を画面に出す。サブスクなら更新日で済んでいた情報です
 
 ストア課金に持っていく場合も同じで、Apple の non-renewing subscription は更新通知が無く、購入 1 回＝付与 1 回でパックと同じ扱いです。自動更新型への後からの変換はできないので、別商品として最初から決めておく必要はあります（[RevenueCat Community](https://community.revenuecat.com/general-questions-7/ios-from-non-renewing-subscription-to-auto-renewable-subscription-premium-vesion-824)）。
+
+## 自前サーバーが無い構成でも楽なのか
+
+楽ではありません。この記事を X に流したところ、[Keita さん](https://x.com/ke_ulab)から「非更新型だと iCloud か自前サーバーで有効期限の管理をせねばならないので面倒では。いま RevenueCat に全乗っかりなので」という指摘をもらいました。上の「楽」は、自前サーバーに有効期限付きの台帳がある前提で書いていて、その前提を外すと立場が逆転します。
+
+理由は、Apple が non-renewing subscription の有効期限を持たないことです。Apple から届くのは購入日だけで、期限は開発者が決めて自分で管理します。RevenueCat のスタッフ回答も「有効期限を Apple から受け取れないので、エンタイトルメントに紐づけると恒久的なエンタイトルメントとして扱ってしまう。購入日を取って自分で判定してほしい」と書いています（[RevenueCat Community](https://community.revenuecat.com/tips-discussion-56/implementing-non-renewable-purchase-managing-entitlements-652)、[同](https://community.revenuecat.com/general-questions-7/how-to-handle-duration-of-non-renewing-subscription-4200)）。
+
+つまりサーバー無しの構成では、次のどれかを自分で書くことになります。
+
+- RevenueCat の CustomerInfo から購入日を取り、端末側で「購入日＋30 日」を毎回計算して判定する
+- 期限を iCloud のキーバリューやキーチェーンに置いて、機種変更でも引き継げるようにする
+- 結局サーバーを立てて期限を持つ
+
+自動更新型なら、この全部を Apple と RevenueCat がやってくれます。期限はストアが持ち、更新も失効も RevenueCat のエンタイトルメントに反映されるので、アプリは「有効か」を聞くだけで済みます。
+
+なので結論は構成で分かれます。
+
+- 自前サーバーにユーザーの台帳がある: 期間パスの方が軽い
+- アプリだけで RevenueCat に全部任せている: 自動更新型の方が軽い。期間パスを出すなら期限管理を自分で背負う分の工数を見ておく
 
 ## じゃあ何をすればいいのか
 
