@@ -69,6 +69,10 @@ const { Content } = await render(work);
       margin-bottom: 0.5em;
       color: rgb(var(--gray));
     }
+    .prose :global(img),
+    .hero-image :global(img) {
+      cursor: zoom-in;
+    }
     </style>
   </head>
 
@@ -118,5 +122,10 @@ const { Content } = await render(work);
       </article>
     </main>
     <Footer />
+    <script>
+    import { initImageLightbox } from "@/scripts/imageLightbox";
+
+    initImageLightbox();
+    </script>
   </body>
 </html>
