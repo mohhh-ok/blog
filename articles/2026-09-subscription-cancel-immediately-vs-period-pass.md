@@ -72,6 +72,8 @@ RevenueCat の 2026 年版レポート（[本編](https://www.revenuecat.com/sta
 
 ## 実装はどちらが楽なのか
 
+### 自前サーバーの場合
+
 期間パスの方が楽です。差は「自動更新に付いてくる状態の同期」を書くかどうかにあります。
 
 サブスクで書くもの:
@@ -95,11 +97,9 @@ RevenueCat の 2026 年版レポート（[本編](https://www.revenuecat.com/sta
 
 ストア課金に持っていく場合も同じで、Apple の non-renewing subscription は更新通知が無く、購入 1 回＝付与 1 回でパックと同じ扱いです。自動更新型への後からの変換はできないので、別商品として最初から決めておく必要はあります（[RevenueCat Community](https://community.revenuecat.com/general-questions-7/ios-from-non-renewing-subscription-to-auto-renewable-subscription-premium-vesion-824)）。
 
-## 自前サーバーが無い構成でも楽なのか
+### 自前サーバーが無い場合
 
-楽ではありません。この記事を X に流したところ、[Keita さん](https://x.com/ke_ulab)から「非更新型だと iCloud か自前サーバーで有効期限の管理をせねばならないので面倒では。いま RevenueCat に全乗っかりなので」という指摘をもらいました。上の「楽」は、自前サーバーに有効期限付きの台帳がある前提で書いていて、その前提を外すと立場が逆転します。
-
-理由は、Apple が non-renewing subscription の有効期限を持たないことです。Apple から届くのは購入日だけで、期限は開発者が決めて自分で管理します。RevenueCat のスタッフ回答も「有効期限を Apple から受け取れないので、エンタイトルメントに紐づけると恒久的なエンタイトルメントとして扱ってしまう。購入日を取って自分で判定してほしい」と書いています（[RevenueCat Community](https://community.revenuecat.com/tips-discussion-56/implementing-non-renewable-purchase-managing-entitlements-652)、[同](https://community.revenuecat.com/general-questions-7/how-to-handle-duration-of-non-renewing-subscription-4200)）。
+楽ではありません。理由は、Apple が non-renewing subscription の有効期限を持たないことです。Apple から届くのは購入日だけで、期限は開発者が決めて自分で管理します。RevenueCat のスタッフ回答も「有効期限を Apple から受け取れないので、エンタイトルメントに紐づけると恒久的なエンタイトルメントとして扱ってしまう。購入日を取って自分で判定してほしい」と書いています（[RevenueCat Community](https://community.revenuecat.com/tips-discussion-56/implementing-non-renewable-purchase-managing-entitlements-652)、[同](https://community.revenuecat.com/general-questions-7/how-to-handle-duration-of-non-renewing-subscription-4200)）。
 
 つまりサーバー無しの構成では、次のどれかを自分で書くことになります。
 
