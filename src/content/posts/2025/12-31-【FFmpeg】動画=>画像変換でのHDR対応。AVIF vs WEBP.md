@@ -1,7 +1,7 @@
 ---
 title: 【FFmpeg】動画=>画像変換でのHDR対応。AVIF vs WEBP
 pubDate: 2025-12-31
-categories: ["未分類"]
+categories: ["動画"]
 ---
 
 こんにちは、フリーランスエンジニアの太田雅昭です。

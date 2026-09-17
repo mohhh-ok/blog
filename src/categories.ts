@@ -29,6 +29,7 @@ export const CATEGORIES = [
   "C2PA",
   "Drizzle",
   "開発",
+  "動画",
 ] as const;
 
 export const CATEGORIES_TREE: CategoryTreeItem[] = [
@@ -60,7 +61,9 @@ export const CATEGORIES_TREE: CategoryTreeItem[] = [
   },
   {
     category: "開発",
-    children: [],
+    children: [
+      { category: "動画" },
+    ],
   },
   {
     category: "AI",

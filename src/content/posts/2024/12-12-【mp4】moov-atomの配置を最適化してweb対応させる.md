@@ -1,7 +1,7 @@
 ---
 title: "【MP4】moov atomの配置を最適化してweb対応させる"
 pubDate: 2024-12-12
-categories: ["開発"]
+categories: ["動画"]
 tags: []
 ---
 

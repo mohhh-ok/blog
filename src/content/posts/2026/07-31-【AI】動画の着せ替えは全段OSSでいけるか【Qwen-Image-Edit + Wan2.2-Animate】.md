@@ -1,7 +1,7 @@
 ---
 title: "【AI】動画の着せ替えは全段OSSでいけるか【Qwen-Image-Edit + Wan2.2-Animate】"
 pubDate: 2026-07-31
-categories: ["開発"]
+categories: ["AI"]
 ---
 
 こんにちは、フリーランスエンジニアの太田雅昭です。

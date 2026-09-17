@@ -1,7 +1,7 @@
 ---
 title: "【FFmpeg】ffprobeでHEICのサイズが違う件"
 pubDate: 2026-05-22
-categories: ["未分類"]
+categories: ["動画"]
 ---
 
 こんにちは、フリーランスエンジニアの太田雅昭です。

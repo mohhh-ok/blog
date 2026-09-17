@@ -1,7 +1,7 @@
 ---
 title: "【AI】3D clay動画+参照画像でv2v — fal.aiのKlingとWan VACE depthを試す"
 pubDate: 2026-08-02
-categories: ["開発"]
+categories: ["AI"]
 ---
 
 こんにちは、フリーランスエンジニアの太田雅昭です。この記事はほぼAIで、私は概要しか理解しておりません。

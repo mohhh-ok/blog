@@ -1,7 +1,7 @@
 ---
 title: "【HTML】Safariはvideoをキャッシュしない"
 pubDate: 2024-12-19
-categories: ["未分類"]
+categories: ["動画"]
 tags: []
 ---
 

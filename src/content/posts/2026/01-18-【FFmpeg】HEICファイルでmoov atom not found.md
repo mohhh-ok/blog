@@ -1,7 +1,7 @@
 ---
 title: "【FFmpeg】HEICファイルでmoov atom not found"
 pubDate: 2026-01-18
-categories: ["未分類"]
+categories: ["動画"]
 ---
 
 こんにちは、フリーランスエンジニアの太田雅昭です。
