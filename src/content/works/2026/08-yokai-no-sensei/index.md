@@ -1,5 +1,5 @@
 ---
-title: "Yokai no Sensei（妖怪の先生）"
+title: "Kotoyokai（旧 Yokai no Sensei）"
 personal: true
 startDate: 2026-08
 techs: ["Bun", "TypeScript", "React", "SQLite", "Drizzle", "Tailwind", "Stripe", "Railway"]
@@ -7,7 +7,9 @@ summary: 妖怪キャラクターが英語話者に日本語を教える会話�
 heroImage: ./hero.webp
 ---
 
-<https://yokai-no-sensei.com>
+<https://kotoyokai.com>
+
+2026-09-17 に Yokai no Sensei から Kotoyokai に改名。旧ドメインは新ドメインへリダイレクト。
 
 TikTok: <https://www.tiktok.com/@yokai_no_sensei>
 
