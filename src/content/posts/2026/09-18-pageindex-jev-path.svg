@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" font-family="Hiragino Sans, Noto Sans JP, sans-serif">
+  <rect width="1200" height="420" fill="#f2f0ee"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3b2922"/></marker>
+    <marker id="aA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#bb5537"/></marker>
+  </defs>
+  <text x="40" y="48" font-size="24" font-weight="700" fill="#19120f">1 問が木をどう降りたか（実物）</text>
+  <text x="40" y="76" font-size="14" fill="#3b2922">質問: How do I generate the CloudflareBindings interface in a Hono Vite project?  各段で枝を 3 つ残す。確率は Choice が選択肢に配った値、確認は Noul の値</text>
+
+  <!-- 列見出し -->
+  <g font-size="13" font-weight="700" fill="#3b2922">
+    <text x="40" y="118">1. 降りる: サイト（4 択）</text>
+    <text x="330" y="118">1. 降りる: ページ（サイトごとに 40〜89 択）</text>
+    <text x="700" y="118">1. 降りる: H2 以下</text>
+    <text x="960" y="118">2. 選ぶ → 3. 確認する</text>
+  </g>
+  <line x1="40" y1="126" x2="1160" y2="126" stroke="#e1dcd8"/>
+
+  <!-- 行 1: hono（主役） -->
+  <rect x="40" y="150" width="250" height="52" rx="8" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <text x="56" y="172" font-size="14" font-weight="700" fill="#bb5537">hono.dev</text>
+  <text x="56" y="192" font-size="12" fill="#3b2922">確率 0.96。次の段は 87 ページから選ぶ</text>
+  <line x1="290" y1="176" x2="330" y2="176" stroke="#bb5537" stroke-width="2" marker-end="url(#aA)"/>
+  <rect x="332" y="150" width="330" height="52" rx="8" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <text x="348" y="172" font-size="14" font-weight="700" fill="#bb5537">Cloudflare Workers + Vite</text>
+  <text x="348" y="192" font-size="12" fill="#3b2922">確率 1.00。2 位以下は全部 0.00</text>
+  <line x1="662" y1="176" x2="700" y2="176" stroke="#bb5537" stroke-width="2" marker-end="url(#aA)"/>
+  <rect x="702" y="150" width="220" height="52" rx="8" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <text x="718" y="172" font-size="14" font-weight="700" fill="#bb5537">Bindings</text>
+  <text x="718" y="192" font-size="12" fill="#3b2922">確率 1.00。6 択。ここが一番下</text>
+  <line x1="922" y1="176" x2="958" y2="176" stroke="#bb5537" stroke-width="2" marker-end="url(#aA)"/>
+  <rect x="960" y="150" width="200" height="52" rx="8" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <text x="976" y="172" font-size="13" font-weight="700" fill="#19120f">段落 0.54 → 確認 0.52</text>
+  <text x="976" y="192" font-size="12" fill="#3b2922">「cf-typegen を実行」の段落</text>
+
+  <!-- 行 2: vite（残ったが空振り） -->
+  <rect x="40" y="230" width="250" height="52" rx="8" fill="#ffffff" stroke="#3b2922"/>
+  <text x="56" y="252" font-size="14" font-weight="700" fill="#3b2922">vite.dev</text>
+  <text x="56" y="272" font-size="12" fill="#3b2922">確率 0.01。3 位でも残る</text>
+  <line x1="290" y1="256" x2="330" y2="256" stroke="#3b2922" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="332" y="230" width="330" height="52" rx="8" fill="#ffffff" stroke="#3b2922"/>
+  <text x="348" y="252" font-size="14" font-weight="700" fill="#3b2922">Deploying a Static Site</text>
+  <text x="348" y="272" font-size="12" fill="#3b2922">確率 0.67。「どれにも無い」は 0.19</text>
+  <line x1="662" y1="256" x2="700" y2="256" stroke="#3b2922" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="702" y="230" width="220" height="52" rx="8" fill="#ffffff" stroke="#3b2922"/>
+  <text x="718" y="252" font-size="14" font-weight="700" fill="#3b2922">Workers</text>
+  <text x="718" y="272" font-size="12" fill="#3b2922">確率 0.96。Cloudflare 0.76 の下</text>
+  <line x1="922" y1="256" x2="958" y2="256" stroke="#3b2922" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="960" y="230" width="200" height="52" rx="8" fill="#ffffff" stroke="#3b2922"/>
+  <text x="976" y="252" font-size="13" font-weight="700" fill="#19120f">段落なし → 確認 0.03</text>
+  <text x="976" y="272" font-size="12" fill="#3b2922">ここで落ちる</text>
+
+  <!-- 行 3: elysia（none で止まる） -->
+  <rect x="40" y="310" width="250" height="52" rx="8" fill="#ffffff" stroke="#3b2922"/>
+  <text x="56" y="332" font-size="14" font-weight="700" fill="#3b2922">elysiajs.com</text>
+  <text x="56" y="352" font-size="12" fill="#3b2922">確率 0.01。「どれにも無い」は 0.02</text>
+  <line x1="290" y1="336" x2="330" y2="336" stroke="#3b2922" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="332" y="310" width="330" height="52" rx="8" fill="#ffffff" stroke="#3b2922" stroke-dasharray="6 4"/>
+  <text x="348" y="332" font-size="14" font-weight="700" fill="#3b2922">「どれにも無い」</text>
+  <text x="348" y="352" font-size="12" fill="#3b2922">確率 0.72。0.6 を超えたので捨てる</text>
+
+  <text x="40" y="400" font-size="12" fill="#3b2922">往復 7 回、5.8 秒。残った枝は Hono の 1 本で、確認（Noul）0.52 が付いた「cf-typegen を実行」の段落が木の答え</text>
+</svg>

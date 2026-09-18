@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" font-family="Hiragino Sans, Noto Sans JP, sans-serif">
+  <rect width="1200" height="640" fill="#f2f0ee"/>
+  <text x="40" y="48" font-size="24" font-weight="700" fill="#19120f">途中の節に添える文: 見出し + 冒頭 と 目録（同じページの実物）</text>
+  <text x="40" y="76" font-size="14" fill="#3b2922">Hono の「Cloudflare Workers + Vite」ページ。木を降りるとき、Jev はこの文だけを見て「この下に答えがあるか」を判定する</text>
+
+  <!-- 左: 見出し + 冒頭 -->
+  <rect x="40" y="104" width="360" height="380" rx="12" fill="#ffffff" stroke="#3b2922" stroke-width="2"/>
+  <text x="60" y="136" font-size="17" font-weight="700" fill="#3b2922">見出し + 本文冒頭 160 字</text>
+  <text x="60" y="158" font-size="12" fill="#3b2922">前処理なし。ページ 1 件あたり約 50 トークン</text>
+  <g font-size="13" fill="#19120f">
+    <text x="60" y="196" font-weight="700">Cloudflare Workers + Vite</text>
+    <text x="60" y="222">You can build a full-stack application</text>
+    <text x="60" y="242">on Cloudflare Workers with Vite using</text>
+    <text x="60" y="262">the @cloudflare/vite-plugin</text>
+  </g>
+  <rect x="60" y="300" width="320" height="160" rx="8" fill="#f9f5f2" stroke="#e1dcd8"/>
+  <text x="76" y="326" font-size="13" font-weight="700" fill="#3b2922">この文に無いもの</text>
+  <text x="76" y="350" font-size="12" fill="#3b2922">・cf-typegen / CloudflareBindings の語</text>
+  <text x="76" y="370" font-size="12" fill="#3b2922">・wrangler.jsonc、vars、KV、D1</text>
+  <text x="76" y="390" font-size="12" fill="#3b2922">・デプロイ手順、ディレクトリ構成</text>
+  <text x="76" y="410" font-size="12" fill="#3b2922">・このページが答えられる質問</text>
+  <text x="76" y="440" font-size="12" fill="#3b2922">→ 質問に Vite・Cloudflare の語が無いと降りにくい</text>
+
+  <!-- 右: 目録 -->
+  <rect x="428" y="104" width="732" height="380" rx="12" fill="#ffffff" stroke="#bb5537" stroke-width="2"/>
+  <text x="448" y="136" font-size="17" font-weight="700" fill="#bb5537">目録</text>
+  <text x="448" y="158" font-size="12" fill="#3b2922">Haiku が本文から書いた棚卸し。ページ 1 件あたり約 250 トークン。文章としての読みやすさは求めない</text>
+  <g font-size="12" fill="#19120f">
+    <text x="448" y="190">Full-stack application on Cloudflare Workers with Vite using @cloudflare/vite-plugin. Recommended way</text>
+    <text x="448" y="209">for new Cloudflare projects. Features: fast Vite dev server, server-side rendering with Hono JSX,</text>
+    <text x="448" y="228">client-side scripts bundled by Vite. Setup: npm create hono@latest my-app, select cloudflare-workers+vite</text>
+    <text x="448" y="247">template. Install: npm i. Directory: public/ (static), src/index.tsx (server entry), src/renderer.tsx</text>
+    <text x="448" y="266">(layout), <tspan font-weight="700" fill="#bb5537">vite.config.ts, wrangler.jsonc</tspan>. Configuration: vite.config.ts with cloudflare() and ssrPlugin().</text>
+    <text x="448" y="285">Hello World: Hono app with c.render() JSX support. Renderer: jsxRenderer from hono/jsx-renderer with</text>
+    <text x="448" y="304">ViteClient, Link components. Run: npm run dev, access http://localhost:5173. Deploy: npm run deploy</text>
+    <text x="448" y="323">builds with Vite, publishes with Wrangler. Bindings: configure in wrangler.jsonc (vars, KV, D1).</text>
+    <text x="448" y="342"><tspan font-weight="700" fill="#bb5537">Type generation: npm run cf-typegen creates CloudflareBindings interface.</tspan> Client-side: Script</text>
+    <text x="448" y="361">component from vite-ssr-components/hono pointing to client entry. <tspan font-weight="700" fill="#bb5537">Questions: How do I set up Cloudflare</tspan></text>
+    <text x="448" y="380"><tspan font-weight="700" fill="#bb5537">Workers + Vite? How do I configure bindings? How do I deploy? How do I add client scripts?</tspan></text>
+  </g>
+  <rect x="448" y="404" width="692" height="60" rx="8" fill="#f9f5f2" stroke="#e1dcd8"/>
+  <text x="464" y="428" font-size="12" fill="#3b2922">目録に書かせたもの: 扱う対象と手順 / 識別子（ファイル名・コマンド・型名）/ 既定値や URL / 答えられる質問</text>
+  <text x="464" y="448" font-size="12" fill="#3b2922">質問の「CloudflareBindings」「generate」が目録の語と重なるので、段 1 でこのページが 1.00 になる</text>
+
+  <!-- 下: 注意 -->
+  <rect x="40" y="508" width="1120" height="96" rx="12" fill="#19120f"/>
+  <text x="64" y="540" font-size="15" font-weight="700" fill="#f0b9a4">それでも消える文字列はある。エラーメッセージの全文や、目録に載らなかったオプション名</text>
+  <text x="64" y="566" font-size="13" fill="#f0b9a4">木探索 + 全文検索で、目録を外しても 4 ポイントしか落ちず（90%）、全文検索を外すと 15 ポイント落ちた（79%）。</text>
+  <text x="64" y="588" font-size="13" fill="#f0b9a4">目録だけに頼らず、本文の文字一致で拾った節も加えるのが安全側</text>
+</svg>
