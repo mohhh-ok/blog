@@ -11,7 +11,8 @@ heroImage: ./hero.webp
 
 2026-09-17 に Yokai no Sensei から Kotoyokai に改名。旧ドメインは新ドメインへリダイレクト。
 
-TikTok: <https://www.tiktok.com/@yokai_no_sensei> / YouTube: <https://www.youtube.com/@yokai_no_sensei>
+TikTok: <https://www.tiktok.com/@yokai_no_sensei>\
+YouTube: <https://www.youtube.com/@yokai_no_sensei>
 
 ## 概要
 

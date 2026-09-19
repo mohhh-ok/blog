@@ -2,6 +2,7 @@
 title: "Tomarigi (止まり木)"
 personal: true
 startDate: 2026-07
+endDate: 2026-08
 techs: ["WXT", "React", "TypeScript", "IndexedDB", "Web Audio", "Document Picture-in-Picture", "File System Access API"]
 summary: AI エージェントのセッションを見守る Chrome 拡張。止まり木にとまる鳥たちが、各セッションの状態を仕草で示す。
 heroImage: ./hero.webp
