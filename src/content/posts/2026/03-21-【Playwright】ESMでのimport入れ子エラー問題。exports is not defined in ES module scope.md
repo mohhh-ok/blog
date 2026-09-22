@@ -4,7 +4,7 @@ pubDate: 2026-03-21
 categories: ["TypeScript"]
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## Playwright
 

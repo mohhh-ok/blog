@@ -4,7 +4,7 @@ pubDate: 2026-08-08
 categories: ["AI"]
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 2026年8月にOSS化された([Apache 2.0](https://github.com/cloudflare/cloudflare-os/blob/main/LICENSE))Cloudflareの社内AIワークスペース「Cloudflare OS」を手元でクローンして触ってみました。ほぼAI任せで実装からテストまで行い、この記事もAIの書いたものを私が微修正しています。
 

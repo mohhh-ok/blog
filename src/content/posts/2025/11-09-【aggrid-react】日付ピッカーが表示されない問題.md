@@ -5,7 +5,7 @@ categories: ["React"]
 tags: []
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。WordPressからNextra移行を真剣に考えてます。
+こんにちは、フリーランスエンジニアのmohです。WordPressからNextra移行を真剣に考えてます。
 
 ## 環境
 

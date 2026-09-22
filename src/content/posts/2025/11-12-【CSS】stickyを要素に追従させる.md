@@ -5,7 +5,7 @@ categories: ["HTML"]
 ---
 
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## sticky
 
@@ -17,7 +17,7 @@ stickyはスクロールに追従させるときに使用します。「粘着�
 
 <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="ByKNPyQ" data-pen-title="Untitled" data-user="MasaakiOta928" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
       <span>See the Pen <a href="https://codepen.io/MasaakiOta928/pen/ByKNPyQ">
-  Untitled</a> by 太田雅昭 (<a href="https://codepen.io/MasaakiOta928">@MasaakiOta928</a>)
+  Untitled</a> by moh (<a href="https://codepen.io/MasaakiOta928">@MasaakiOta928</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
       </p>
       <script async src="https://public.codepenassets.com/embed/index.js"></script>

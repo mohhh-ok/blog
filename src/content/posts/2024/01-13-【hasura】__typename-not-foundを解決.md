@@ -5,7 +5,7 @@ categories: ["Database"]
 tags: []
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## \_\_typename not found
 

@@ -5,7 +5,7 @@ categories: ["React"]
 tags: []
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## Tanstack Formでの複数値でのValidation
 

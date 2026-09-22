@@ -5,7 +5,7 @@ categories: ["TypeScript"]
 tags: []
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## CORS, WebSocket, 色々エラー
 

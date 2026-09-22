@@ -5,7 +5,7 @@ categories: ["Google Cloud"]
 tags: []
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## Google Cloudの請求周り
 

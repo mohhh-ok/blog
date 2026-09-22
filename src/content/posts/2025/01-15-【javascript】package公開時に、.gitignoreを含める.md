@@ -5,7 +5,7 @@ categories: ["TypeScript"]
 tags: []
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 今回、以下のpackage作成時に、.gitignoreが含まれない問題がありました。
 

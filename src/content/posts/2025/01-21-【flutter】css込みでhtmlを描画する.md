@@ -5,7 +5,7 @@ categories: ["Flutter"]
 tags: []
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## FlutterでのHTML表示まわり
 

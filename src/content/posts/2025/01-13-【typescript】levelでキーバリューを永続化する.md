@@ -5,7 +5,7 @@ categories: ["TypeScript"]
 tags: []
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## level
 

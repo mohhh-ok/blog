@@ -5,7 +5,7 @@ updatedDate: 2026-01-17
 categories: ["TypeScript"]
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## CASLとは
 

@@ -5,7 +5,7 @@ categories: ["Google Cloud", "Python"]
 tags: []
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## Cloud Runでの関数デプロイ
 

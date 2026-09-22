@@ -6,7 +6,7 @@ categories: ["Google Cloud"]
 
 ![](http://35.221.87.155/wp-content/uploads/2023/03/server-2546330_640.jpg)
 
-こんにちは。フリーランス太田雅昭です。
+こんにちは。フリーランスmohです。
 
 今回GCPの無料枠内でWordPressを立ち上げましたので、備忘録も兼ねてメモを残させて頂きます。
 

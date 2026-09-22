@@ -4,7 +4,7 @@ pubDate: 2026-07-04
 categories: ["AI"]
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 「RunPod のほうが cold start 早いと噂だが本当か」を確かめるべく、**同一 workload** で **RunPod Serverless (Network Volume 構成)** と **Cloud Run GPU** を実測しました。
 

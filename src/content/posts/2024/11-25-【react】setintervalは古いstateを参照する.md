@@ -5,7 +5,7 @@ categories: ["React"]
 tags: []
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## setIntervalは古いStateを参照する
 

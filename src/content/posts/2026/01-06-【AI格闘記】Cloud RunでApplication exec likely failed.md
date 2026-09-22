@@ -5,7 +5,7 @@ categories: ["AI"]
 description: Cloud Runへのデプロイで発生した「Application exec likely failed」エラーと、AIが生成したコードに潜む落とし穴の記録
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## 背景
 

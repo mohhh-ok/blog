@@ -5,7 +5,7 @@ categories: ["PHP"]
 tags: []
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## PHPのarray\_filter
 

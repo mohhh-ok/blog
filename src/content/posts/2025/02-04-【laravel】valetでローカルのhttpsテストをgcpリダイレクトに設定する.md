@@ -7,7 +7,7 @@ tags: []
 
 https://www.masaakiota.net/2025/02/11/%e3%80%90laravel%e3%80%91caddy%e3%81%a7%e3%83%ad%e3%83%bc%e3%82%ab%e3%83%abhttps%e9%96%8b%e7%99%ba%e3%81%99%e3%82%8b/
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## Valet
 

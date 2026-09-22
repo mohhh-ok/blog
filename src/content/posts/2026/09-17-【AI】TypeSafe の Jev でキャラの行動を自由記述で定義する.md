@@ -4,7 +4,7 @@ pubDate: 2026-09-17
 categories: ["AI"]
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。この記事はほとんどAIが書いたものを、私が加筆修正しています。検証不十分な部分もあるかと思いますが、ご容赦ください。ご指摘等ございましたら、Github issueか、Xでお願いいたします。
+こんにちは、フリーランスエンジニアのmohです。この記事はほとんどAIが書いたものを、私が加筆修正しています。検証不十分な部分もあるかと思いますが、ご容赦ください。ご指摘等ございましたら、Github issueか、Xでお願いいたします。
 
 [TypeSafe](https://typesafe.ai) の Jev というモデルを、ゲームのキャラクターの性格付けに使えないか試しました。コードは [blog-examples](https://github.com/mohhh-ok/blog-examples/tree/main/2026/09-17-jev-character) に置いています。
 

@@ -135,7 +135,7 @@ export const GET: APIRoute = async ({ props, params }) => {
                       fontSize: "24px",
                       color: "#a0a0a0",
                     },
-                    children: "太田雅昭",
+                    children: "moh",
                   },
                 },
               ],

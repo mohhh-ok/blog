@@ -4,7 +4,7 @@ pubDate: 2025-12-23
 categories: ["MUI"]
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## Floating Label
 

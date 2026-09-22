@@ -5,7 +5,7 @@ categories: ["TypeScript"]
 tags: []
 ---
 
-こんにちは、フリーランスエンジニア太田雅昭です。
+こんにちは、フリーランスエンジニアmohです。
 
 ## TypeScriptの型定義
 

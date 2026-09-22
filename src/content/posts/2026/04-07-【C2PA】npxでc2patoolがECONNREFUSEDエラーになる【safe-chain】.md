@@ -4,7 +4,7 @@ pubDate: 2026-04-07
 categories: ["C2PA"]
 ---
 
-こんにちは、フリーランスエンジニアの太田雅昭です。
+こんにちは、フリーランスエンジニアのmohです。
 
 ## c2patoolがECONNREFUSEDエラー
 
