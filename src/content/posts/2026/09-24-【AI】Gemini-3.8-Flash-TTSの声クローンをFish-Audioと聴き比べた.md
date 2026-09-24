@@ -19,7 +19,7 @@ categories: ["TTS"]
 
 ## 試した条件
 
-参照音声は自分の声を iPhone12 のボイスメモで 25.7 秒録ったものです。台本を少し詰まりながら読んでいますが、実際の利用者の録音もそういうものなので、そのまま使いました。
+参照音声は自分の声を iPhone12 のボイスメモで 25.7 秒録ったものです。台本を少し詰まりながら読んでいますが、実際の利用者の録音もそういうものなので、そのまま使いました。台本はAI製で、私は喫茶店で本を読む趣味はありません。
 
 <audio controls src="https://raw.githubusercontent.com/mohhh-ok/blog-examples/main/2026/09-24-gemini-tts-vs-fish-clone/audio/ref-source.mp3"></audio>
 
