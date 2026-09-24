@@ -41,6 +41,6 @@
     "rehype-external-links": "^3.0.0",
     "tsx": "^4.23.15",
     "turndown": "^7.2.4",
-    "zenn-cli": "^0.5.4"
+    "zenn-cli": "0.5.2"
   }
 }
