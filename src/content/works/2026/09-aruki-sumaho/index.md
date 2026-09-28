@@ -2,6 +2,7 @@
 title: "あるきスマホ"
 personal: true
 startDate: 2026-09
+endDate: 2026-09
 techs: ["Bun", "TypeScript", "Canvas", "Web Audio", "fal.ai", "Railway"]
 summary: 歩きスマホをしながら車や人を避けて歩くブラウザゲーム。メッセージや SNS の通知が来ると、連打で返信し終えるまで顔を上げられない。
 heroImage: ./hero.webp
