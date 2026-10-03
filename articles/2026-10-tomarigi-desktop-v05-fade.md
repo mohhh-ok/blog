@@ -3,7 +3,7 @@ title: "複数AIの監視ツールTomarigiに透明モードを入れた【Claud
 emoji: "🐦"
 type: "tech"
 topics: ["claudecode", "codex", "macos", "tauri", "ai"]
-published: false
+published: true
 ---
 
 Claude Code と Codex のセッションを鳥の姿で見守る macOS アプリ「Tomarigi（止まり木）」を、v0.5.0 に更新しました。アプリの紹介は[公開時の記事](https://zenn.dev/mohhh_ok/articles/2026-09-tomarigi-desktop-agent-birds)にあります。
