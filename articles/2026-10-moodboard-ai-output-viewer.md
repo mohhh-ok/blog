@@ -6,7 +6,7 @@ topics: ["claudecode", "ai", "macos", "bun", "agentskills"]
 published: true
 ---
 
-Claude Code などのエージェントが生成した画像・動画・音声を、1 つの窓に並べて見比べる macOS 用のビューア「moodboard」を公開しました。MIT のオープンソースです。
+Claude Code などのエージェントが生成した画像・動画・音声を、1 つの窓に並べて見比べる macOS 用のビューア「moodboard」を公開しています。MIT のオープンソースです。
 
 - GitHub: <https://github.com/mohhh-ok/moodboard>
 

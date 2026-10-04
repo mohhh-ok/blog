@@ -4,9 +4,9 @@ pubDate: 2026-10-04
 categories: ["AI"]
 ---
 
-こんにちは、フリーランスエンジニアのmohです。この記事はほとんどAIが書いたものを、私が加筆修正しています。検証不十分な部分もあるかと思いますが、ご容赦ください。ご指摘等ございましたら、Github issueか、Xでお願いいたします。
+こんにちは、フリーランスエンジニアのmohです。
 
-Claude Code などのエージェントが生成した画像・動画・音声を、1 つの窓に並べて見比べる macOS 用のビューア「moodboard」を公開しました。MIT のオープンソースです。
+Claude Code などのエージェントが生成した画像・動画・音声を、1 つの窓に並べて見比べる macOS 用のビューア「moodboard」を公開しています。MIT のオープンソースです。
 
 - GitHub: <https://github.com/mohhh-ok/moodboard>
 
