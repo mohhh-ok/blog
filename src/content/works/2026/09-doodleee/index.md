@@ -2,6 +2,7 @@
 title: "doodleee"
 personal: true
 startDate: 2026-09
+endDate: 2026-09
 techs: ["Bun", "TypeScript", "React", "TanStack Start", "Rapier", "Three.js", "SQLite", "Drizzle", "Railway"]
 summary: Canvas に描いた落書きが物理シミュレーションで走り出し、オンラインの相手と速さを競うゲーム。
 heroImage: ./hero.webp
