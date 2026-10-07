@@ -22,7 +22,7 @@ categories: ["TTS"]
 - Irodori-TTS v4.1-Small: RunPod の RTX 4090 で動かしました。設定はモデルカードの既定 (fp32、40 ステップ)。参照音声を 1 本渡し、参照の書き起こしは渡しません (Irodori は使わない)
 - Fish Audio `s2.1-pro`: API の zero-shot clone で、参照音声と書き起こしを毎回送りました
 - 参照音声: [08-26 の記事](/blog/posts/2026/08-26-aifish-audioのzero-shot-voice-cloneは毎回同じ声が出るのか話者embeddingで測定/)から使っている自分の声 10 秒。声の似方だけは、09-24 の記事の 26 秒の録音でも試しました。Irodori のモデルカードは参照を 30 秒以上にするよう勧めているので、10 秒は Irodori に不利な条件です
-- 読みの文: [JKYB-Parakeet](https://huggingface.co/datasets/Parakeet-Inc/joyo-kanji-yomi-benchmark-parakeet) (常用漢字の読みのベンチマーク、13,536 文) から無作為に選んだ 100 文。各文に判定対象の漢字と正解の読みが付いています。ほかに数字・英字の自作 10 文と、08-27 で使った誤読しやすい 5 文
+- 読みの文: [Joyo Kanji Yomi Benchmark: Parakeet Edition](https://huggingface.co/datasets/Parakeet-Inc/joyo-kanji-yomi-benchmark-parakeet) (以下 JKYB-Parakeet。常用漢字の読みのベンチマーク、13,536 文。元のベンチマークは SB Intuitions の [Sarashina2.2-TTS の論文](https://arxiv.org/abs/2606.25369)) から無作為に選んだ 100 文。各文に判定対象の漢字と正解の読みが付いています。ほかに数字・英字の自作 10 文と、08-27 で使った誤読しやすい 5 文
 - 声の似方: 「本日は晴天なり。マイクのテスト中です。この音声は、ゼロショット音声合成のサンプルです。」を 5 回生成し、話者の特徴量 (resemblyzer) で参照音声との類似度を測りました。08-26・08-27 と同じ文・同じ指標です
 
 読みの判定は次の順で行いました。
@@ -151,6 +151,7 @@ RTX 4090 での生成は、音声 1 秒あたり 0.11〜0.40 秒 (RTF、平均 0
 - [計測コード・結果 (blog-examples)](https://github.com/mohhh-ok/blog-examples/tree/main/2026/10-07-irodori-tts-japanese)
 - [Irodori-TTS v4.1-Small (Hugging Face)](https://huggingface.co/Aratako/Irodori-TTS-v4.1-Small)
 - [Irodori-TTS (GitHub)](https://github.com/Aratako/Irodori-TTS)
-- [JKYB-Parakeet (Hugging Face)](https://huggingface.co/datasets/Parakeet-Inc/joyo-kanji-yomi-benchmark-parakeet)
+- [Joyo Kanji Yomi Benchmark: Parakeet Edition (Hugging Face)](https://huggingface.co/datasets/Parakeet-Inc/joyo-kanji-yomi-benchmark-parakeet)
+- [Sarashina2.2-TTS: Tackling Kanji Polyphony in Japanese Speech Generation via Data Scaling and Targeted Data Synthesis (arXiv 2606.25369)](https://arxiv.org/abs/2606.25369)
 - [IndexTTS-2.5 の記事](/blog/posts/2026/08-27-aiindextts-25の日本語読み指定とvoice-clone一貫性をrunpodで検証かな強制seed固定/)
 - [Gemini 3.8 Flash TTS と Fish Audio の記事](/blog/posts/2026/09-24-aigemini-38-flash-ttsの声クローンをfish-audioと聴き比べた/)
