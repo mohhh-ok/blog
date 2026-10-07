@@ -67,7 +67,7 @@ Fish の誤りは「シタフ」「カズヨヤ」のように、漢字を別の
 
 読みの差が出た文を中心に 5 組載せます。上が Irodori、下が Fish です。
 
-なお、Zenn では音声のインライン再生ができないため、音声はリンク先 (別タブ) での再生になります。インラインで聴き比べたい場合は[ブログ版](https://mohhh-ok.github.io/blog/posts/2026/10-07-airodori-tts-v41%E3%81%AE%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%AA%AD%E3%81%BF%E3%81%A8%E5%A3%B0%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%B3%E3%82%92fish-audio%E3%81%A8%E6%AF%94%E3%81%B9%E3%81%9F/)をどうぞ。
+なお、Zenn では音声のインライン再生ができないため、音声はリンク先 (別タブ) での再生になります。インラインで聴き比べたい場合は[ブログ版](https://mohhh-ok.github.io/blog/posts/2026/10-07-aiirodori-tts-v41%E3%81%AE%E6%97%A5%E6%9C%AC%E8%AA%9E%E8%AA%AD%E3%81%BF%E3%81%A8%E5%A3%B0%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%B3%E3%82%92fish-audio%E3%81%A8%E6%AF%94%E3%81%B9%E3%81%9F/)をどうぞ。
 
 声の似方を測った文:
 
