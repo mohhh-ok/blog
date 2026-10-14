@@ -3,3 +3,6 @@ e73ce2dad052dc153c998af6243c9be414085ba3:src/content/blog/2025/02-11-【chrome�
 e73ce2dad052dc153c998af6243c9be414085ba3:src/content/blog/2025/02-11-【chrome拡張】開発インストールでデータを引き継ぐ.md:generic-api-key:40
 e73ce2dad052dc153c998af6243c9be414085ba3:transport/WordPress.2025-11-10.xml:generic-api-key:25911
 e73ce2dad052dc153c998af6243c9be414085ba3:transport/WordPress.2025-11-10.xml:private-key:25892
+# 2025-11 WordPress 移行コミットのサンプルコード。password は変数 (DbPassword) の参照で実値ではない (2026-10-14 確認)
+e73ce2dad052dc153c998af6243c9be414085ba3:src/content/blog/2024/02-28-【hasura】cloud-runでsubscriptionは使えるのか検証してみた.md:generic-password:48
+e73ce2dad052dc153c998af6243c9be414085ba3:transport/WordPress.2025-11-10.xml:generic-password:11007
