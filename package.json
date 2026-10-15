@@ -18,30 +18,30 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
-    "@astrojs/markdown-remark": "^7.3.1",
-    "@astrojs/mdx": "^8.0.2",
+    "@astrojs/markdown-remark": "^7.3.2",
+    "@astrojs/mdx": "^8.0.3",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.3.5",
+    "astro": "^7.3.8",
     "astro-pagefind": "^2.0.0",
     "dayjs": "^1.11.23",
     "photoswipe": "^5.4.4",
     "remeda": "^2.51.0",
-    "satori": "^0.35.0",
+    "satori": "^0.47.1",
     "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2"
   },
   "devDependencies": {
-    "@types/node": "^26.6.4",
+    "@types/node": "^26.6.5",
     "@types/turndown": "^5.0.6",
     "fast-xml-parser": "^5.11.2",
     "only-allow": "^1.2.2",
     "rehype-external-links": "^3.0.0",
     "tsx": "^4.23.15",
     "turndown": "^7.2.4",
-    "zenn-cli": "0.5.4"
+    "zenn-cli": "0.5.6"
   }
 }
