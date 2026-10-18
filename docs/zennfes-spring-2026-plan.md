@@ -56,6 +56,12 @@
   - スラッグ案: `claude-code-remote-tasks`
   - 注: 応募済みの物語サイト記事とネタが近いため最低優先
 
+## Zenn 再試行待ち
+
+24 時間に新規 1 本の上限で弾かれ、まだ公開されていない記事。再試行してよい時刻を過ぎたら、空コミット（`git commit --allow-empty -m "zenn: retry"`）を push し、記事一覧の API（`curl -s "https://zenn.dev/api/articles?username=mohhh_ok&order=latest&count=5"`）に slug が載ったかで公開を確認する。公開を確認したらこの行を消す。
+
+- `articles/2026-10-sarashina3-mini-vs-opus-55-japanese.md`: 2026-10-19 13:27 JST 以降に再試行してよい（同じデプロイで公開された `2026-10-photo-avatar-talking-video-fal-4-models` の `published_at` 2026-10-18 13:26:44 から 24 時間後）。2026-10-18 13:26 の push で弾かれ、13:30 時点で一覧に無いことを確認。次にこの記録を見たセッションが再試行する
+
 ## Zenn化の手順（毎回共通）
 
 CLAUDE.md「Zenn連携」のルールに従う。要点:
