@@ -20,10 +20,11 @@ const {
   slug,
   draft,
   body,
+  lang,
 } = Astro.props;
 ---
 
-<html lang="ja">
+<html lang={lang}>
   <head>
     <BaseHead title={title} description={description ?? ""} slug={slug} />
     <style>
