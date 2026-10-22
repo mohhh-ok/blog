@@ -31,7 +31,6 @@ export default defineConfig({
   },
 
   vite: {
-    // @ts-expect-error: @tailwindcss/vite still ships Vite v8 plugin types while Astro v6 uses Vite v7
     plugins: [tailwindcss()],
   },
 });
