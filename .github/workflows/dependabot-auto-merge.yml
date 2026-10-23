@@ -1,25 +1,47 @@
 name: Dependabot auto-merge
 
-on: pull_request
+# GITHUB_TOKEN で行ったマージは push のイベントを起こさず、Deploy が走らない。
+# そのため --auto に任せず、CI の完了を受けてここでマージし、続けて Deploy を workflow_dispatch で起こす。
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
 
 permissions:
+  actions: write
   contents: write
   pull-requests: write
 
 jobs:
-  auto-merge:
-    if: github.actor == 'dependabot[bot]'
+  merge:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch Dependabot metadata
-        id: meta
-        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Enable auto-merge for minor/patch updates
-        if: steps.meta.outputs.update-type == 'version-update:semver-minor' || steps.meta.outputs.update-type == 'version-update:semver-patch'
-        run: gh pr merge --auto --squash "$PR_URL"
+      - name: Merge minor/patch updates and deploy
         env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+          # CI が通ったコミットを head に持つ、dependabot が作った open な PR（CI を起こしたのが誰かは問わない）
+          pr=$(gh api "repos/$REPO/commits/$HEAD_SHA/pulls" \
+            --jq '.[] | select(.state == "open" and .user.login == "dependabot[bot]" and .head.sha == $ENV.HEAD_SHA) | .number' | head -n1)
+          if [ -z "$pr" ]; then
+            echo "対象の PR が無い（head が進んだか、dependabot の PR でない）"
+            exit 0
+          fi
+          # PR 内の dependabot のコミットにある update-type がすべて minor/patch のときだけマージする
+          # （PR に人が修正のコミットを足しても判定できるよう、HEAD のコミットだけでは見ない）
+          types=$(gh api "repos/$REPO/pulls/$pr/commits" --paginate \
+            --jq '.[] | select(.author.login == "dependabot[bot]") | .commit.message' | sed -n 's/^ *update-type: *//p' | sort -u)
+          echo "PR #$pr update-type: $types"
+          if [ -z "$types" ] || printf '%s\n' "$types" | grep -qvE '^version-update:semver-(minor|patch)$'; then
+            echo "minor/patch 以外を含むのでマージしない"
+            exit 0
+          fi
+          # CI 完了後に head が進んでいたら失敗させる
+          gh pr merge "$pr" -R "$REPO" --squash --match-head-commit "$HEAD_SHA"
+          gh workflow run deploy.yaml -R "$REPO" --ref main
