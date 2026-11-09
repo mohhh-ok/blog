@@ -1,5 +1,5 @@
 ---
-import TechChip from "@/components/TechChip.astro";
+import TechList from "@/components/TechList.astro";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { PATHS } from "../paths";
@@ -42,19 +42,12 @@ const Heading = headingLevel;
           class="w-full h-full object-cover rounded-none group-hover:scale-[1.02] transition-transform"
         />
       ) : (
-        <div class="w-full h-full flex items-center justify-center placeholder">
-          <span
-            class="text-lg font-semibold px-3 text-center line-clamp-2"
-            style="color: var(--accent-dark);"
-          >
-            {data.title}
-          </span>
-        </div>
+        <div class="w-full h-full placeholder" />
       )
     }
   </div>
   <div class="flex flex-col flex-1 p-4">
-    <div class="flex flex-col gap-1 mb-2 sm:flex-row sm:justify-between sm:items-baseline sm:gap-2">
+    <div class="flex flex-col gap-1 mb-2">
       <Heading class="work-card-title text-base font-semibold m-0 leading-snug">
         {
           data.draft && (
@@ -83,9 +76,7 @@ const Heading = headingLevel;
     }
     {
       showTechs && data.techs && data.techs.length > 0 && (
-        <div class="flex flex-wrap gap-1.5 mt-auto">
-          {data.techs.map((tech) => <TechChip tech={tech} />)}
-        </div>
+        <TechList techs={data.techs} class="mt-auto" />
       )
     }
   </div>

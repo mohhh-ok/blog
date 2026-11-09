@@ -1,0 +1,20 @@
+---
+// 作品で使った技術の並び。押せる物に見えないよう、枠を付けずに小さい文字で「・」区切りにする
+export type Props = {
+  techs: string[];
+  class?: string;
+};
+
+const { techs, class: className } = Astro.props;
+---
+
+<p class:list={["text-xs text-gray-500 m-0 leading-relaxed", className]}>
+  {
+    techs.map((tech, i) => (
+      <span class="whitespace-nowrap">
+        {tech}
+        {i < techs.length - 1 && "・"}
+      </span>
+    ))
+  }
+</p>

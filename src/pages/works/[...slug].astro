@@ -1,5 +1,5 @@
 ---
-import TechChip from "@/components/TechChip.astro";
+import TechList from "@/components/TechList.astro";
 import { Image } from "astro:assets";
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import BaseHead from "../../components/BaseHead.astro";
@@ -85,7 +85,6 @@ const { Content } = await render(work);
             work.data.heroImage && (
               <Image
                 width={1020}
-                height={510}
                 src={work.data.heroImage}
                 alt=""
               />
@@ -109,9 +108,7 @@ const { Content } = await render(work);
             {
               work.data.techs && work.data.techs.length > 0
                 && (
-                <div class="flex flex-wrap gap-2 justify-center mb-4">
-                  {work.data.techs.map((tech) => <TechChip tech={tech} />)}
-                </div>
+                <TechList techs={work.data.techs} class="text-center mb-4" />
               )
             }
 
