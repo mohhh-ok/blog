@@ -36,10 +36,14 @@ const right = CATEGORIES_TREE.slice(splits[1]);
 </html>
 
 <style>
-  /* スマホにはキーボードの ⌘ K が無いので、狭い画面ではショートカットの表示を出さない */
+  /* スマホにはキーボードの ⌘ K が無いので、狭い画面ではショートカットの表示を出さない。
+     pagefind の CSS は :is(*, #\#) を重ねて詳細度を上げているので !important で上書きする */
   @media (max-width: 720px) {
     :global(.pf-trigger-shortcut) {
-      display: none;
+      display: none !important;
+    }
+    :global(.pf-searchbox-input-wrapper .pf-searchbox-input) {
+      padding-inline-end: 12px !important;
     }
   }
 </style>
