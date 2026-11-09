@@ -1,0 +1,109 @@
+---
+import TechChip from "@/components/TechChip.astro";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { PATHS } from "../paths";
+import { combineDates } from "../utils";
+
+interface Props {
+  work: CollectionEntry<"works">;
+  /** summary を何行で切るか */
+  summaryLines?: 2 | 3;
+  /** 技術のチップを出すか */
+  showTechs?: boolean;
+  /** 作品名の見出しの階層（ページの見出しの並びに合わせる） */
+  headingLevel?: "h2" | "h3";
+}
+
+const {
+  work,
+  summaryLines = 3,
+  showTechs = true,
+  headingLevel = "h2",
+} = Astro.props;
+const { data } = work;
+const { startDate, endDate, aboutYear, heroImage } = data;
+const Heading = headingLevel;
+---
+
+<a
+  href={PATHS.works.work(work.id)}
+  class="group flex flex-col overflow-hidden border border-gray-200 rounded-lg bg-white hover:shadow-lg hover:-translate-y-0.5 transition"
+>
+  <div class="relative aspect-[16/9] overflow-hidden bg-gray-100">
+    {
+      heroImage ? (
+        <Image
+          src={heroImage}
+          alt=""
+          width={640}
+          height={360}
+          fit="cover"
+          class="w-full h-full object-cover rounded-none group-hover:scale-[1.02] transition-transform"
+        />
+      ) : (
+        <div class="w-full h-full flex items-center justify-center placeholder">
+          <span
+            class="text-lg font-semibold px-3 text-center line-clamp-2"
+            style="color: var(--accent-dark);"
+          >
+            {data.title}
+          </span>
+        </div>
+      )
+    }
+  </div>
+  <div class="flex flex-col flex-1 p-4">
+    <div class="flex justify-between items-baseline gap-2 mb-2">
+      <Heading class="work-card-title text-base font-semibold m-0 leading-snug">
+        {
+          data.draft && (
+            <span class="text-xs bg-yellow-400 text-black px-1 py-0.5 rounded mr-1">
+              DRAFT
+            </span>
+          )
+        }
+        {data.title}
+      </Heading>
+      <time class="text-xs text-gray-500 whitespace-nowrap shrink-0">
+        {combineDates({ startDate, endDate, aboutYear })}
+      </time>
+    </div>
+    {
+      data.summary && (
+        <p
+          class:list={[
+            "text-sm text-gray-700 m-0",
+            summaryLines === 2 ? "line-clamp-2" : "line-clamp-3 mb-3",
+          ]}
+        >
+          {data.summary}
+        </p>
+      )
+    }
+    {
+      showTechs && data.techs && data.techs.length > 0 && (
+        <div class="flex flex-wrap gap-1.5 mt-auto">
+          {data.techs.map((tech) => <TechChip tech={tech} />)}
+        </div>
+      )
+    }
+  </div>
+</a>
+
+<style>
+  /* カードの中の作品名には、本文の見出しの線や地を付けない */
+  .work-card-title {
+    border: 0;
+    padding: 0;
+    background: none;
+  }
+  .placeholder {
+    background-color: #fafaf7;
+    background-image:
+      radial-gradient(rgba(187, 85, 55, 0.14) 1px, transparent 1px),
+      radial-gradient(rgba(187, 85, 55, 0.1) 1px, transparent 1px);
+    background-size: 18px 18px, 18px 18px;
+    background-position: 0 0, 9px 9px;
+  }
+</style>

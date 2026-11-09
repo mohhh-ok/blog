@@ -1,5 +1,6 @@
 ---
 title: "路地裏あやかし合戦"
+featured: 3
 personal: true
 draft: false
 startDate: 2026-06

@@ -2,20 +2,23 @@
 import { getCollection } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
 import Header from "../components/Header.astro";
+import WorkCard from "../components/WorkCard.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import { PATHS } from "../paths";
 
-const posts = await getCollection(
-  "blog",
-  ({ data }) => import.meta.env.DEV || !data.draft,
-);
-posts.sort((a, b) =>
-  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
-);
-// const categories = [
-//   ...new Set(posts.flatMap((post) => post.data.categories || [])),
-// ].sort();
+const showEntry = ({ data }: { data: { draft: boolean } }) =>
+  import.meta.env.DEV || !data.draft;
+
+const posts = (await getCollection("blog", showEntry))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 8);
+
+// 載せる作品と並び順は works の frontmatter の featured で決める（docs/home.md）
+const featuredWorks = (await getCollection("works", showEntry))
+  .filter((work) => work.data.featured !== undefined)
+  .sort((a, b) => (a.data.featured ?? 0) - (b.data.featured ?? 0));
 ---
 
 <!DOCTYPE html>
@@ -25,140 +28,125 @@ posts.sort((a, b) =>
   </head>
   <body>
     <Header />
-    <main style={{ width: "1050px" }}>
-      <div style={{ display: "flex", gap: "2rem" }}>
-        <div style={{ minWidth: "650px", maxWidth: "650px" }}>
-          <p>
-            ご訪問いただき、ありがとうございます。フリーランスエンジニアのmohです。
-          </p>
-          <p>
-            TypeScriptを中心としたWebフルスタック、ElectronやTauriによる簡易アプリ、Chrome拡張などを開発しています。
-            またAI活用のご相談もお受けしています。
-          </p>
-          <p>
-            実績については<a href="/blog/works/"
-            >Works</a>ページをご参考ください。
-          </p>
+    <main class="home">
+      <section class="intro">
+        <p>
+          フリーランスエンジニアのmohです。TypeScriptを中心としたWebフルスタック開発のほか、Chrome拡張やデスクトップアプリ（Electron・Tauri）を作っています。AI活用のご相談もお受けしています。
+        </p>
+        <p>
+          2026年2月からAIエージェントを実装の主力にしています。設計の判断は人が行い、セキュリティ・疎結合・保守性を軸にしています。
+        </p>
+      </section>
 
-          <h2>AI活用</h2>
-
-          <p>
-            2026年2月よりAIエージェントツールを実装の主力として活用し、開発スピードを高めています。
-            設計判断は人の手で行い、セキュリティ、疎結合性、保守性などを判断軸としています。
-          </p>
-
-          <h2>
-            公開ツール
-          </h2>
-
-          以下を公開しています。
-
-          <h3>Chrome 拡張</h3>
-
-          <ul>
-            <li>
-              <a
-                href="https://chromewebstore.google.com/detail/tomarigi/jgkjejameolpmmnohlgahonfejfefjgp"
-                target="_blank"
-              >Tomarigi (止まり木)</a>: AI エージェントのセッションを見守る
-              Chrome
-              拡張。止まり木にとまる鳥たちが、各セッションの状態を仕草で示す
-            </li>
-            <li>
-              <a
-                href="https://chromewebstore.google.com/detail/gyokan/fgjhmphkcdecagclfegdaommbfgeladd"
-                target="_blank"
-              >Gyokan (行間)</a>: 日本語話者向け外国語学習の Chrome
-              拡張。ページ上で選択した文の行間に日本語のグロス(訳・構文・語義・例文)を差し込む。BYOK
-            </li>
-          </ul>
-
-          <h3>AI Skill</h3>
-
-          <ul>
-            <li>
-              <a
-                href="https://github.com/mohhh-ok/coding-session-time"
-                target="_blank"
-              >coding-session-time</a>:
-              ClaudeCode使用時間を可視化。プロジェクトや期間ごとなどの絞り込み可能
-            </li>
-          </ul>
-
-          <h3>
-            TypeScript
-          </h3>
-
-          <ul>
-            <li>
-              <a
-                href="https://www.npmjs.com/package/field-guard"
-                target="_blank"
-              >field-guard</a>:
-              TypeSafeなフィールドアクセスコントロールライブラリ
-            </li>
-            <li>
-              <a
-                href="https://www.npmjs.com/package/canopy-i18n"
-                target="_blank"
-              >canopy-i18n</a>: TypeSafeなi18nライブラリ
-            </li>
-            <li>
-              <a
-                href="https://www.npmjs.com/package/react-dialog-hub"
-                target="_blank"
-              >react-dialog-hub</a>: React用のHeadless Dialogライブラリ
-            </li>
-            <li>
-              <a
-                href="https://www.npmjs.com/package/gasup"
-                target="_blank"
-              >gasup</a>: GASのバンドルを簡単にするCLIツール
-            </li>
-            <li>
-              <a
-                href="https://www.npmjs.com/package/ts-gimei"
-                target="_blank"
-              >ts-gimei</a>: 日本語用テスト人物名・住所生成ツール
-            </li>
-            <li>
-              <a
-                href="https://www.npmjs.com/package/gibun"
-                target="_blank"
-              >gibun</a>: 日本語用テスト文章生成ツール
-            </li>
-            <li>
-              <a
-                href="https://www.npmjs.com/package/@masa-dev/react-signage"
-                target="_blank"
-              >react-signage</a>:
-              画像・動画をクロスフェードで自動スライド再生するReact用サイネージライブラリ
-            </li>
-          </ul>
+      <section>
+        <h2>作ったもの</h2>
+        <div class="grid gap-5 grid-cols-1 sm:grid-cols-2">
+          {
+            featuredWorks.map((work) => (
+              <WorkCard
+                work={work}
+                summaryLines={2}
+                showTechs={false}
+                headingLevel="h3"
+              />
+            ))
+          }
         </div>
-        <div style={{}}>
-          <h3>最近の投稿</h3>
-          <ul>
-            {
-              posts.slice(0, 20).map((post) => (
-                <li>
-                  <a href={PATHS.posts.post(post.id)} class="text-sm">
-                    {
-                      post.data.draft && (
-                        <span
-                          class="text-xs bg-yellow-400 text-black px-1 py-0.5 rounded mr-1"
-                        >DRAFT</span>
-                      )
-                    }
-                    {post.data.title}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </div>
+        <p class="works-more">
+          <a href={PATHS.works.index} class="primary-action">すべての作品を見る</a>
+        </p>
+      </section>
+
+      <section>
+        <h2>最近の投稿</h2>
+        <ul class="recent-posts">
+          {
+            posts.map((post) => (
+              <li>
+                <span class="post-date">
+                  <FormattedDate date={post.data.pubDate} />
+                </span>
+                <a href={PATHS.posts.post(post.id)}>
+                  {post.data.draft && (
+                    <span class="text-xs bg-yellow-400 text-black px-1 py-0.5 rounded mr-1">
+                      DRAFT
+                    </span>
+                  )}
+                  {post.data.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="posts-more">
+          <a href={PATHS.posts.index}>記事一覧へ</a>
+        </p>
+      </section>
+
+      <p class="libraries">
+        TypeScript のライブラリや Claude Code のスキルも <a
+          href="https://github.com/mohhh-ok"
+          target="_blank"
+          rel="noopener">GitHub</a
+        > で公開しています。
+      </p>
     </main>
     <Footer />
   </body>
 </html>
+
+<style>
+  main.home {
+    width: auto;
+    max-width: min(960px, calc(100% - 2em));
+  }
+  .intro p {
+    max-width: 40em;
+  }
+  .works-more {
+    margin: 1.5rem 0 0;
+    text-align: center;
+  }
+  .primary-action {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    transition: background-color 0.15s;
+  }
+  .primary-action:hover {
+    background: var(--accent-dark);
+    color: #fff;
+  }
+  .recent-posts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .recent-posts li {
+    display: grid;
+    grid-template-columns: 8.5em 1fr;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgb(var(--gray-light));
+  }
+  .post-date {
+    color: rgb(107, 114, 128);
+    font-size: 0.875rem;
+  }
+  .posts-more {
+    margin: 1rem 0 0;
+    text-align: right;
+  }
+  .libraries {
+    margin: 3rem 0 0;
+  }
+  @media (max-width: 640px) {
+    .recent-posts li {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+</style>

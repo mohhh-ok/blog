@@ -1,13 +1,10 @@
 ---
-import TechChip from "@/components/TechChip.astro";
-import { Image } from "astro:assets";
+import WorkCard from "@/components/WorkCard.astro";
 import { getCollection } from "astro:content";
 import BaseHead from "../../components/BaseHead.astro";
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
-import { PATHS } from "../../paths";
-import {combineDates } from "../../utils";
 
 const works = (await getCollection("works", ({ data }) => import.meta.env.DEV || !data.draft)).sort(
   (a, b) => {
@@ -39,56 +36,7 @@ const works = (await getCollection("works", ({ data }) => import.meta.env.DEV ||
       <h1>Works</h1>
       <section class="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {
-          works.map((work) => {
-            const { data } = work;
-            const { startDate, endDate, aboutYear, heroImage } = data;
-            return (
-              <a
-                href={PATHS.works.work(work.id)}
-                class="group flex flex-col overflow-hidden border border-gray-200 rounded-lg bg-white hover:shadow-lg hover:-translate-y-0.5 transition"
-              >
-                <div class="relative aspect-[16/9] overflow-hidden bg-gray-100">
-                  {heroImage
-                    ? (
-                        <Image
-                          src={heroImage}
-                          alt=""
-                          width={640}
-                          height={360}
-                          class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform"
-                        />
-                      )
-                    : (
-                        <div class="w-full h-full flex items-center justify-center placeholder">
-                          <span class="text-lg font-semibold px-3 text-center line-clamp-2" style="color: var(--accent-dark);">
-                            {work.data.title}
-                          </span>
-                        </div>
-                      )
-                  }
-                </div>
-                <div class="flex flex-col flex-1 p-4">
-                  <div class="flex justify-between items-baseline gap-2 mb-2">
-                    <h2 class="text-base font-semibold m-0 leading-snug">
-                      {work.data.draft && <span class="text-xs bg-yellow-400 text-black px-1 py-0.5 rounded mr-1">DRAFT</span>}
-                      {work.data.title}
-                    </h2>
-                    <time class="text-xs text-gray-500 whitespace-nowrap shrink-0">
-                      {combineDates({ startDate, endDate, aboutYear })}
-                    </time>
-                  </div>
-                  {work.data.summary && (
-                    <p class="text-sm text-gray-700 mb-3 line-clamp-3">{work.data.summary}</p>
-                  )}
-                  {work.data.techs && work.data.techs.length > 0 && (
-                    <div class="flex flex-wrap gap-1.5 mt-auto">
-                      {work.data.techs.map((tech) => <TechChip tech={tech} />)}
-                    </div>
-                  )}
-                </div>
-              </a>
-            );
-          })
+          works.map((work) => <WorkCard work={work} />)
         }
       </section>
     </main>
@@ -96,13 +44,3 @@ const works = (await getCollection("works", ({ data }) => import.meta.env.DEV ||
   </body>
 </html>
 
-<style>
-  .placeholder {
-    background-color: #fafaf7;
-    background-image:
-      radial-gradient(rgba(187, 85, 55, 0.14) 1px, transparent 1px),
-      radial-gradient(rgba(187, 85, 55, 0.10) 1px, transparent 1px);
-    background-size: 18px 18px, 18px 18px;
-    background-position: 0 0, 9px 9px;
-  }
-</style>

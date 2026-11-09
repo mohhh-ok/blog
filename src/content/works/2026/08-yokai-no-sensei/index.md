@@ -1,5 +1,6 @@
 ---
 title: "Kotoyokai（旧 Yokai no Sensei）"
+featured: 1
 personal: true
 startDate: 2026-08
 techs: ["Bun", "TypeScript", "React", "SQLite", "Drizzle", "sqlite-vec", "Capacitor", "Stripe", "Railway"]

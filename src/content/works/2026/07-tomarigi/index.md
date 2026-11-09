@@ -1,5 +1,6 @@
 ---
 title: "Tomarigi (止まり木)"
+featured: 2
 personal: true
 startDate: 2026-07
 techs: ["Tauri 2", "Rust", "React", "TypeScript", "WXT", "IndexedDB", "Web Audio", "Document Picture-in-Picture", "File System Access API"]

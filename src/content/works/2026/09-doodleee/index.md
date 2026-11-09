@@ -1,5 +1,6 @@
 ---
 title: "doodleee"
+featured: 4
 personal: true
 startDate: 2026-09
 endDate: 2026-09
