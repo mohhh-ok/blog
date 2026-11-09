@@ -28,6 +28,8 @@ const works = defineCollection({
       draft: z.boolean().optional().default(false),
       personal: z.boolean().optional().default(false),
       summary: z.string().optional(),
+      // ホームの「作ったもの」に載せる作品と並び順（小さい順）。付けない作品は載せない
+      featured: z.number().optional(),
       startDate: z.coerce.date().optional(),
       endDate: z.coerce.date().optional(),
       aboutYear: z.coerce.number().optional(),
