@@ -14,7 +14,7 @@
     "check": "astro check",
     "sync": "astro sync",
     "zenn:new": "zenn new:article",
-    "zenn:preview": "zenn preview"
+    "zenn:preview": "zenn preview --port 4352"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",

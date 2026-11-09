@@ -13,10 +13,10 @@ Astro製の技術ブログ。GitHub Pagesにデプロイ。
 
 `astro.config.mjs` で `base: "/blog"` を設定しているため、**URLには必ず `/blog` が付く**。さらに**末尾スラッシュ `/` が必須**（ないと404になる）。
 
-- 開発: `http://blog.localhost:4321/blog/posts/YYYY/MM-DD-スラッグ/`
+- 開発: `http://blog.localhost:4351/blog/posts/YYYY/MM-DD-スラッグ/`
 - 本番: `https://mohhh-ok.github.io/blog/posts/YYYY/MM-DD-スラッグ/`
 
-正しい例: `http://blog.localhost:4321/blog/posts/2025/04-24-aipostgres--drizzle--embedding%E3%81%A7%E6%84%8F%E5%91%B3%E6%A4%9C%E7%B4%A2%E3%81%99%E3%82%8B/`
+正しい例: `http://blog.localhost:4351/blog/posts/2025/04-24-aipostgres--drizzle--embedding%E3%81%A7%E6%84%8F%E5%91%B3%E6%A4%9C%E7%B4%A2%E3%81%99%E3%82%8B/`
 
 ユーザーに記事URLを提示するときは `/blog` と末尾 `/` を忘れないこと。
 
@@ -117,7 +117,7 @@ GitHub連携済み（このリポジトリの `main` ブランチ）。`articles
 ### コマンド
 
 - `bun run zenn:new` — 記事の雛形作成（スラッグ・frontmatter自動生成）
-- `bun run zenn:preview` — http://blog.localhost:8000 でZennの見た目をプレビュー
+- `bun run zenn:preview` — http://blog.localhost:4352 でZennの見た目をプレビュー
 
 ### frontmatter（Zenn形式。ブログとは別物）
 

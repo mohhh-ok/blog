@@ -13,6 +13,8 @@ export default defineConfig({
   site: "https://mohhh-ok.github.io",
   base: "/blog",
   trailingSlash: "always",
+  // ~/Dev の他リポと被らない番号に固定する（dev と preview の両方に効く）。zenn preview は package.json で 4352
+  server: { port: 4351 },
   integrations: [mdx(), sitemap(), pagefind()],
 
   markdown: {
