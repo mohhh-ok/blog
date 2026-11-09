@@ -5,18 +5,15 @@ import {
   flatCategoryTreeItems,
 } from "@/categories";
 import { CATEGORIES_TREE } from "@/categories";
-import CategoryChip from "@/components/CategoryChip.astro";
-import { getCollection } from "astro:content";
+import PostList from "@/components/PostList.astro";
+import { getSortedPosts } from "@/posts";
 import BaseHead from "../../components/BaseHead.astro";
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
-import { PATHS } from "../../paths";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog", ({ data }) =>
-    import.meta.env.DEV || !data.draft
-  );
+  const posts = await getSortedPosts();
   const categories = flatCategoryTreeItems(CATEGORIES_TREE).map(c =>
     c.category
   );
@@ -31,9 +28,6 @@ export async function getStaticPaths() {
 }
 
 const { category, posts } = Astro.props;
-const sortedPosts = posts.sort((a, b) =>
-  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
-);
 ---
 
 <!DOCTYPE html>
@@ -48,23 +42,7 @@ const sortedPosts = posts.sort((a, b) =>
     <Header />
     <main style={{ width: "1000px", margin: "0 auto", padding: "2rem" }}>
       <h1>カテゴリ: {category}</h1>
-      <ul>
-        {
-          sortedPosts.map(post => (
-            <li class="mb-2">
-              <a href={PATHS.posts.post(post.id)}>{post.data.draft && <span class="text-xs bg-yellow-400 text-black px-1 py-0.5 rounded mr-1">DRAFT</span>}{post.data.title}</a>
-              {post.data.categories?.map(c => <CategoryChip category={c} />)}
-              <span class="ml-4 text-[#666]">
-                {
-                  new Date(post.data.pubDate).toLocaleDateString(
-                    "ja-JP",
-                  )
-                }
-              </span>
-            </li>
-          ))
-        }
-      </ul>
+      <PostList posts={posts} />
     </main>
     <Footer />
   </body>
