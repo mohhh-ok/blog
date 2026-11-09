@@ -22,10 +22,10 @@ const right = CATEGORIES_TREE.slice(splits[1]);
     <Header />
     <main class="w-[800px]">
       <h1>投稿</h1>
-      <div class="w-[600px] m-auto">
+      <div class="w-full max-w-[600px]">
         <Search />
       </div>
-      <section class="mt-8 grid grid-cols-3 gap-8">
+      <section class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
         <CategoryTree categories={left} />
         <CategoryTree categories={middle} />
         <CategoryTree categories={right} />
