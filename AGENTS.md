@@ -106,6 +106,10 @@ tags: []
 - viewBox の幅・高さと `<rect>` の width/height は一致させる（部分敷きにしない）
 - 既存 SVG を更新するときも先頭 rect の有無を毎回確認
 
+## ホーム（/blog/）
+
+ホームの構成と載せる作品は `docs/home.md`。ホームを直す前に読む。載せる作品は works の frontmatter の `featured` で決める。
+
 ## 進行中の計画
 
 - **Zennfes Spring 2026 応募計画**: `docs/zennfes-spring-2026-plan.md` を参照。既存ブログ記事を優先度順に1日2本ペースでZenn化して応募する（締切 2026-06-26）。Zenn化作業を頼まれたらこのキューの上から進め、完了したらチェックボックスを更新する
