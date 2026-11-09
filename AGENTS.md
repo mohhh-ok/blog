@@ -108,7 +108,7 @@ tags: []
 
 ## ホーム（/blog/）
 
-ホームの構成と載せる作品は `docs/home.md`。ホームを直す前に読む。載せる作品は works の frontmatter の `featured` で決める。
+ホームの構成と載せる作品は `docs/home.md`。ホームを直す前に読む。載せる作品は works の frontmatter の `featured` で決める。記事一覧（/blog/posts/）の構成は `docs/posts.md`。
 
 ## 進行中の計画
 
