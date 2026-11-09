@@ -33,11 +33,8 @@ jobs:
         env:
           CI: "true"
 
-      # astro check は TypeScript 7.0 に未対応なので、.astro の型を生成してから tsc で .ts を検査する
       - name: Type check
-        run: |
-          bun run sync
-          bunx tsc --noEmit
+        run: bun run check
         env:
           CI: "true"
 
