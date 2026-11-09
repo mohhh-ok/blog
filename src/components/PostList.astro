@@ -1,0 +1,57 @@
+---
+// 記事の並び（日付と記事名の行）。ホームの「最近の投稿」と記事一覧で使う
+import type { CollectionEntry } from "astro:content";
+import { PATHS } from "../paths";
+import FormattedDate from "./FormattedDate.astro";
+
+interface Props {
+  posts: CollectionEntry<"blog">[];
+}
+
+const { posts } = Astro.props;
+---
+
+<ul class="post-list">
+  {
+    posts.map((post) => (
+      <li>
+        <span class="post-date">
+          <FormattedDate date={post.data.pubDate} />
+        </span>
+        <a href={PATHS.posts.post(post.id)}>
+          {post.data.draft && (
+            <span class="text-xs bg-yellow-400 text-black px-1 py-0.5 rounded mr-1">
+              DRAFT
+            </span>
+          )}
+          {post.data.title}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .post-list li {
+    display: grid;
+    grid-template-columns: 8.5em 1fr;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgb(var(--gray-light));
+  }
+  .post-date {
+    color: rgb(107, 114, 128);
+    font-size: 0.875rem;
+  }
+  @media (max-width: 640px) {
+    .post-list li {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+</style>

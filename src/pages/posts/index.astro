@@ -1,11 +1,10 @@
 ---
 import { CATEGORIES_TREE } from "@/categories";
 import CategoryTree from "@/components/CategoryTree.astro";
-import Search from "astro-pagefind/components/Search.astro";
-import BaseHead from "../../components/BaseHead.astro";
-import Footer from "../../components/Footer.astro";
-import Header from "../../components/Header.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import PostsIndex from "@/components/PostsIndex.astro";
+import { getPostsPage } from "@/posts";
+
+const { posts, totalPages } = await getPostsPage(1);
 
 const splits = [1, 5];
 const left = CATEGORIES_TREE.slice(0, splits[0]);
@@ -13,37 +12,11 @@ const middle = CATEGORIES_TREE.slice(splits[0], splits[1]);
 const right = CATEGORIES_TREE.slice(splits[1]);
 ---
 
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header />
-    <main class="w-[800px]">
-      <h1>投稿</h1>
-      <div class="w-full max-w-[600px]">
-        <Search />
-      </div>
-      <section class="mt-8 grid grid-cols-1 gap-0 md:grid-cols-3 md:gap-8">
-        <CategoryTree categories={left} />
-        <CategoryTree categories={middle} />
-        <CategoryTree categories={right} />
-      </section>
-    </main>
-    <Footer />
-  </body>
-</html>
-
-<style>
-  /* スマホにはキーボードの ⌘ K が無いので、狭い画面ではショートカットの表示を出さない。
-     pagefind の CSS は :is(*, #\#) を重ねて詳細度を上げているので !important で上書きする */
-  @media (max-width: 720px) {
-    :global(.pf-trigger-shortcut) {
-      display: none !important;
-    }
-    :global(.pf-searchbox-input-wrapper .pf-searchbox-input) {
-      padding-inline-end: 12px !important;
-    }
-  }
-</style>
+<PostsIndex posts={posts} current={1} total={totalPages}>
+  <h2>カテゴリ</h2>
+  <section class="grid grid-cols-1 gap-0 md:grid-cols-3 md:gap-8">
+    <CategoryTree categories={left} />
+    <CategoryTree categories={middle} />
+    <CategoryTree categories={right} />
+  </section>
+</PostsIndex>

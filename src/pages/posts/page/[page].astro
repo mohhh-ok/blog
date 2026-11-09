@@ -1,0 +1,17 @@
+---
+// 記事一覧の 2 ページ目以降（/blog/posts/page/<n>/）。1 ページ目は posts/index.astro
+import PostsIndex from "@/components/PostsIndex.astro";
+import { getPostsPage } from "@/posts";
+
+export async function getStaticPaths() {
+  const { totalPages } = await getPostsPage(1);
+  return Array.from({ length: Math.max(0, totalPages - 1) }, (_, i) => ({
+    params: { page: String(i + 2) },
+  }));
+}
+
+const current = Number(Astro.params.page);
+const { posts, totalPages } = await getPostsPage(current);
+---
+
+<PostsIndex posts={posts} current={current} total={totalPages} />

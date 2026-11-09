@@ -1,0 +1,69 @@
+---
+// 記事一覧のページ送り（前へ・ページ番号・次へ）。番号は先頭・末尾・今のページの前後だけを出し、間は「…」にする
+import { PATHS } from "../paths";
+
+interface Props {
+  current: number;
+  total: number;
+}
+
+const { current, total } = Astro.props;
+
+const numbers: (number | "gap")[] = [];
+for (let n = 1; n <= total; n++) {
+  if (n === 1 || n === total || Math.abs(n - current) <= 1) {
+    numbers.push(n);
+  } else if (numbers[numbers.length - 1] !== "gap") {
+    numbers.push("gap");
+  }
+}
+---
+
+{
+  total > 1 && (
+    <nav class="pagination" aria-label="ページ送り">
+      {current > 1
+        ? <a href={PATHS.posts.page(current - 1)} rel="prev">前へ</a>
+        : <span class="disabled">前へ</span>}
+      {numbers.map((n) =>
+        n === "gap"
+          ? <span class="gap">…</span>
+          : n === current
+          ? <span class="current" aria-current="page">{n}</span>
+          : <a href={PATHS.posts.page(n)}>{n}</a>
+      )}
+      {current < total
+        ? <a href={PATHS.posts.page(current + 1)} rel="next">次へ</a>
+        : <span class="disabled">次へ</span>}
+    </nav>
+  )
+}
+
+<style>
+  .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    margin: 1.5rem 0 0;
+  }
+  .pagination a,
+  .pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 0 0.5rem;
+  }
+  .pagination .current {
+    font-weight: 700;
+    color: rgb(var(--black));
+    border-bottom: 2px solid var(--accent);
+  }
+  .pagination .disabled,
+  .pagination .gap {
+    color: rgb(156, 163, 175);
+  }
+</style>

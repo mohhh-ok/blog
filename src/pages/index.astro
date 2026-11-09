@@ -2,18 +2,17 @@
 import { getCollection } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
-import FormattedDate from "../components/FormattedDate.astro";
 import Header from "../components/Header.astro";
+import PostList from "../components/PostList.astro";
 import WorkCard from "../components/WorkCard.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import { PATHS } from "../paths";
+import { getSortedPosts } from "../posts";
 
 const showEntry = ({ data }: { data: { draft: boolean } }) =>
   import.meta.env.DEV || !data.draft;
 
-const posts = (await getCollection("blog", showEntry))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 8);
+const posts = (await getSortedPosts()).slice(0, 8);
 
 // 載せる作品と並び順は works の frontmatter の featured で決める（docs/home.md）
 const featuredWorks = (await getCollection("works", showEntry))
@@ -63,27 +62,9 @@ const featuredWorks = (await getCollection("works", showEntry))
 
       <section>
         <h2>最近の投稿</h2>
-        <ul class="recent-posts">
-          {
-            posts.map((post) => (
-              <li>
-                <span class="post-date">
-                  <FormattedDate date={post.data.pubDate} />
-                </span>
-                <a href={PATHS.posts.post(post.id)}>
-                  {post.data.draft && (
-                    <span class="text-xs bg-yellow-400 text-black px-1 py-0.5 rounded mr-1">
-                      DRAFT
-                    </span>
-                  )}
-                  {post.data.title}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
+        <PostList posts={posts} />
         <p class="posts-more">
-          <a href={PATHS.posts.index}>記事をカテゴリ・検索で探す</a>
+          <a href={PATHS.posts.index}>すべての記事を見る</a>
         </p>
       </section>
 
@@ -124,22 +105,6 @@ const featuredWorks = (await getCollection("works", showEntry))
     background: var(--accent-dark);
     color: #fff;
   }
-  .recent-posts {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .recent-posts li {
-    display: grid;
-    grid-template-columns: 8.5em 1fr;
-    gap: 1rem;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgb(var(--gray-light));
-  }
-  .post-date {
-    color: rgb(107, 114, 128);
-    font-size: 0.875rem;
-  }
   .posts-more {
     margin: 1rem 0 0;
     text-align: center;
@@ -152,11 +117,5 @@ const featuredWorks = (await getCollection("works", showEntry))
   }
   .libraries {
     margin: 3rem 0 0;
-  }
-  @media (max-width: 640px) {
-    .recent-posts li {
-      grid-template-columns: 1fr;
-      gap: 0;
-    }
   }
 </style>
