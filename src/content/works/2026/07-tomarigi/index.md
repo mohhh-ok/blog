@@ -10,7 +10,7 @@ heroImage: ./desktop-garden.webp
 
 AI エージェント(Claude Code・Codex など)を何本も動かしながら別の作業をしていると、どれが自分の返事を待っているのか分からなくなる。Tomarigi はエージェントごとに 1 羽の鳥を画面の隅に出し、作業中・返事待ち・完了を見分けられるようにする。
 
-[ダウンロード](https://moh-tech.net/tomarigi/desktop/) / [GitHub](https://github.com/mohhh-ok/tomarigi-desktop)(MIT) / [Chrome 拡張](https://chromewebstore.google.com/detail/tomarigi/jgkjejameolpmmnohlgahonfejfefjgp) / [Chrome 拡張の紹介](https://moh-tech.net/tomarigi/)
+[デスクトップ版をダウンロード](https://moh-tech.net/tomarigi/desktop/) / [GitHub](https://github.com/mohhh-ok/tomarigi-desktop)(MIT) / [Chrome 拡張（Chrome ウェブストア）](https://chromewebstore.google.com/detail/tomarigi/jgkjejameolpmmnohlgahonfejfefjgp)
 
 2026/07 に Chrome 拡張を作り、2026/09 にデスクトップアプリをオープンソースで公開した。今はデスクトップアプリが中心で、2026/11 時点で v0.15.2。
 

@@ -25,7 +25,7 @@ const right = CATEGORIES_TREE.slice(splits[1]);
       <div class="w-full max-w-[600px]">
         <Search />
       </div>
-      <section class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
+      <section class="mt-8 grid grid-cols-1 gap-0 md:grid-cols-3 md:gap-8">
         <CategoryTree categories={left} />
         <CategoryTree categories={middle} />
         <CategoryTree categories={right} />
@@ -34,3 +34,12 @@ const right = CATEGORIES_TREE.slice(splits[1]);
     <Footer />
   </body>
 </html>
+
+<style>
+  /* スマホにはキーボードの ⌘ K が無いので、狭い画面ではショートカットの表示を出さない */
+  @media (max-width: 720px) {
+    :global(.pf-trigger-shortcut) {
+      display: none;
+    }
+  }
+</style>

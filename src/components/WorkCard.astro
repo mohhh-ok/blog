@@ -28,11 +28,15 @@ const Heading = headingLevel;
 
 <a
   href={PATHS.works.work(work.id)}
-  class="group flex flex-col overflow-hidden border border-gray-200 rounded-lg bg-white hover:shadow-lg hover:-translate-y-0.5 transition"
+  class:list={[
+    "group flex flex-col overflow-hidden border border-gray-200 rounded-lg bg-white hover:shadow-lg hover:-translate-y-0.5 transition",
+    // 画像の無い作品は文字だけの低いカードにする（行の高さに引き伸ばさない）
+    !heroImage && "self-start",
+  ]}
 >
-  <div class="relative aspect-[16/9] overflow-hidden bg-gray-100">
-    {
-      heroImage ? (
+  {
+    heroImage && (
+      <div class="relative aspect-[16/9] overflow-hidden bg-gray-100">
         <Image
           src={heroImage}
           alt=""
@@ -41,11 +45,9 @@ const Heading = headingLevel;
           fit="cover"
           class="w-full h-full object-cover rounded-none group-hover:scale-[1.02] transition-transform"
         />
-      ) : (
-        <div class="w-full h-full placeholder" />
-      )
-    }
-  </div>
+      </div>
+    )
+  }
   <div class="flex flex-col flex-1 p-4">
     <div class="flex flex-col gap-1 mb-2">
       <Heading class="work-card-title text-base font-semibold m-0 leading-snug">
@@ -88,13 +90,5 @@ const Heading = headingLevel;
     border: 0;
     padding: 0;
     background: none;
-  }
-  .placeholder {
-    background-color: #fafaf7;
-    background-image:
-      radial-gradient(rgba(187, 85, 55, 0.14) 1px, transparent 1px),
-      radial-gradient(rgba(187, 85, 55, 0.1) 1px, transparent 1px);
-    background-size: 18px 18px, 18px 18px;
-    background-position: 0 0, 9px 9px;
   }
 </style>
