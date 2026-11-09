@@ -1,49 +1,18 @@
 ---
-import {
-  type Category,
-  filterPostsByCategory,
-  flatCategoryTreeItems,
-} from "@/categories";
-import { CATEGORIES_TREE } from "@/categories";
-import PostList from "@/components/PostList.astro";
-import { getSortedPosts } from "@/posts";
-import BaseHead from "../../components/BaseHead.astro";
-import Footer from "../../components/Footer.astro";
-import Header from "../../components/Header.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+// カテゴリ別の記事一覧の 1 ページ目（/blog/categories/<カテゴリ>/）。2 ページ目以降は [category]/page/[page].astro
+import { CATEGORIES_TREE, flatCategoryTreeItems } from "@/categories";
+import CategoryPostsPage from "@/components/CategoryPostsPage.astro";
+import { getCategoryPostsPage } from "@/posts";
 
-export async function getStaticPaths() {
-  const posts = await getSortedPosts();
-  const categories = flatCategoryTreeItems(CATEGORIES_TREE).map(c =>
-    c.category
-  );
-
-  return categories.map(category => ({
+export function getStaticPaths() {
+  return flatCategoryTreeItems(CATEGORIES_TREE).map(({ category }) => ({
     params: { category },
-    props: {
-      category,
-      posts: filterPostsByCategory(posts, category),
-    },
+    props: { category },
   }));
 }
 
-const { category, posts } = Astro.props;
+const { category } = Astro.props;
+const { posts, totalPages } = await getCategoryPostsPage(category, 1);
 ---
 
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <BaseHead
-      title={`${category} - ${SITE_TITLE}`}
-      description={SITE_DESCRIPTION}
-    />
-  </head>
-  <body>
-    <Header />
-    <main style={{ width: "1000px", margin: "0 auto", padding: "2rem" }}>
-      <h1>カテゴリ: {category}</h1>
-      <PostList posts={posts} />
-    </main>
-    <Footer />
-  </body>
-</html>
+<CategoryPostsPage category={category} posts={posts} current={1} total={totalPages} />

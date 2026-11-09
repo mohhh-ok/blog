@@ -1,0 +1,29 @@
+---
+// カテゴリ別の記事一覧の中身（1 ページ目と 2 ページ目以降で共通）
+import type { CollectionEntry } from "astro:content";
+import type { Category } from "../categories";
+import { SITE_TITLE } from "../consts";
+import { PATHS } from "../paths";
+import PostsPage from "./PostsPage.astro";
+
+interface Props {
+  category: Category;
+  posts: CollectionEntry<"blog">[];
+  current: number;
+  total: number;
+}
+
+const { category, posts, current, total } = Astro.props;
+const title = current > 1
+  ? `${category} ${current} ページ目 - ${SITE_TITLE}`
+  : `${category} - ${SITE_TITLE}`;
+---
+
+<PostsPage
+  title={title}
+  heading={`カテゴリ: ${category}`}
+  posts={posts}
+  current={current}
+  total={total}
+  pageHref={(n) => PATHS.categories.page(category, n)}
+/>

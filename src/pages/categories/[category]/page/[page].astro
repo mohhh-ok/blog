@@ -1,0 +1,25 @@
+---
+// カテゴリ別の記事一覧の 2 ページ目以降（/blog/categories/<カテゴリ>/page/<n>/）。1 ページ目は categories/[category].astro
+import { CATEGORIES_TREE, flatCategoryTreeItems } from "@/categories";
+import CategoryPostsPage from "@/components/CategoryPostsPage.astro";
+import { getCategoryPostsPage } from "@/posts";
+
+export async function getStaticPaths() {
+  const paths = await Promise.all(
+    flatCategoryTreeItems(CATEGORIES_TREE).map(async ({ category }) => {
+      const { totalPages } = await getCategoryPostsPage(category, 1);
+      return Array.from({ length: Math.max(0, totalPages - 1) }, (_, i) => ({
+        params: { category, page: String(i + 2) },
+        props: { category },
+      }));
+    }),
+  );
+  return paths.flat();
+}
+
+const { category } = Astro.props;
+const current = Number(Astro.params.page);
+const { posts, totalPages } = await getCategoryPostsPage(category, current);
+---
+
+<CategoryPostsPage category={category} posts={posts} current={current} total={totalPages} />

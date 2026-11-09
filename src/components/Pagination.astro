@@ -1,13 +1,13 @@
 ---
-// 記事一覧のページ送り（前へ・ページ番号・次へ）。番号は先頭・末尾・今のページの前後だけを出し、間は「…」にする
-import { PATHS } from "../paths";
-
+// 記事の並びのページ送り（前へ・ページ番号・次へ）。番号は先頭・末尾・今のページの前後だけを出し、間は「…」にする
 interface Props {
   current: number;
   total: number;
+  /** n ページ目の URL */
+  pageHref: (n: number) => string;
 }
 
-const { current, total } = Astro.props;
+const { current, total, pageHref } = Astro.props;
 
 const numbers: (number | "gap")[] = [];
 for (let n = 1; n <= total; n++) {
@@ -23,17 +23,17 @@ for (let n = 1; n <= total; n++) {
   total > 1 && (
     <nav class="pagination" aria-label="ページ送り">
       {current > 1
-        ? <a href={PATHS.posts.page(current - 1)} rel="prev">前へ</a>
+        ? <a href={pageHref(current - 1)} rel="prev">前へ</a>
         : <span class="disabled">前へ</span>}
       {numbers.map((n) =>
         n === "gap"
           ? <span class="gap">…</span>
           : n === current
           ? <span class="current" aria-current="page">{n}</span>
-          : <a href={PATHS.posts.page(n)}>{n}</a>
+          : <a href={pageHref(n)}>{n}</a>
       )}
       {current < total
-        ? <a href={PATHS.posts.page(current + 1)} rel="next">次へ</a>
+        ? <a href={pageHref(current + 1)} rel="next">次へ</a>
         : <span class="disabled">次へ</span>}
     </nav>
   )

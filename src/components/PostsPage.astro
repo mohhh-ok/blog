@@ -1,0 +1,56 @@
+---
+// 記事の並びのページの外枠（見出し・「n / m ページ」・記事の並び・ページ送り）。記事一覧とカテゴリ別の記事一覧で使う。
+// 見出しと「n / m ページ」の下に置く物（記事一覧の検索欄）は slot "top"、ページ送りの下に置く物は既定の slot で渡す
+import type { CollectionEntry } from "astro:content";
+import { SITE_DESCRIPTION } from "../consts";
+import BaseHead from "./BaseHead.astro";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import Pagination from "./Pagination.astro";
+import PostList from "./PostList.astro";
+
+interface Props {
+  /** <title> */
+  title: string;
+  heading: string;
+  posts: CollectionEntry<"blog">[];
+  current: number;
+  total: number;
+  /** n ページ目の URL */
+  pageHref: (n: number) => string;
+}
+
+const { title, heading, posts, current, total, pageHref } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <BaseHead title={title} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main class="w-[800px]">
+      <h1>{heading}</h1>
+      <p class="page-of">{current} / {total} ページ</p>
+      <slot name="top" />
+      <section class="mt-8">
+        <PostList posts={posts} />
+        <Pagination current={current} total={total} pageHref={pageHref} />
+      </section>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  h1:has(+ .page-of) {
+    margin-bottom: 0.25rem;
+  }
+  .page-of {
+    margin: 0 0 1em;
+    color: rgb(107, 114, 128);
+    font-size: 0.875rem;
+  }
+</style>

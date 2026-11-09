@@ -2,12 +2,9 @@
 // 記事一覧（/blog/posts/ と /blog/posts/page/<n>/）の共通の中身。カテゴリは 1 ページ目だけ slot で渡す
 import Search from "astro-pagefind/components/Search.astro";
 import type { CollectionEntry } from "astro:content";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
-import BaseHead from "./BaseHead.astro";
-import Footer from "./Footer.astro";
-import Header from "./Header.astro";
-import Pagination from "./Pagination.astro";
-import PostList from "./PostList.astro";
+import { SITE_TITLE } from "../consts";
+import { PATHS } from "../paths";
+import PostsPage from "./PostsPage.astro";
 
 interface Props {
   posts: CollectionEntry<"blog">[];
@@ -19,38 +16,21 @@ const { posts, current, total } = Astro.props;
 const title = current > 1 ? `投稿 ${current} ページ目 - ${SITE_TITLE}` : SITE_TITLE;
 ---
 
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <BaseHead title={title} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header />
-    <main class="w-[800px]">
-      <h1>投稿</h1>
-      <p class="page-of">{current} / {total} ページ</p>
-      <div class="w-full max-w-[600px]">
-        <Search />
-      </div>
-      <section class="mt-8">
-        <PostList posts={posts} />
-        <Pagination current={current} total={total} />
-      </section>
-      <slot />
-    </main>
-    <Footer />
-  </body>
-</html>
+<PostsPage
+  title={title}
+  heading="投稿"
+  posts={posts}
+  current={current}
+  total={total}
+  pageHref={PATHS.posts.page}
+>
+  <div slot="top" class="w-full max-w-[600px]">
+    <Search />
+  </div>
+  <slot />
+</PostsPage>
 
 <style>
-  h1:has(+ .page-of) {
-    margin-bottom: 0.25rem;
-  }
-  .page-of {
-    margin: 0 0 1em;
-    color: rgb(107, 114, 128);
-    font-size: 0.875rem;
-  }
   /* スマホにはキーボードの ⌘ K が無いので、狭い画面ではショートカットの表示を出さない。
      pagefind の CSS は :is(*, #\#) を重ねて詳細度を上げているので !important で上書きする */
   @media (max-width: 720px) {
