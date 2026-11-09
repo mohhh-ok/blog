@@ -28,7 +28,7 @@ const title = current > 1 ? `投稿 ${current} ページ目 - ${SITE_TITLE}` : S
     <Header />
     <main class="w-[800px]">
       <h1>投稿</h1>
-      {current > 1 && <p class="page-of">{current} / {total} ページ</p>}
+      <p class="page-of">{current} / {total} ページ</p>
       <div class="w-full max-w-[600px]">
         <Search />
       </div>

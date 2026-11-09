@@ -66,4 +66,15 @@ for (let n = 1; n <= total; n++) {
   .pagination .gap {
     color: rgb(156, 163, 175);
   }
+  /* SP では 3〜11 ページ目の一番長い並び（9 個）でも 1 行に収める。押せる高さ 40px は保つ */
+  @media (max-width: 640px) {
+    .pagination {
+      gap: 0;
+    }
+    .pagination a,
+    .pagination span {
+      min-width: 32px;
+      padding: 0 0.25rem;
+    }
+  }
 </style>
