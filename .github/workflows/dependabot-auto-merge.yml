@@ -19,6 +19,11 @@ jobs:
       github.event.workflow_run.event == 'pull_request'
     runs-on: ubuntu-latest
     steps:
+      # workflow_run は既定ブランチで動くので、判定のスクリプトも既定ブランチのものを使う
+      - uses: actions/checkout@v7
+        with:
+          sparse-checkout: .github/scripts
+
       - name: Merge minor/patch updates and deploy
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -33,13 +38,14 @@ jobs:
             echo "対象の PR が無い（head が進んだか、dependabot の PR でない）"
             exit 0
           fi
-          # PR 内の dependabot のコミットにある update-type がすべて minor/patch のときだけマージする
-          # （PR に人が修正のコミットを足しても判定できるよう、HEAD のコミットだけでは見ない）
-          types=$(gh api "repos/$REPO/pulls/$pr/commits" --paginate \
-            --jq '.[] | select(.author.login == "dependabot[bot]") | .commit.message' | sed -n 's/^ *update-type: *//p' | sort -u)
-          echo "PR #$pr update-type: $types"
-          if [ -z "$types" ] || printf '%s\n' "$types" | grep -qvE '^version-update:semver-(minor|patch)$'; then
-            echo "minor/patch 以外を含むのでマージしない"
+          # PR 内の dependabot のコミットの依存がすべて minor/patch のときだけマージする
+          # （PR に人が修正のコミットを足しても判定できるよう、HEAD のコミットだけでは見ない。
+          #   update-type が無い間接依存のセキュリティ更新は、版の差から判定する）
+          msgs=$(gh api "repos/$REPO/pulls/$pr/commits" --paginate \
+            --jq '.[] | select(.author.login == "dependabot[bot]") | .commit.message + "\u001e"')
+          echo "PR #$pr"
+          if ! printf '%s' "$msgs" | bash .github/scripts/dependabot-merge-decision.sh; then
+            echo "minor/patch 以外か、版の差が判定できない依存を含むのでマージしない"
             exit 0
           fi
           # CI 完了後に head が進んでいたら失敗させる
