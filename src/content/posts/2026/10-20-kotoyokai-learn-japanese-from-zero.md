@@ -1,6 +1,6 @@
 ---
 title: "Kotoyokai: Learn Japanese from Zero with a Yokai Buddy, One Short Lesson at a Time"
-description: "Kotoyokai is a Japanese course for English speakers that starts at hiragana: 152 short lessons, with a tanuki or fox buddy you can ask in Japanese or English. The course, kana, 2,211 kanji, travel phrases and games are free, and lesson audio is checked by a native speaker."
+description: "Kotoyokai is a free Japanese course for English speakers, from zero: 152 short lessons and a tanuki or fox buddy you can ask in Japanese or English."
 pubDate: 2026-10-20
 updatedDate: 2026-11-13
 categories: ["AI", "開発"]
@@ -47,7 +47,7 @@ Besides the course, each topic has its own page, and all of them are free.
 - Kana: a chart with all 107 sounds of hiragana and katakana, including が, ぱ and きゃ. Tap a kana to hear it. In Write, you trace each of the 71 basic kana three times, and the guide fades each time.
 - Words: 454 everyday words in 47 small sets, like greetings, days of the week and family.
 - Numbers and Sentences: dates, times, prices, and how は, を and へ are read in a sentence.
-- Kanji: all 2,211 kanji from N5 to N1, each with stroke order you can watch or trace. Mark the ones you know, and you'll see how many words you can now read.
+- Kanji: all 2,211 kanji from N5 to N1, each with stroke order you can watch or trace. With a free account, mark the ones you know, and you'll see how many words you can now read.
 - Phrases: sets grouped by place, like any shop, café, restaurant, convenience store, train, airport and hotel, plus slang. Every phrase has audio.
 
 ![Left: the hiragana chart on a phone, with romaji under each character and a speaker button at the start of every row. Right: Write kana. "1 / 71", "Trace あ 1/3" and a "Show order" button above a box with the model あ in terracotta](./10-20-kotoyokai-kana-pair.webp)
